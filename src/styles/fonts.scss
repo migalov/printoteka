@@ -1,0 +1,64 @@
+// Путь к папке со шрифтами (без завершающего слеша)
+$font-path: "/fonts";
+
+// Список форматов, в порядке предпочтения.
+// По умолчанию - woff2 и woff. При необходимости оставьте только 'woff2'.
+$font-formats: ("truetype", "eot");
+
+// Поведение font-display
+$font-display: swap;
+
+// Описание семейств и их файлов/вариантов
+// file — имя файла без расширения
+// weight — числовой вес (400, 500, 600, 700 и т.д.)
+// style — normal или italic
+$font-families: (
+  "Inter": (
+    (file: "inter-regular",        weight: 400, style: normal),
+    (file: "inter-regularitalic",  weight: 400, style: italic),
+    (file: "inter-medium",         weight: 500, style: normal),
+    (file: "inter-mediumitalic",   weight: 500, style: italic),
+    (file: "inter-semibold",       weight: 600, style: normal),
+    (file: "inter-bold",           weight: 700, style: normal),
+    (file: "inter-bolditalic",     weight: 700, style: italic)
+  ),
+  "Manrope": (
+    (file: "manrope-medium",       weight: 500, style: normal),
+    (file: "manrope-semibold",     weight: 600, style: normal)
+  )
+);
+
+// Функция собирает src для @font-face по файлу и списку форматов
+@function build-src($file) {
+  $src: "";
+  @each $fmt in $font-formats {
+    $entry: "url('#{$font-path}/#{$file}.#{$fmt}') format('#{$fmt}')";
+    @if $fmt == "truetype" {
+      $entry: "url('#{$font-path}/#{$file}.ttf') format('#{$fmt}')";
+    }
+    
+    @if $src == "" {
+      $src: $entry;
+    } @else {
+      $src: $src + ", " + $entry;
+    }
+  }
+  @return unquote($src);
+}
+
+// Генерация @font-face для всех описанных вариантов
+@each $family, $variants in $font-families {
+  @each $variant in $variants {
+    $file: map-get($variant, file);
+    $weight: map-get($variant, weight);
+    $style: map-get($variant, style);
+
+    @font-face {
+      font-family: "#{$family}";
+      src: build-src($file);
+      font-weight: $weight;
+      font-style: $style;
+      font-display: $font-display;
+    }
+  }
+}

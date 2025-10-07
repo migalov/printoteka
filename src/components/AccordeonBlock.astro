@@ -1,0 +1,52 @@
+---
+import CircleRadioButton from "./CircleRadioButton.astro";
+const {title, html, name, id} = Astro.props;
+---
+
+<div class="print-accordeon-block">
+    <div class="print-accordeon-head">
+        <h3>{title}</h3>
+        <CircleRadioButton
+            name={name}
+            id={id}
+        />
+    </div>
+    <div class="print-accordeoon-inner" set:html={html}></div>
+</div>
+
+<style lang="scss" is:global>
+    .print-accordeon-block {
+        display: grid;
+        grid-template-rows: min-content 0fr;
+        gap: 0rem;
+        background-color: rgba(247, 247, 247, 1);
+        padding: 1rem;
+        border-radius: 1rem;
+        transition: .3s;
+        height: min-content;
+
+        &:has( input:checked) {
+            grid-template-rows: min-content 1fr;
+            gap: .625rem;
+            & .print-accordeoon-inner {
+                opacity: 1;
+            }
+        }
+    }
+    .print-accordeon-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        & h3 {
+            font-size: clamp(1rem, 0.7359rem + 1.1268vw, 1.75rem);
+        }
+    }
+    .print-accordeoon-inner {
+        overflow: hidden;
+        opacity: 0;
+        transition: .3s;
+        transition-delay: .3s;
+    }
+</style>

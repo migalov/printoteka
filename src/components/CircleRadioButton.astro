@@ -1,0 +1,47 @@
+---
+const {name, id} = Astro.props;
+---
+
+<label class="print-circle-button" for={`${name}-${id}`}>
+    <input name="name" type="checkbox" id={`${name}-${id}`}>
+    <div class="print-circle-button__line"></div>
+    <div class="print-circle-button__line"></div>
+    
+</label>
+
+<style lang="scss" is:global>
+    .print-circle-button {
+        --size-button: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
+        position: relative;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 1);
+        width: var(--size-button);
+        aspect-ratio: 1/1;
+        & input {
+            appearance: none;
+            margin: 0;
+            width: 0;
+            height: 0;
+        }
+        & input:checked ~ .print-circle-button__line:nth-of-type(2) {
+            transform:  translate(-50%, -50%) rotate(0deg);
+        }
+    }
+    .print-circle-button__line {
+        transition: .2s;
+        background-color: rgba(52, 52, 52, 0.9);
+        width: 15px;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 3px;
+        &:nth-of-type(2) {
+            transform:  translate(-50%, -50%) rotate(90deg);
+        }
+
+
+    }
+</style>

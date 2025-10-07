@@ -1,0 +1,29 @@
+---
+const {title} = Astro.props;
+---
+
+<section class="print-accordeon-section">
+    <h2>{title}</h2>
+    <div class="print-accordeon-section-grid">
+        <slot />
+    </div>
+</section>
+
+<style lang="scss" is:global>
+    .print-accordeon-section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        & h2 {
+            text-align: center;
+        }
+    }
+    .print-accordeon-section-grid {
+        display: grid;
+
+        gap: 1.25rem;
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>

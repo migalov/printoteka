@@ -1,0 +1,8 @@
+---
+const {value, id, name, checked = false} = Astro.props;
+---
+
+<label class="print-input-button" for={`${name}-${id}`}>
+    <input type="radio" name={name} id={`${name}-${id}`} value={value} checked={checked} />
+    <span>{value}</span>
+</label>

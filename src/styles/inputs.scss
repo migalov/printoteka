@@ -1,0 +1,66 @@
+
+.print-input {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+
+    & input:is([type="text"], [type="tel"]) {
+        appearance: none;
+        outline: none;
+        border: none;
+        background-color: var(--pxp-menu-bg);
+        // background-color: violet;
+        padding: clamp(1.1rem, 1.0296rem + 0.3005vw, 1.3rem);
+        font-family: var(--font-body);
+        color: rgba(52, 52, 52, 0.5);
+        border-radius: 1em;
+        font-size: 1rem;
+        &:hover {
+            background-color: #EEEEEE;
+        }
+        &:focus {
+            outline: 2px solid rgba(255, 147, 71, 1);
+        }
+    }
+
+    &--no-empty {
+        & input:is([type="text"], [type="tel"]) {
+            outline: 2px solid rgba(255, 147, 71, 1);
+        }
+    }
+}
+
+.print-input__name {
+    font-family: var(--font-body);
+}
+
+.print-input-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.print-input-button {
+    transition:  .2s;
+    cursor: pointer;
+    background-color: #F7F7F7;
+    color: var(--pxp-menu-bg-alternative);
+    padding: 1.3em 1em;
+    border-radius: 1em;
+    font-family: "Inter", sans-serif, Helvetica, Arial;
+    & input[type="radio"] {
+        appearance: none;
+        width: 0;
+        height: 0;
+        margin: 0;
+    }
+    &:hover {
+        background-color: #EEEEEE;
+    }
+    &:has( input[type="radio"]:checked) {
+        background-color: var(--pxp-menu-bg-alternative);
+        color: #FFF;
+    }
+}

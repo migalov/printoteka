@@ -1,0 +1,80 @@
+:root {
+    --body-size: 16px;
+    --font-title: "Manrope", sans-serif;
+    --font-body: "Inter", sans-serif, Helvetica, Arial
+}
+
+html, body {
+    font-size: var(--body-s);
+    line-height: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-title);
+  font-weight: 600; // manrope-semibold
+  margin: 0;
+}
+
+p, button, .print-button {
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+button, .print-button {
+    font-weight: 500;
+    &:disabled {
+        opacity: .4;
+    }
+}
+
+@mixin setFontSize($size, $lineHeight) {
+    font-size: $size;
+    line-height: $lineHeight;
+}
+
+a, .print-button, button {
+    transition:  .2s;
+}
+
+
+
+.h1, h1 {
+    @include setFontSize(clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem), clamp(2.25rem, 1.6338rem + 2.6291vw, 4rem))
+}
+.h2, h2 {
+    @include setFontSize(clamp(1.75rem, 1.5739rem + 0.7512vw, 2.25rem), clamp(2rem, 1.8239rem + 0.7512vw, 2.5rem))
+}
+.h3, h3 {
+    @include setFontSize(clamp(1.375rem, 1.243rem + 0.5634vw, 1.75rem), clamp(1.625rem, 1.493rem + 0.5634vw, 2rem))
+}
+.h4, h4 {
+    @include setFontSize(clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem), clamp(1.25rem, 1.0739rem + 0.7512vw, 1.75rem))
+}
+
+.print-button {
+    padding: 1em .5em;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    &--primary {
+        background-color: var(--pxp-action-main);
+        color: #fff;
+        &:hover {
+            background-color: var(--pxp-action-main-hover);
+        }
+    }
+    &--secondary {
+        background-color: var(--pxp-menu-bg);
+        color: #343434;
+        &:hover {
+            background-color: #E2E2E2;
+        }
+    }
+    &--small {
+        border-radius: .75em;
+        padding: 1em 1.3em;
+    }
+    &--medium {
+        border-radius: 1em;
+        padding: 1.3em 3.4em;
+    }
+}

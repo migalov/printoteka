@@ -1,0 +1,10 @@
+---
+const {label, name, id} = Astro.props;
+---
+
+<div class="print-input">
+    <span class="print-input__name">{label}&nbsp;*</span>
+    <div class="print-input-buttons">
+        <slot />
+    </div>
+</div>

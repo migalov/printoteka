@@ -91,46 +91,48 @@ $font-families: (
   -moz-osx-font-smoothing: grayscale;
 }
 
-.print-icon-rocket:before {
+.print-icon-cart:before {
   content: "\e900";
 }
-.print-icon-vk .path1:before {
+.print-icon-person:before {
   content: "\e901";
 }
-.print-icon-vk .path2:before {
+.print-icon-price-tag:before {
   content: "\e902";
+}
+.print-icon-rocket:before {
+  content: "\e903";
+}
+.print-icon-briefcase:before {
+  content: "\e904";
+}
+.print-icon-call:before {
+  content: "\e905";
+}
+.print-icon-chevron-left:before {
+  content: "\e906";
+}
+.print-icon-chevron-right:before {
+  content: "\e907";
+}
+.print-icon-tg .path1:before {
+  content: "\e908";
+  color: rgb(0, 0, 0);
+}
+.print-icon-tg .path2:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.print-icon-vk .path1:before {
+  content: "\e90a";
+  color: rgb(68, 68, 68);
+}
+.print-icon-vk .path2:before {
+  content: "\e90b";
   margin-left: -1.5em;
   color: rgb(255, 255, 255);
 }
-.print-icon-chevron-right:before {
-  content: "\e903";
-}
-.print-icon-chevron-left:before {
-  content: "\e904";
-}
-.print-icon-briefcase:before {
-  content: "\e905";
-}
-.print-icon-price-tag .path1:before {
-  content: "\e906";
-  opacity: 0.9;
-}
-.print-icon-price-tag .path2:before {
-  content: "\e907";
-  margin-left: -1em;
-  opacity: 0.9;
-}
-.print-icon-price-tag .path3:before {
-  content: "\e908";
-  margin-left: -1em;
-  opacity: 0.9;
-}
-.print-icon-tg:before {
-  content: "\e909";
-}
 .print-icon-calendar:before {
-  content: "\e90b";
-}
-.print-icon-call:before {
   content: "\e90c";
 }

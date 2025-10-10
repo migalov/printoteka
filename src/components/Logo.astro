@@ -5,10 +5,18 @@
 </div>
 
 <style lang="scss">
+    @use "../styles/media.scss" as *;
     .logo-wrapper {
         max-height: inherit;
         & a {
             display: block;
+        }
+        & img {
+            width: clamp(9rem, 7.702rem + 5.54vw, 12.688rem);
+            @include respond(sm) {
+                position: relative;
+                top: -.25em;
+            }
         }
     }
 </style>

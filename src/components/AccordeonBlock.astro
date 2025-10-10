@@ -1,17 +1,17 @@
 ---
 import CircleRadioButton from "./CircleRadioButton.astro";
-const {title, html, name, id} = Astro.props;
+const {title, html, name, id, haveSeo} = Astro.props;
 ---
 
-<div class="print-accordeon-block">
-    <div class="print-accordeon-head">
+<div class:list={['print-accordeon-block', { "print-seo-block": haveSeo }]} >
+    <div class:list={['print-accordeon-head', { "container": haveSeo }]}>
         <h3>{title}</h3>
         <CircleRadioButton
             name={name}
             id={id}
         />
     </div>
-    <div class="print-accordeoon-inner" set:html={html}></div>
+    <div class:list={['print-accordeoon-inner', { "container": haveSeo }]} set:html={html}></div>
 </div>
 
 <style lang="scss" is:global>
@@ -48,5 +48,19 @@ const {title, html, name, id} = Astro.props;
         opacity: 0;
         transition: .3s;
         transition-delay: .3s;
+    }
+    .print-seo-block {
+        --padding: 5rem;
+        margin-top: auto;
+        position: relative;
+        background: rgba(247, 247, 247, 0.35);
+        backdrop-filter: blur(14.8px);
+        margin-bottom: calc(-.8 * var(--padding));
+        padding-bottom: var(--padding);
+        color: #FFF;
+        & .print-accordeoon-inner {
+            min-height: calc(4ex + 4em);
+            opacity: 1;
+        }
     }
 </style>

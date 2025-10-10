@@ -36,8 +36,14 @@ a, .print-button, button {
     transition:  .2s;
 }
 
-.category-item > a {
+
+
+i, a, .category-item > a {
     color: inherit;
+    transition: .2s;
+    &:hover {
+        color: var(--pxp-action-main);
+    }
 }
 
 
@@ -58,6 +64,7 @@ a, .print-button, button {
 .print-button {
     padding: 1em .5em;
     text-decoration: none;
+    text-align: center;
     letter-spacing: -0.02em;
     &--primary {
         background-color: var(--pxp-action-main);

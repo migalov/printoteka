@@ -1,11 +1,11 @@
-<header class="print-preheader">
+<div class="print-preheader">
     <div class="container">
         <div class="navigation navigation-4002">
             <ul class="list">
-                <li class="category-item "><a target="_blank" href="tel:+74952150013"><i class=""></i>+7 (495) 215-00-13</a></li>
-                <li class="category-item ">
+                <li class="category-item"><a target="_blank" href="tel:+74952150013"><i class=""></i>+7 (495) 215-00-13</a></li>
+                <li class="category-item">
                     <a target="_blank" href="https://vk.com/printoteka">
-                        <i class="print-icon print-icon-vk">
+                        <i class="print-icon print-icon-vk print-icon-vk--invert">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </i>
@@ -15,12 +15,14 @@
             </ul>
         </div>
     </div>
-</header>
-
+</div>
 
 <style lang="scss">
+    @use "../styles/media.scss" as *;
     .print-preheader {
+        display: none;
         background-color: #000;
+        padding: 0.9rem 0px;
         & .navigation {
             display: flex;
             align-items: center;
@@ -30,12 +32,24 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            gap: .75em;
         }
         & a {
             color: #fff;
         }
         & i {
             color: #fff;
+        }
+
+        & .print-icon {
+            font-size: 1.5rem;
+        }
+
+        & li:first-child {
+            padding: 0 1.5em;
+        }
+        @include respond(sm) {
+            display: block;
         }
     }
 </style>

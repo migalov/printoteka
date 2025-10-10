@@ -1,49 +1,231 @@
 ---
+import BurgerButton from "../components/BurgerButton.astro";
 import Logo from "../components/Logo.astro";
 import Preheader from "../components/Preheader.astro";
 import Empty from "../empty.astro";
 ---
 
 <Empty>
-    <Preheader />
-    <header class="print-header container">
-        <div class="print-header-mobile-head">
-            <Logo />
-        </div>
-        <div class="navigation navigation-4002">
-            <ul class="list">
-                <li class="category-item "><a target="_blank" href="tel:+74952150013"><i class=""></i>+7 (495) 215-00-13</a></li>
-                <li class="category-item ">
-                    <a target="_blank" href="https://vk.com/printoteka">
-                        <i class="print-icon print-icon-vk">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
+    <header class="print-header-root">
+        <Preheader />
+        <div class="print-header-blocks container">
+            <div class="print-header-mobile-head">
+                <Logo />
+                <div class="print-header-buttons">
+                    <a href="tel:+74952150013" class="print-button print-button--secondary print-button--small">
+                        <i class="print-icon print-icon-call"></i>
                     </a>
-                </li>
-                <li class="category-item "><a target="_blank" href="https://vk.com/printoteka"><i class="print-icon print-icon-tg"></i></a></li>
-            </ul>
-        </div>
-        <div class="navigation navigation-3983">
-            <ul class="list">
-                <li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
-                <li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
-                <li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
-                <li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
-                <li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
-            </ul>
-        </div>
-        <ul class="print-header-user-action">
-            <li><a class="#" href="#">Войти</a></li>
-            <li><a href="#">Корзина</a></li>
-        </ul>
-        <a href="#" class="print-button print-button--primary print-button--small">Запартнериться</a>
+                    <label for="" class="print-button print-button--secondary print-button--small">
+                        <BurgerButton />
+                    </label>
+                </div>
+            </div>
+            <div class="print-header-mobile-menu-block">
+                <ul class="print-header-user-action list">
+                    <li class="category-item"><a href="#"><i class="print-icon print-icon-person"></i>Войти</a></li>
+                    <li class="category-item"><a href="#"><i class="print-icon print-icon-cart"></i>Корзина</a></li>
+                </ul>
+
+                <div class="navigation navigation-3983 print-main-menu">
+                    <ul class="list">
+                        <li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
+                        <li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
+                        <li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
+                        <li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
+                        <li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="navigation navigation-4002 print-header-mobile-contacts">
+                    <a class="h3" target="_blank" href="tel:+74952150013">+7 (495) 215-00-13</a>
+                    <ul class="list">
+                        <li class="category-item ">
+                            <a target="_blank" href="https://vk.com/printoteka">
+                                <i class="print-icon print-icon-vk">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a>
+                        </li>
+                        <li class="category-item ">
+                            <a target="_blank" href="https://vk.com/printoteka">
+                                <i class="print-icon print-icon-tg"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="#" class="print-lets-partners print-button print-button--primary print-button--small">Запартнериться</a>
+            </div>
+
+        </div>    
     </header>
+
+    
 </Empty>
 
 <style lang="scss">
-    .print-header {
+    @use "../styles/media.scss" as *;
+    body {
+        min-height: 200%;
+    }
+    .print-header-root {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFF;
+        min-height: 100vh;
+        z-index: 2;
+    }
+    .print-header-blocks {
+        position: relative;
         display: flex;
         flex-direction: column;
+
+        & .list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            @include respond(sm) {
+                flex-direction: row;
+            }
+        }
+
+        @include respond(sm) {
+            flex-direction: row;
+            min-height: initial;
+            justify-content: space-between;
+            padding-top: clamp(0rem, -0.264rem + 1.127vw, 0.75rem);
+            padding-bottom: clamp(0rem, -0.264rem + 1.127vw, 0.75rem);
+        }
+    }
+    .print-header-mobile-head {
+        display: flex;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+    }
+    .print-header-buttons {
+
+        & .print-button {
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            padding: 0;
+            width: 1.5em;
+            aspect-ratio: 1/1;
+            border-radius: 7px;
+        }
+        @include respond(sm) {
+            display: none;
+        }
+    }
+    .print-header-mobile-menu-block {
+        position: absolute;
+        top: var(--mobile-header);
+        left: 0;
+        right: 0;
+        background-color: #FFF;
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        grid-template-areas: "ua" "mm" "c" "p";
+        transform: translateX(-100vw);
+        transition: transform .7s;
+        @include respond(sm) {
+            position: static;
+            grid-template-areas:  "mm mm" "ua p";
+            align-items: center;
+            padding: 1rem 0;
+            transform: inherit;
+        }
+        @include respond(md) {
+            flex: 1;
+            grid-template-areas:  "mm ua p";
+            grid-template-columns: auto auto 10.4rem;
+            margin: 0 0 0 clamp(0rem, -7.75rem + 12.5vw, 3.5rem);
+        }
+        &.open {
+            transform: translateX(0);
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            background: rgba(0,0,0,.5);
+            top: 100%;
+            height: 100%;
+            transition: background 5s ease .5s;
+            @include respond(sm) {
+                content: none;
+            }
+        }
+    }
+
+    .print-header-user-action {
+        padding: 0 0 1rem 0;
+        border-bottom: 1px solid rgba(52,52,52,.15);
+        grid-area: ua;
+        & i {
+            font-size: 1.1em;
+        }
+        & a {
+            display: inline-flex;
+            align-items: center;
+            gap: .5em;
+        }
+        @include respond(sm) {
+            padding: 0;
+            border-bottom: none;
+            justify-content: flex-end;
+        }
+    }
+
+    .print-main-menu {
+        grid-area: mm;
+        & .list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include respond(sm) {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+    }
+
+    .print-header-mobile-contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        grid-area: c;
+        & .list {
+            flex-direction: row;
+            & a {
+                font-size: 2rem;
+            }
+        }
+        @include respond(sm) {
+            display: none;
+        }
+
+    }
+    .print-lets-partners {
+        grid-area: p;
     }
 </style>
+
+<script is:inline>
+    let mobileHeader = document.querySelector(".print-header-mobile-head");
+    const changePositionMenu = () => {
+        document.body.style.setProperty('--mobile-header', `${mobileHeader.clientHeight}px`);
+    }
+    changePositionMenu();
+    document.addEventListener("resize", changePositionMenu);
+    
+</script>

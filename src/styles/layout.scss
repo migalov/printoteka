@@ -36,6 +36,10 @@ a, .print-button, button {
     transition:  .2s;
 }
 
+.category-item > a {
+    color: inherit;
+}
+
 
 
 .h1, h1 {
@@ -60,6 +64,7 @@ a, .print-button, button {
         color: #fff;
         &:hover {
             background-color: var(--pxp-action-main-hover);
+            color: #fff;
         }
     }
     &--secondary {
@@ -67,6 +72,7 @@ a, .print-button, button {
         color: #343434;
         &:hover {
             background-color: #E2E2E2;
+            color: #343434;
         }
     }
     &--small {

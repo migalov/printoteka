@@ -8,12 +8,44 @@ import "./styles/inputs.scss";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<!-- <link rel="stylesheet" href="/default/deliveryApp.css" /> -->
+		<link rel="stylesheet" href="/default/bootstrap.min.css" />
+		<link rel="stylesheet" href="/default/viewer.min.css" />
+		<link rel="stylesheet" href="/default/common.css" />
+		<link rel="stylesheet" href="/default/theme-base.css" />
+		<!-- <link rel="stylesheet" href="/default/media-base.css" /> -->
+		<link rel="stylesheet" href="/default/theme-override.css" />
+		<!-- <link rel="stylesheet" href="/default/swiper.min.css" /> -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
 	<body>
+		<header class="print-preheader container">
+			<div class="navigation navigation-4002">
+				<ul class="list">
+					<li class="category-item"><a target="_blank" href="tel:8 (800) 775 08 61"><i class=""></i>Телефон</a></li>
+					<li class="category-item"><a target="_blank" href="https://vk.com/printoteka"><i class="icon icon-photobook2"></i>Вконтакте</a></li>
+				</ul>
+			</div>
+		</header>
+		<header class="print-header container">
+			<div class="logo-wrapper">
+				<a href="/" title="Выпускной альбом">
+					<img src="/img/logo.svg" alt="Выпускной альбом">
+				</a>
+			</div>
+			<div class="navigation navigation-3983">
+				<ul class="list">
+					<li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
+					<li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
+					<li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
+					<li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
+					<li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
+				</ul>
+			</div>
+		</header>
 		<slot />
 	</body>
 </html>

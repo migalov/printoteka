@@ -1,0 +1,49 @@
+---
+import Logo from "../components/Logo.astro";
+import Preheader from "../components/Preheader.astro";
+import Empty from "../empty.astro";
+---
+
+<Empty>
+    <Preheader />
+    <header class="print-header container">
+        <div class="print-header-mobile-head">
+            <Logo />
+        </div>
+        <div class="navigation navigation-4002">
+            <ul class="list">
+                <li class="category-item "><a target="_blank" href="tel:+74952150013"><i class=""></i>+7 (495) 215-00-13</a></li>
+                <li class="category-item ">
+                    <a target="_blank" href="https://vk.com/printoteka">
+                        <i class="print-icon print-icon-vk">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </a>
+                </li>
+                <li class="category-item "><a target="_blank" href="https://vk.com/printoteka"><i class="print-icon print-icon-tg"></i></a></li>
+            </ul>
+        </div>
+        <div class="navigation navigation-3983">
+            <ul class="list">
+                <li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
+                <li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
+                <li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
+                <li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
+                <li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
+            </ul>
+        </div>
+        <ul class="print-header-user-action">
+            <li><a class="#" href="#">Войти</a></li>
+            <li><a href="#">Корзина</a></li>
+        </ul>
+        <a href="#" class="print-button print-button--primary print-button--small">Запартнериться</a>
+    </header>
+</Empty>
+
+<style lang="scss">
+    .print-header {
+        display: flex;
+        flex-direction: column;
+    }
+</style>

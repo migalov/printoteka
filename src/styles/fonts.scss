@@ -84,7 +84,7 @@ $font-families: (
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  color: #000;
+  color: var(--pxp-menu-bg-alternative);
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -117,22 +117,39 @@ $font-families: (
 }
 .print-icon-tg .path1:before {
   content: "\e908";
-  color: rgb(0, 0, 0);
+  color: rgb(52, 52, 52, .9);
 }
 .print-icon-tg .path2:before {
   content: "\e909";
-  margin-left: -1em;
+  margin-left: -1.5em;
   color: rgb(255, 255, 255);
 }
+
+.print-icon-tg.print-icon-tg--invert .path1:before {
+  color: rgb(255, 255, 255);
+}
+.print-icon-tg.print-icon-tg--invert .path2:before {
+  color: rgb(35, 35, 35);
+}
+
+
 .print-icon-vk .path1:before {
   content: "\e90a";
-  color: rgb(68, 68, 68);
+  color: rgb(52, 52, 52, .9);
 }
 .print-icon-vk .path2:before {
   content: "\e90b";
   margin-left: -1.5em;
   color: rgb(255, 255, 255);
 }
+
+.print-icon-vk.print-icon-vk--invert .path1:before {
+  color: rgb(255, 255, 255);
+}
+.print-icon-vk.print-icon-vk--invert .path2:before {
+  color: rgb(35, 35, 35);
+}
+
 .print-icon-calendar:before {
   content: "\e90c";
 }

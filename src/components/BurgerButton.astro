@@ -16,9 +16,23 @@
 .change .bar3 {
   transform: translate(0, -7px) rotate(45deg);
 }
+
+.print-toggle-menu {
+  cursor: pointer;
+}
+
+.print-toggle-menu:hover :is(.bar1, .bar2, .bar3) {
+  background-color: var(--pxp-action-main);
+}
+
+
+.print-toggle-menu.print-button {
+
+  padding: .5rem;
+}
 </style>
 
-<div onclick="myFunction(this)">
+<div class="print-toggle-menu print-button print-button--secondary print-button--small" onclick="myFunction(this)">
   <div class="bar1"></div>
   <div class="bar2"></div>
   <div class="bar3"></div>

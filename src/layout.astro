@@ -3,6 +3,8 @@ import "./styles/colors.scss";
 import "./styles/fonts.scss";
 import "./styles/layout.scss";
 import "./styles/inputs.scss";
+import Header from "./components/Header.astro";
+import Footer from "./components/Footer.astro";
 ---
 
 <html lang="en">
@@ -19,33 +21,16 @@ import "./styles/inputs.scss";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link href="/default/aos.css" rel="stylesheet" />
 		<title>Astro</title>
 	</head>
 	<body>
-		<header class="print-preheader container">
-			<div class="navigation navigation-4002">
-				<ul class="list">
-					<li class="category-item"><a target="_blank" href="tel:8 (800) 775 08 61"><i class=""></i>Телефон</a></li>
-					<li class="category-item"><a target="_blank" href="https://vk.com/printoteka"><i class="icon icon-photobook2"></i>Вконтакте</a></li>
-				</ul>
-			</div>
-		</header>
-		<header class="print-header container">
-			<div class="logo-wrapper">
-				<a href="/" title="Выпускной альбом">
-					<img src="/img/logo.svg" alt="Выпускной альбом">
-				</a>
-			</div>
-			<div class="navigation navigation-3983">
-				<ul class="list">
-					<li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
-					<li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
-					<li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
-					<li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
-					<li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
-				</ul>
-			</div>
-		</header>
+		<Header />
 		<slot />
+		<Footer />
+		<script is:inline src="/default/aos.js"></script>
+		<script is:inline>
+			AOS.init();
+		</script>
 	</body>
 </html>

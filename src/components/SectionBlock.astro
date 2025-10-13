@@ -1,0 +1,10 @@
+---
+const {title, classList, hasContainer = false} = Astro.props
+---
+<div class="print-section" class:list={[`${hasContainer && "container"}`]}>
+    <h2>{title}</h2>
+    <div class="print-section-inner" class:list={classList}>
+        <slot />
+    </div>
+    
+</div>

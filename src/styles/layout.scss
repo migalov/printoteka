@@ -2,11 +2,14 @@
     --body-size: 16px;
     --font-title: "Manrope", sans-serif;
     --font-body: "Inter", sans-serif, Helvetica, Arial
+    --global-gap: 1rem;
 }
 
 html, body {
-    font-size: var(--body-s);
+    font-size: var(--body-size);
+    font-family: var(--font-body);
     line-height: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
+    color: var(--pxp-menu-bg-alternative);
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -16,11 +19,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 p, button, .print-button {
-    font-family: var(--font-body);
+
     margin: 0;
 }
 
 button, .print-button {
+    display: inline-block;
     font-weight: 500;
     &:disabled {
         opacity: .4;
@@ -44,6 +48,10 @@ i, a, .category-item > a {
     &:hover {
         color: var(--pxp-action-main);
     }
+}
+
+img {
+    max-width: 100%;
 }
 
 

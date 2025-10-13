@@ -5,7 +5,6 @@ import Preheader from "../components/Preheader.astro";
 import Empty from "../empty.astro";
 ---
 
-<Empty>
     <header class="print-header-root">
         <Preheader />
         <div class="print-header-blocks container">
@@ -15,9 +14,7 @@ import Empty from "../empty.astro";
                     <a href="tel:+74952150013" class="print-button print-button--secondary print-button--small">
                         <i class="print-icon print-icon-call"></i>
                     </a>
-                    <label for="" class="print-button print-button--secondary print-button--small">
-                        <BurgerButton />
-                    </label>
+                    <BurgerButton />
                 </div>
             </div>
             <div class="print-header-mobile-menu-block">
@@ -41,15 +38,18 @@ import Empty from "../empty.astro";
                     <ul class="list">
                         <li class="category-item ">
                             <a target="_blank" href="https://vk.com/printoteka">
-                                <i class="print-icon print-icon-vk">
+                                <i class="print-icon print-icon-vk print-icon-vk">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                 </i>
                             </a>
                         </li>
                         <li class="category-item ">
-                            <a target="_blank" href="https://vk.com/printoteka">
-                                <i class="print-icon print-icon-tg"></i>
+                            <a target="_blank" href="https://vk.com/printoteka" data-tr="">
+                                <i class="print-icon print-icon-tg">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
                             </a>
                         </li>
                     </ul>
@@ -61,13 +61,12 @@ import Empty from "../empty.astro";
         </div>    
     </header>
 
-    
-</Empty>
-
 <style lang="scss">
     @use "../styles/media.scss" as *;
     body {
-        min-height: 200%;
+        display: flex;
+        flex-direction: column;
+        padding: var(--header-height) 0 0;
     }
     .print-header-root {
         position: fixed;
@@ -75,7 +74,6 @@ import Empty from "../empty.astro";
         left: 0;
         right: 0;
         background-color: #FFF;
-        min-height: 100vh;
         z-index: 2;
     }
     .print-header-blocks {
@@ -108,7 +106,9 @@ import Empty from "../empty.astro";
 
     }
     .print-header-buttons {
-
+        display: flex;
+        align-items: center;
+        gap: .75rem;
         & .print-button {
             cursor: pointer;
             display: inline-flex;
@@ -126,7 +126,7 @@ import Empty from "../empty.astro";
     }
     .print-header-mobile-menu-block {
         position: absolute;
-        top: var(--mobile-header);
+        top: var(--header-height);
         left: 0;
         right: 0;
         background-color: #FFF;
@@ -136,12 +136,14 @@ import Empty from "../empty.astro";
         grid-template-areas: "ua" "mm" "c" "p";
         transform: translateX(-100vw);
         transition: transform .7s;
+        opacity: 0;
         @include respond(sm) {
             position: static;
             grid-template-areas:  "mm mm" "ua p";
             align-items: center;
             padding: 1rem 0;
             transform: inherit;
+            opacity: 1;
         }
         @include respond(md) {
             flex: 1;
@@ -151,6 +153,7 @@ import Empty from "../empty.astro";
         }
         &.open {
             transform: translateX(0);
+            opacity: 1;
         }
         &::after {
             content: "";
@@ -206,6 +209,7 @@ import Empty from "../empty.astro";
         grid-area: c;
         & .list {
             flex-direction: row;
+            gap: .75rem;
             & a {
                 font-size: 2rem;
             }
@@ -221,11 +225,11 @@ import Empty from "../empty.astro";
 </style>
 
 <script is:inline>
-    let mobileHeader = document.querySelector(".print-header-mobile-head");
+    let headerRoot = document.querySelector(".print-header-root");
     const changePositionMenu = () => {
-        document.body.style.setProperty('--mobile-header', `${mobileHeader.clientHeight}px`);
+        document.body.style.setProperty('--header-height', `${headerRoot.clientHeight}px`);
     }
     changePositionMenu();
-    document.addEventListener("resize", changePositionMenu);
+    window.addEventListener("resize", changePositionMenu);
     
 </script>

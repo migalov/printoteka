@@ -1,0 +1,30 @@
+---
+const { value, sub, about } = Astro.props;
+---
+<div class="print-statistic-parameter">
+    <h3 class="print-statistic-parameter__value">{value}&nbsp;<sub>{sub}</sub></h3>
+    <div class="print-statistic-parameter__about">{about}</div>
+</div>
+
+<style lang="scss">
+    .print-statistic-parameter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+        background-color: var(--pxp-menu-bg);
+        padding: 2.5rem 1rem;
+        border-radius: 1.5rem;
+    }
+    .print-statistic-parameter__value {
+        font-size: clamp(2rem, 1.7535rem + 1.0516vw, 2.7rem);
+        font-weight: 600;
+        color: var(--pxp-action-main);
+        & sub {
+            font-size: 50%;
+            position: relative;
+            top: -.2em;
+        }
+    }
+</style>

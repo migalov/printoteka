@@ -2,76 +2,188 @@
 import AccordeonBlock from "../components/AccordeonBlock.astro";
 import AccordeonSection from "../components/AccordeonSection.astro";
 import CircleRadioButton from "../components/CircleRadioButton.astro";
+import FeatureAlbumBlock from "../components/FeatureAlbumBlock.astro";
+import FeatureParameter from "../components/FeatureParameter.astro";
 import Input from "../components/Input.astro";
 import RadioBlock from "../components/RadioBlock.astro";
 import RadioItem from "../components/RadioItem.astro";
+import SectionBlock from "../components/SectionBlock.astro";
 import Layout from "../layout.astro";
 
+const featureAlbums = [
+	{
+		title: "Высокое качество печати",
+		description: "Konica AccurioPress C14000 + автоматическая калибровка — идеально точный цвет в каждом тираже",
+		src: "/img/animation-illustration/1.svg",
+		heghtIllustration: "15rem"
+	},
+	{
+		title: "AI-коррекция под печать",
+		description: "AI-коррекция повышает качество печати без вмешательства в стиль фотографа",
+		src: "/img/animation-illustration/2.svg"
+	},
+	{
+		title: "Партнерские цены",
+		description: "Честная стоимость и условия, с которыми удобно расти + оплата Долями и кэшбэк до 20%",
+		src: "/img/animation-illustration/3.svg"
+	},
+	{
+		title: "Забота о клиентах",
+		description: "Личный менеджер, поддержка в Telegram и репринт за наш счет при ошибке",
+		src: "/img/animation-illustration/4.svg"
+	},
+	{
+		title: "Надежная упаковка",
+		description: "Каждый альбом упакован в термоусадочную пленку, а тираж доставляется с защитой углов",
+		src: "/img/animation-illustration/5.svg"
+	}
+]
 
 ---
 <Layout>
-	<div class="container" style="display: flex; flex-direction: column; gap: 1.5rem">
-		<div>
-			<h1>Надёжная печать выпускных альбомов</h1>
-			<h2>Надёжная печать выпускных альбомов</h2>
-			<h3>Надёжная печать выпускных альбомов</h3>
-			<h4>Надёжная печать выпускных альбомов</h4>
+	<!-- <div class="container">
+		<div class="print-hero">
+			<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
+			<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
+			<div class="print-hero-buttons">
+				<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
+				<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--secondary print-button--medium">Посмотреть каталог</a>
+			</div>
+			<ul class="print-hero-features">
+				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1000"><span class="print-icon print-icon-price-tag"></span><span>Доступные цены</span></li>
+				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1500"><span class="print-icon print-icon-briefcase"></span><span>14 лет опыта печати</span></li>
+				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="2000"><span class="print-icon print-icon-rocket"></span><span>Доставка по всей России</span></li>
+			</ul>
 		</div>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque ad assumenda quia deserunt saepe accusantium dolore quo ipsa labore mollitia, a aperiam nemo molestiae illum at minima dolorum! Dolores!</p>
-		<div style="display: flex; align-items: center; gap: 1rem">
-			<a href="#" class="print-button print-button--primary print-button--small">Запартнериться</a>
-			<a href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
-			<a href="#" class="print-button print-button--secondary print-button--small">Запартнериться</a>
-			<a href="#" class="print-button print-button--secondary print-button--medium">Запартнериться</a>
+	</div> -->
+	<!-- <div class="container print-statistic">
+		<div class="print-statistic-text">
+			<h3>Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
+			<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
 		</div>
-		<div style="display: flex; flex-direction: column; gap: 1rem">
-			<Input
-				name="name"
-				placeholder={`Имя и фамилия`}
-				label={"Ваше имя и фамилия"}
-				id="name"
-				required={true}
+		<div class="print-statistic-grid">
+			<FeatureParameter
+				value="3-5"
+				sub="дней"
+				about="Срок печати выпуска"
 			/>
-			<RadioBlock label="Планируемый объем альбомов в сезон">
-				<RadioItem name="almubs" id="1" checked={true} value="Telegram" />
-				<RadioItem name="almubs" id="2" value="50-200" />
-			</RadioBlock>
-		</div>
-		<AccordeonSection title="FAQ">
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="1"
+			<FeatureParameter
+				value="20000+"
+				about="Постоянных пользователей"
 			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="2"
+			<FeatureParameter
+				value="1+"
+				about="Минимальный тираж"
 			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="3"
+			<FeatureParameter
+				value="5.0"
+				about="Наш рейтинг в Яндекс"
 			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="4"
-			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="5"
-			/>
-		</AccordeonSection>
-		</div>
-	</div>
-
-	
-
+		</div>	
+		<img src="/img/1.jpg" />
+	</div> -->
+	<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
+		{
+			featureAlbums.map( album => <FeatureAlbumBlock {...album} />)
+		}
+	</SectionBlock>
 </Layout>
+
+<style lang="scss">
+	@use "../styles/media.scss" as *;
+	.print-hero {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		max-width: 64rem;
+		margin: 4rem auto;
+		& p {
+			max-width: 20em;
+		}
+		@include respond(sm) {
+			text-align: center;
+			align-items: center;
+		}
+	}
+	.print-hero-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		margin: 2.25rem 0 0;
+		@include respond(sm) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+	.print-hero-features {
+		display: flex;
+		flex-direction: column;
+		
+		margin: 4rem 0 0;
+		gap: 1.25em;
+
+		@include respond(sm) {
+			flex-direction: row;
+			align-items: center;
+			gap: 8.25em;
+		}
+
+		& li {
+			display: inherit;
+			flex-direction: row;
+			align-items: inherit;
+			gap: 1em;
+			@include respond(sm) {
+				flex-direction: inherit;
+			}
+			& .print-icon {
+				font-size: 1.75em;
+				@include respond(sm) {
+					font-size: 2.25em;
+				}
+			}
+		}
+	}
+	.print-statistic {
+		display: grid;
+
+		grid-template-areas: "t" "g" "i";
+		gap: 2rem;
+		& img {
+			object-fit: cover;
+			border-radius: 1.5rem;
+			grid-area: i;
+			height: 100%;
+		}
+
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-areas: "t i" "g i";
+		}
+	}
+	.print-statistic-text {
+		grid-area: t;
+	}
+	.print-statistic-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		grid-area: g;
+		& p {
+			margin: 2em 0 4em;
+		}
+
+
+	}
+</style>
+
+<style lang="scss" is:global>
+	.print-features-albums {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+	
+</style>

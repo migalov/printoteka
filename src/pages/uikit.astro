@@ -1,0 +1,88 @@
+---
+import AccordeonBlock from "../components/AccordeonBlock.astro";
+import AccordeonSection from "../components/AccordeonSection.astro";
+import CircleRadioButton from "../components/CircleRadioButton.astro";
+import FeatureParameter from "../components/FeatureParameter.astro";
+import Input from "../components/Input.astro";
+import RadioBlock from "../components/RadioBlock.astro";
+import RadioItem from "../components/RadioItem.astro";
+import Layout from "../layout.astro";
+
+
+---
+<Layout>
+	<div class="container" style="display: flex; flex-direction: column; gap: 1.5rem">
+		<div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+			<div>
+				<FeatureParameter
+					value="3-5"
+					sub="дней"
+					about="Срок печати выпуска"
+				/>
+			</div>
+			<div></div>
+		</div>
+		<div>
+			<h1>Надёжная печать выпускных альбомов</h1>
+			<h2>Надёжная печать выпускных альбомов</h2>
+			<h3>Надёжная печать выпускных альбомов</h3>
+			<h4>Надёжная печать выпускных альбомов</h4>
+		</div>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque ad assumenda quia deserunt saepe accusantium dolore quo ipsa labore mollitia, a aperiam nemo molestiae illum at minima dolorum! Dolores!</p>
+		<div style="display: flex; align-items: center; gap: 1rem">
+			<a href="#" class="print-button print-button--primary print-button--small">Запартнериться</a>
+			<a href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
+			<a href="#" class="print-button print-button--secondary print-button--small">Запартнериться</a>
+			<a href="#" class="print-button print-button--secondary print-button--medium">Запартнериться</a>
+		</div>
+		<div style="display: flex; flex-direction: column; gap: 1rem">
+			<Input
+				name="name"
+				placeholder={`Имя и фамилия`}
+				label={"Ваше имя и фамилия"}
+				id="name"
+				required={true}
+			/>
+			<RadioBlock label="Планируемый объем альбомов в сезон">
+				<RadioItem name="almubs" id="1" checked={true} value="Telegram" />
+				<RadioItem name="almubs" id="2" value="50-200" />
+			</RadioBlock>
+		</div>
+		<AccordeonSection title="FAQ">
+			<AccordeonBlock
+				title="О продукте"
+				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
+				name="fr"
+				id="1"
+			/>
+			<AccordeonBlock
+				title="О продукте"
+				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
+				name="fr"
+				id="2"
+			/>
+			<AccordeonBlock
+				title="О продукте"
+				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
+				name="fr"
+				id="3"
+			/>
+			<AccordeonBlock
+				title="О продукте"
+				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
+				name="fr"
+				id="4"
+			/>
+			<AccordeonBlock
+				title="О продукте"
+				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
+				name="fr"
+				id="5"
+			/>
+		</AccordeonSection>
+		</div>
+	</div>
+
+	
+
+</Layout>

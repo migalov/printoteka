@@ -22,4 +22,9 @@
             @content;
         }
     }
+    @else if $breakpoint == mobile {
+        @media (max-width: 767.99px) {
+            @content;
+        }
+    }
 }

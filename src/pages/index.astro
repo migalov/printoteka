@@ -39,9 +39,69 @@ const featureAlbums = [
 	}
 ]
 
+const ourClients = [
+	{
+		title: "Фотографам и студиям",
+		description: "Успеете в дедлайны, порадуете родителей. Рассрочка, кэшбэк и заморозка цены",
+		src: "/img/our-clients/1.jpg"
+	},
+	{
+		title: "Агентствам",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		src: "/img/our-clients/2.jpg"
+	},
+	{
+		title: "Региональным проектам",
+		description: "Надёжная печать с доставкой по всей России. Гарантия качества и соблюдения сроков",
+		src: "/img/our-clients/3.jpg"
+	}
+]
+
+const steps = [
+	{
+		title: "Регистрируетесь на сайте",
+		description: "Пройдите простую регистрацию и получите бонус 1000 ₽",
+		src: "/img/animation-illustration/laptop.svg"
+	},
+	{
+		title: "Выбираете альбом",
+		description: "Определяете тип и параметры будущего выпускного альбома",
+		src: "/img/animation-illustration/hand-gesture.svg"
+	},
+	{
+		title: "Указываете способ доставки",
+		description: "Отправляете нам готовый дизайн альбома в один клик — удобно и быстро",
+		src: "/img/animation-illustration/delivery-car.svg"
+	},
+	{
+		title: "Мы начинаем печать",
+		description: "Печатаем, проверяем и упаковываем альбомы в срок",
+		src: "/img/animation-illustration/albums.svg"
+	}
+]
+
+const delivery = [
+	{
+		title: "Минимальный тираж — от 1 альбома",
+		description: "Работаем как с крупными заказами, так и с малыми партиями"
+	},
+	{
+		title: "Срок печати 3–5 дней",
+		description: "Тираж будет готов максимум за 5 рабочих дней"
+	},
+	{
+		title: "Производство в Москве",
+		description: "Есть шоурум для посещения, самовывоз в день готовности"
+	},
+	{
+		title: "Доставка по Москве — всегда 599 ₽",
+		description: "Привозим в течение 2 дней после печати, без скрытых доплат"
+	}
+]
+
 ---
 <Layout>
-	<!-- <div class="container">
+	<div class="container">
 		<div class="print-hero">
 			<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
 			<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
@@ -55,8 +115,8 @@ const featureAlbums = [
 				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="2000"><span class="print-icon print-icon-rocket"></span><span>Доставка по всей России</span></li>
 			</ul>
 		</div>
-	</div> -->
-	<!-- <div class="container print-statistic">
+	</div>
+	<div class="container print-statistic">
 		<div class="print-statistic-text">
 			<h3>Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
 			<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
@@ -81,12 +141,109 @@ const featureAlbums = [
 			/>
 		</div>	
 		<img src="/img/1.jpg" />
-	</div> -->
+	</div>
 	<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
 		{
 			featureAlbums.map( album => <FeatureAlbumBlock {...album} />)
 		}
 	</SectionBlock>
+	<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-our-clients"]}>
+		{
+			ourClients.map( client =>
+				<>
+					<div class="print-our-client">
+						<img src={client.src} alt="" />
+						<h3>{client.title}</h3>
+						<p set:html={client.description}></p>
+					</div>
+				</>
+			)
+		}
+	</SectionBlock>
+	<div class="print-better-conditions">
+		<div class="print-better-conditions-inner container">
+			<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
+			<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
+			<a href="#" class="print-button print-button--primary print-button--medium">Забрать бонус</a>
+			<img class="print-better-conditions__iluustration" src="/img/animation-illustration/rocket.svg" alt="" srcset="" />
+			<img class="print-better-conditions__iluustration" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
+		</div>
+	</div>
+	<div class="print-steps container">
+		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько шагов</h2>
+		<ol class="print-steps-inner container">
+			{
+				steps.map( step => 
+					<li class="print-card">
+						<h3>{step.title}</h3>
+						<p set:html={step.description}></p>
+						<img src={step.src} />
+					</li>
+				)
+			}
+		</ol>
+	</div>
+	<div class="print-quality container">
+		<div>
+			<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
+			<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
+			<a href="#" class="print-button print-button--primary print-button--medium">Сравнить качество печати</a>
+			<div>
+				<img src="/img/medal.svg" />
+			</div>
+			
+		</div>
+		<div class="print-quality-list-cards flex flex-column gap-4">
+			<div class="print-card">
+				<h3>Печать обложек на HP Indigo 12000</h3>
+				<ul>
+					<li>Глубокий цвет и фактура, как в премиум-изданиях</li>
+					<li>Точная передача авторских оттенков и тонов</li>
+					<li>Подходит под любую верстку - от минимализма до коллажей</li>
+				</ul>
+			</div>
+			<div class="print-card">
+				<h3>Konica AccurioPress C14000 с AI-корректировкой</h3>
+				<ul>
+					<li>400×3600 dpi: четкая детализация лиц и волос даже как в оригинале</li>
+					<li>8-битная глубина цвета: 16+ млн оттенков без искажений</li>
+					<li>Плавные градиенты без полос и пятен</li>
+					<li>AI-калибровка цвета: сглаживание цвета кожи и фона и эффект фотохимии</li>
+					<li>Стабильность цвета на всем тираже, включая репринты</li>
+				</ul>
+			</div>
+			<div class="print-card">
+				<h3>Дизайнерская бумага премиум-класса</h3>
+				<ul>
+					<li>Матовая и глянцевая, от 170 до 400 г/м²</li>
+					<li>Четкие детали, плотный черный, живой цвет</li>
+					<li>Приятно держать в руках - и родителям, и фотографам</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="print-about-delivery container">
+		<h2 class="h1"><span style="color: var(--pxp-action-main);">Быстрое</span> изготовление и&nbsp;<span style="color: var(--pxp-action-main);">удобная</span> доставка</h2>
+		<div class="print-about-delivery-companies">
+			<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
+			<div>
+				<img src="/img/delivery/1.svg" alt="" />
+				<img src="/img/delivery/2.svg" alt="" />
+				<img src="/img/delivery/3.svg" alt="" />
+				<img src="/img/delivery/4.svg" alt="" />
+			</div>
+		</div>
+		<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
+			{
+				delivery.map( step => 
+					<li class="print-card">
+						<h3>{step.title}</h3>
+						<p set:html={step.description}></p>
+					</li>
+				)
+			}
+		</div>
+	</div>
 </Layout>
 
 <style lang="scss">
@@ -179,11 +336,174 @@ const featureAlbums = [
 </style>
 
 <style lang="scss" is:global>
+	@use "../styles/media.scss" as *;
 	.print-features-albums {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1rem;
 	}
-	
+	.print-our-clients {
+		display: grid;
+		
+		gap: var(--global-gap);
+		@include respond(sm) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.print-our-client {
+		& h3 {
+			margin: .85em 0 .3em;
+		}
+
+		& img {
+			border-radius: 1.75rem;
+			width: 100%;
+		}
+	}
+	.print-better-conditions {
+		overflow: hidden;
+		background-color: var(--pxp-menu-bg-alternative);
+		color: #FFF;
+		min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// padding: 13rem 0 10rem;
+	}
+	.print-better-conditions-inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 2rem;
+	}
+	.print-better-conditions__iluustration {
+		
+		&:nth-of-type(1) {
+			position: absolute;
+			// left: -5rem;
+    		bottom: -20rem;
+			// left: -8.5rem;
+			// bottom: 18.4rem;
+			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
+		}
+		&:nth-of-type(2) {
+			position: absolute;
+			// right: -2rem;
+
+			// right: -7rem;
+    		// bottom: -16.5rem;
+			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
+			bottom: -17.5rem;
+		}
+		&:nth-of-type(1), &:nth-of-type(2) {
+			position: absolute;
+			transform: scale(.6);
+			@include respond(sm) {
+				transform: scale(1);
+			}
+		}
+	}
+	.print-steps {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		& .print-card {
+			&::after {
+				content: "0" counter(counter-steps);
+				margin-top: auto;
+				font-family: var(--font-title);
+				font-size: 4rem;
+				font-weight: 700;
+				background: linear-gradient(173.85deg, #343434 -55%, rgba(52, 52, 52, 0.2) 177.16%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				opacity: 0.15;
+			}
+		}
+	}
+	.print-steps-inner {
+		display: grid;
+		gap: var(--global-gap);
+		counter-reset: counter-steps;
+		padding: 5rem 0;
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+	}
+	.print-card {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		position: relative;
+		background: var(--pxp-menu-bg);
+		padding: 2rem;
+		border-radius: 2rem;
+		counter-increment: counter-steps;
+		&:has( img) {
+			min-height: 15.3125rem;
+		}
+		& img {
+			position: absolute;
+			right: 1rem;
+			bottom: 1rem;
+			@include respond(mobile) {
+				height: 6rem;
+			}
+		}
+		& p {
+			max-width: 22em;
+		}
+
+		& :is(ul, li) {
+			&::marker {
+				content: inherit;
+			}
+			list-style: disc;
+		}
+
+		& ul {
+			padding: 1em 0 0 1em;
+		}
+	}
+	.print-quality {
+		display: grid;
+
+		gap: var(--global-gap);
+		& h2 {
+			margin: 0 0 .25em;
+		}
+		& a {
+			margin: 2em 0 0;
+		}
+		& p {
+			max-width: 22rem;
+		}
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.print-quality-list-cards {
+		display: flex;
+		flex-direction: column;
+		gap: var(--global-gap);
+		align-items: stretch;
+	}
+	.print-about-delivery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, auto);
+		gap: var(--global-gap);
+	}
+	.print-about-delivery-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--global-gap);
+	}
+	.print-about-delivery-companies {
+		max-width: 28rem;
+    	margin-left: auto;
+	}
 </style>

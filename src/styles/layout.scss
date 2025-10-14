@@ -1,7 +1,7 @@
 :root {
     --body-size: 16px;
     --font-title: "Manrope", sans-serif;
-    --font-body: "Inter", sans-serif, Helvetica, Arial
+    --font-body: "Inter", sans-serif, Helvetica, Arial;
     --global-gap: 1rem;
 }
 
@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 p, button, .print-button {
-
+    font-family: var(--font-body);
     margin: 0;
 }
 

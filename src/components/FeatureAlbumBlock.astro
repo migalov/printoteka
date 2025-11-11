@@ -1,7 +1,7 @@
 ---
 const {title, description, src, svgCode, heghtIllustration} = Astro.props
 ---
-<div class="print-feature-album">
+<div class="print-feature-album" set:html={svgCode}>
     <img src={src} style={`--height-illustration: ${heghtIllustration}`}/>
     <h3>{title}</h3>
     <p>{description}</p>

@@ -101,6 +101,7 @@ const delivery = [
 
 ---
 <Layout>
+	<div class="content-grid">
 	<div class="container">
 		<div class="print-hero">
 			<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
@@ -170,7 +171,7 @@ const delivery = [
 		</div>
 	</div>
 	<div class="print-steps container">
-		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько шагов</h2>
+		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
 		<ol class="print-steps-inner container">
 			{
 				steps.map( step => 
@@ -188,9 +189,7 @@ const delivery = [
 			<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
 			<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
 			<a href="#" class="print-button print-button--primary print-button--medium">Сравнить качество печати</a>
-			<div>
-				<img src="/img/medal.svg" />
-			</div>
+			<img src="/img/medal.svg" />
 			
 		</div>
 		<div class="print-quality-list-cards flex flex-column gap-4">
@@ -244,6 +243,7 @@ const delivery = [
 			}
 		</div>
 	</div>
+</div>
 </Layout>
 
 <style lang="scss">
@@ -254,7 +254,7 @@ const delivery = [
 		gap: 1rem;
 
 		max-width: 64rem;
-		margin: 4rem auto;
+		margin: 4rem auto 0;
 		& p {
 			max-width: 20em;
 		}
@@ -320,6 +320,9 @@ const delivery = [
 		}
 	}
 	.print-statistic-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 		grid-area: t;
 	}
 	.print-statistic-grid {
@@ -336,6 +339,7 @@ const delivery = [
 </style>
 
 <style lang="scss" is:global>
+
 	@use "../styles/media.scss" as *;
 	.print-features-albums {
 		display: flex;
@@ -483,6 +487,15 @@ const delivery = [
 		}
 		@include respond(sm) {
 			grid-template-columns: repeat(2, 1fr);
+		}
+		& > div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			& img {
+				margin-top: auto;
+			}
 		}
 	}
 	.print-quality-list-cards {

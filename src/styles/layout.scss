@@ -99,3 +99,8 @@ img {
         padding: 1.3em 3.4em;
     }
 }
+
+.content-grid {
+    display: grid;
+    gap: clamp(5rem, 3.2394rem + 7.5117vw, 10rem);
+}

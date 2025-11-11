@@ -6,13 +6,17 @@ import FeatureParameter from "../components/FeatureParameter.astro";
 import Input from "../components/Input.astro";
 import RadioBlock from "../components/RadioBlock.astro";
 import RadioItem from "../components/RadioItem.astro";
+import SVGAnimation from "../components/SVGAnimation.astro";
 import Layout from "../layout.astro";
+import TableIllustrator from "../../public/img/animation-illustration/1.svg";
+import "../styles/illustrator-animation/table.scss";
 
 
 ---
 <Layout>
 	<div class="container" style="display: flex; flex-direction: column; gap: 1.5rem">
-		<div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+		<TableIllustrator />
+		<!-- <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
 			<div>
 				<FeatureParameter
 					value="3-5"
@@ -80,7 +84,7 @@ import Layout from "../layout.astro";
 				id="5"
 			/>
 		</AccordeonSection>
-		</div>
+		</div> -->
 	</div>
 
 	

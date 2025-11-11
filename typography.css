@@ -1,0 +1,124 @@
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-regular.ttf) format("truetype"),
+    url(/fonts/inter/inter-regular.eot) format("eot");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-regularitalic.ttf) format("truetype"),
+    url(/fonts/inter/inter-regularitalic.eot) format("eot");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-medium.ttf) format("truetype"),
+    url(/fonts/inter/inter-medium.eot) format("eot");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-mediumitalic.ttf) format("truetype"),
+    url(/fonts/inter/inter-mediumitalic.eot) format("eot");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-semibold.ttf) format("truetype"),
+    url(/fonts/inter/inter-semibold.eot) format("eot");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-bold.ttf) format("truetype"),
+    url(/fonts/inter/inter-bold.eot) format("eot");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/inter/inter-bolditalic.ttf) format("truetype"),
+    url(/fonts/inter/inter-bolditalic.eot) format("eot");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Manrope;
+  src: url(/fonts/manrope/manrope-medium.ttf) format("truetype"),
+    url(/fonts/manrope/manrope-medium.eot) format("eot");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Manrope;
+  src: url(/fonts/manrope/manrope-semibold.ttf) format("truetype"),
+    url(/fonts/manrope/manrope-semibold.eot) format("eot");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --body-size: 16px;
+}
+html,
+body {
+  font-size: var(--body-s);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+}
+p,
+button,
+.print-button {
+  font-family: "Inter", sans-serif, Helvetica, Arial;
+}
+button,
+.print-button {
+  font-weight: 600;
+}
+.h1,
+h1 {
+  font-size: clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem);
+  line-height: clamp(2.25rem, 1.6338rem + 2.6291vw, 4rem);
+}
+.h2,
+h2 {
+  font-size: clamp(1.75rem, 1.5739rem + 0.7512vw, 2.25rem);
+  line-height: clamp(2rem, 1.8239rem + 0.7512vw, 2.5rem);
+}
+.h3,
+h3 {
+  font-size: clamp(1.375rem, 1.243rem + 0.5634vw, 1.75rem);
+  line-height: clamp(1.625rem, 1.493rem + 0.5634vw, 2rem);
+}
+.h4,
+h4 {
+  font-size: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+  line-height: clamp(1.25rem, 1.0739rem + 0.7512vw, 1.75rem);
+}

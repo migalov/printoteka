@@ -1,13 +1,14 @@
 ---
-const {title, description, src, svgCode, heghtIllustration} = Astro.props
+const {title, description} = Astro.props
 ---
-<div class="print-feature-album" set:html={svgCode}>
-    <img src={src} style={`--height-illustration: ${heghtIllustration}`}/>
+<div class="print-feature-album">
+    <slot />
     <h3>{title}</h3>
     <p>{description}</p>
 </div>
 
 <style lang="scss">
+    @use "../styles/media.scss" as *;
     .print-feature-album {
         & img {
             height: var(--height-illustration);
@@ -20,6 +21,9 @@ const {title, description, src, svgCode, heghtIllustration} = Astro.props
 		text-align: center;
 		background-color: var(--pxp-menu-bg);
 		padding: .5rem;
-		width: calc(33.3333% - 1rem);
+        @include respond(sm) {
+            width: calc(33.3333% - 1rem);
+        }
+		
 	}
 </style>

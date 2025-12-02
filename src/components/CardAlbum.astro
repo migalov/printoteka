@@ -1,0 +1,56 @@
+---
+const {src, title, description, price, size1, size2} = Astro.props
+---
+
+<div class="print-album">
+    <span class="print-album__size">210x300 / 200x200</span>
+    <img src={src} alt="" />
+    <div class="print-album__short-info">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <span class="print-album__price h3">от {price} ₽</span>
+    </div>
+    <a class="print-album__button print-button print-button--primary" href="#">Хочу такой альбом</a>
+</div>
+
+<style lang="scss">
+    @use "../styles/media.scss" as *;
+    .print-album {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        & img {
+            width: 100%;
+            aspect-ratio: 1/1;
+        }
+        & p {
+            margin: .5em 0 1em;
+        }
+    }
+
+    .print-album__short-info {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .print-album__size {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background-color: rgba(52, 52, 52, .4);
+        color: var(--pxp-action-main-text);
+        padding: .5em .75em;
+        border-radius: .75em;
+    }
+
+    .print-album__price {
+        margin-top: auto;
+    }
+
+    .print-album__button {
+        margin-top: auto;
+    }
+
+</style>

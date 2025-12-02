@@ -15,11 +15,13 @@ import StarIllustrator from "../../public/img/animation-illustration/2.svg";
 import PigIllustrator from "../../public/img/animation-illustration/3.svg";
 import DealIllustrator from "../../public/img/animation-illustration/4.svg";
 import BoxIllustrator from "../../public/img/animation-illustration/5.svg";
+import FullCatalogImage from "../../public/img/full-catalog.svg";
 import "../styles/illustrator-animation/table.scss";
 import "../styles/illustrator-animation/star.scss";
 import "../styles/illustrator-animation/pig.scss";
 import "../styles/illustrator-animation/deal.scss";
-import "../styles/illustrator-animation/box.scss";
+
+import CardAlbum from "../components/CardAlbum.astro";
 
 const ourClients = [
 	{
@@ -78,6 +80,64 @@ const delivery = [
 	{
 		title: "Доставка по Москве — всегда 599 ₽",
 		description: "Привозим в течение 2 дней после печати, без скрытых доплат"
+	}
+]
+
+const dd = [
+	{
+		title: "Индивидуальные  тарифы",
+		desc: "Персональные предложения, адаптированные к вашему объему и уровню"
+	},
+	{
+		title: "Оплата долями",
+		desc: "Спокойнее распоряжайтесь своими средствами и не замораживайте личные деньги, благодаря банковским партнерам"
+	},
+	{
+		title: "Заморозка цены",
+		desc: "Забронируйте тираж до 1 ноября и защитите цены от индексации"
+	},
+	{
+		title: "Оплата через юр. лицо",
+		desc: "Проводите оплату через юр.лицо со всеми отчетными документами"
+	}
+]
+
+const albums = [
+	{
+		src: "",
+		title: "Layflat",
+		description: "Похож на классическую фотокнигу, отпечатанную по мокрому фотопроцессу: твердая фотообложка, глянцевая ламинированная поверхность, плотные листы",
+		price: 540
+	},
+	{
+		src: "",
+		title: "PUR",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 360
+	},
+	{
+		src: "",
+		title: "Планшет",
+		description: "Надёжная печать с доставкой по всей России. Гарантия качества и соблюдения сроков",
+		price: 360
+	},
+	{
+		src: "",
+		title: "Трюмо",
+		description: "Простой и практичный вариант выпускного фотоальбома, представляет собой папку, оформленную со всех сторон и раскладывающуюся на три равные части.",
+		price: 490
+	},
+	{
+		src: "",
+		title: "Журнал",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 560
+	},
+	{
+		src: "",
+		title: "КШС",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 1860
 	}
 ]
 
@@ -251,7 +311,41 @@ const delivery = [
 				)
 			}
 		</div>
+		
 	</div>
+	<div class="print-catalog-albums container">
+		<h2 class="h1">Каталог альбомов</h2>
+		<div class="print-catalog-albums-grid">
+			{
+				albums.map((album, index) => <CardAlbum {...album} src={`/img/albums/${index + 1}.jpg`} />)
+			}
+		</div>
+	</div>
+	<div class="container">
+		<div class="print-open-full-catalog">
+			<h2>
+				<span style="color: rgba(255,255,255,.6)">Не нашли интересующий альбом?</span><br />
+				<span style="color: rgb(255,255,255)">Ознакомьтесь с полным каталогом</span>
+			</h2>
+			<a href="#" class="print-open-full-catalog__button print-button print-button--primary">Открыть полный каталог</a>
+			<FullCatalogImage class="print-full-catalog-image" />
+		</div>
+	</div>
+	<div class="print-steps container">
+		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
+		<ol class="print-steps-inner container">
+			{
+				steps.map( step => 
+					<li class="print-card">
+						<h3>{step.title}</h3>
+						<p set:html={step.description}></p>
+						<img src={step.src} />
+					</li>
+				)
+			}
+		</ol>
+	</div>
+	
 </div>
 </Layout>
 
@@ -345,6 +439,56 @@ const delivery = [
 
 
 	}
+	.print-catalog-albums {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		& h2 {
+			text-align: center;
+		}
+	}
+	.print-catalog-albums-grid {
+		display: grid;
+		
+		gap: 2rem;
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@include respond(md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.print-open-full-catalog {
+		overflow: hidden;
+		position: relative;
+		border-radius: 2rem;
+		background-color: var(--pxp-accent-background);
+		padding: 2em 2em 0;
+		min-height: 272px;
+
+		& h2 {
+			margin: 0 0 .75em 0;
+		}
+
+		& .print-open-full-catalog__button {
+			width: min(100%, 25em);
+		}
+
+		& .print-full-catalog-image {
+			transform: translateY(1em);
+			max-width: 356px;
+			@include respond(sm) {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+
+		@include respond(sm) {
+			padding: 3em;
+		}
+	}
 </style>
 
 <style lang="scss" is:global>
@@ -402,18 +546,11 @@ const delivery = [
 		
 		&:nth-of-type(1) {
 			position: absolute;
-			// left: -5rem;
     		bottom: -20rem;
-			// left: -8.5rem;
-			// bottom: 18.4rem;
 			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
 		}
 		&:nth-of-type(2) {
 			position: absolute;
-			// right: -2rem;
-
-			// right: -7rem;
-    		// bottom: -16.5rem;
 			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
 			bottom: -17.5rem;
 		}
@@ -461,6 +598,7 @@ const delivery = [
 		padding: 2rem;
 		border-radius: 2rem;
 		counter-increment: counter-steps;
+		width: 100%;
 		&:has( img) {
 			min-height: 15.3125rem;
 		}

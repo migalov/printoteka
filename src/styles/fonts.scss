@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:string";
 // Путь к папке со шрифтами (без завершающего слеша)
 $font-path: "/fonts";
 
@@ -43,15 +45,15 @@ $font-families: (
       $src: $src + ", " + $entry;
     }
   }
-  @return unquote($src);
+  @return string.unquote($src);
 }
 
 // Генерация @font-face для всех описанных вариантов
 @each $family, $variants in $font-families {
   @each $variant in $variants {
-    $file: map-get($variant, file);
-    $weight: map-get($variant, weight);
-    $style: map-get($variant, style);
+    $file: map.get($variant, file);
+    $weight: map.get($variant, weight);
+    $style: map.get($variant, style);
 
     @font-face {
       font-family: "#{$family}";

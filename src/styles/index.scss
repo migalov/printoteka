@@ -1,0 +1,362 @@
+@use "../styles/media.scss" as *;
+	.print-hero {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		max-width: 64rem;
+		margin: 4rem auto 0;
+		& p {
+			max-width: 20em;
+		}
+		@include respond(sm) {
+			text-align: center;
+			align-items: center;
+		}
+	}
+	.print-hero-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		margin: 2.25rem 0 0;
+		@include respond(sm) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+	.print-hero-features {
+		display: flex;
+		flex-direction: column;
+		
+		margin: 4rem 0 0;
+		gap: 1.25em;
+
+		@include respond(sm) {
+			flex-direction: row;
+			align-items: center;
+			gap: 8.25em;
+		}
+
+		& li {
+			display: inherit;
+			flex-direction: row;
+			align-items: inherit;
+			gap: 1em;
+			@include respond(sm) {
+				flex-direction: inherit;
+			}
+			& .print-icon {
+				font-size: 1.75em;
+				@include respond(sm) {
+					font-size: 2.25em;
+				}
+			}
+		}
+	}
+	.print-statistic {
+		display: grid;
+
+		grid-template-areas: "t" "g" "i";
+		gap: 2rem;
+		& img {
+			object-fit: cover;
+			border-radius: 1.5rem;
+			grid-area: i;
+			height: 100%;
+		}
+
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-areas: "t i" "g i";
+		}
+	}
+	.print-statistic-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		grid-area: t;
+	}
+	.print-statistic-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+		grid-area: g;
+		& p {
+			margin: 2em 0 4em;
+		}
+
+
+	}
+	.print-catalog-albums {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		& h2 {
+			text-align: center;
+		}
+	}
+	.print-catalog-albums-grid {
+		display: grid;
+		
+		gap: 2rem;
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@include respond(md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.print-open-full-catalog {
+		overflow: hidden;
+		position: relative;
+		border-radius: 2rem;
+		background-color: var(--pxp-accent-background);
+		padding: 2em 2em 0;
+		min-height: 272px;
+
+		& h2 {
+			margin: 0 0 .75em 0;
+		}
+
+		& .print-open-full-catalog__button {
+			width: min(100%, 25em);
+		}
+
+		& .print-full-catalog-image {
+			transform: translateY(1em);
+			max-width: 356px;
+			@include respond(sm) {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+
+		@include respond(sm) {
+			padding: 3em;
+		}
+	}
+    
+	.print-features-albums {
+
+		display: grid;
+		gap: 1rem;
+		
+		@include respond (sm) {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+		}
+	}
+	.print-our-clients {
+		display: grid;
+		
+		gap: var(--global-gap);
+		@include respond(sm) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.print-our-client {
+		& h3 {
+			margin: .85em 0 .3em;
+		}
+
+		& img {
+			border-radius: 1.75rem;
+			width: 100%;
+		}
+	}
+	.print-better-conditions {
+		overflow: hidden;
+		background-color: var(--pxp-menu-bg-alternative);
+		color: #FFF;
+		min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// padding: 13rem 0 10rem;
+	}
+	.print-better-conditions-inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 2rem;
+	}
+	.print-better-conditions__iluustration {
+		
+		&:nth-of-type(1) {
+			position: absolute;
+    		bottom: -20rem;
+			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
+		}
+		&:nth-of-type(2) {
+			position: absolute;
+			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
+			bottom: -17.5rem;
+		}
+		&:nth-of-type(1), &:nth-of-type(2) {
+			position: absolute;
+			transform: scale(.6);
+			@include respond(sm) {
+				transform: scale(1);
+			}
+		}
+	}
+	.print-steps {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		& .print-card {
+			&::after {
+				content: "0" counter(counter-steps);
+				margin-top: auto;
+				font-family: var(--font-title);
+				font-size: 4rem;
+				font-weight: 700;
+				background: linear-gradient(173.85deg, #343434 -55%, rgba(52, 52, 52, 0.2) 177.16%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				opacity: 0.15;
+			}
+		}
+	}
+	.print-steps-inner {
+		display: grid;
+		gap: var(--global-gap);
+		counter-reset: counter-steps;
+		padding: 5rem 0;
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+	}
+	.print-card {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		position: relative;
+		background: var(--pxp-menu-bg);
+		padding: 2rem;
+		border-radius: 2rem;
+		counter-increment: counter-steps;
+		width: 100%;
+		&:has( img) {
+			min-height: 15.3125rem;
+		}
+		& img {
+			position: absolute;
+			right: 1rem;
+			bottom: 1rem;
+			@include respond(mobile) {
+				height: 6rem;
+			}
+		}
+		& p {
+			max-width: 22em;
+		}
+
+		& :is(ul, li) {
+			&::marker {
+				content: inherit;
+			}
+			list-style: disc;
+		}
+
+		& ul {
+			padding: 1em 0 0 1em;
+		}
+	}
+	.print-quality {
+		display: grid;
+
+		gap: var(--global-gap);
+		& h2 {
+			margin: 0 0 .25em;
+		}
+		& a {
+			margin: 2em 0 0;
+		}
+		& p {
+			max-width: 22rem;
+		}
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		& > div {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			& img {
+				margin-top: auto;
+			}
+		}
+	}
+	.print-quality-list-cards {
+		display: flex;
+		flex-direction: column;
+		gap: var(--global-gap);
+		align-items: stretch;
+	}
+	.print-about-delivery {
+		display: grid;
+
+		gap: var(--global-gap);
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, auto);
+		}
+	}
+	.print-about-delivery-grid {
+		display: grid;
+		gap: var(--global-gap);
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.print-about-delivery-companies {
+		max-width: 28rem;
+    	margin-left: auto;
+		& > p {
+			margin-bottom: 1.75em;
+		}
+		& > div {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			place-items: center;
+			gap: .5rem;
+			@include respond(xxs) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+			& img {
+				flex: 1;
+			}
+		}
+	}
+	.print-features-profit {
+
+		display: grid;
+		gap: 1rem;
+		
+		@include respond (sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@include respond (md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+
+		
+	}
+	.print-features-profito-item {
+		&:first-of-type {
+			& svg {
+				display: block;
+				margin-left: auto;
+			}
+		}
+	}
+	

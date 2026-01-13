@@ -16,12 +16,19 @@ import PigIllustrator from "../../public/img/animation-illustration/3.svg";
 import DealIllustrator from "../../public/img/animation-illustration/4.svg";
 import BoxIllustrator from "../../public/img/animation-illustration/5.svg";
 import FullCatalogImage from "../../public/img/full-catalog.svg";
+
+import Money from "../../public/img/profit/money.svg";
+
+import "../styles/index.scss";
 import "../styles/illustrator-animation/table.scss";
 import "../styles/illustrator-animation/star.scss";
 import "../styles/illustrator-animation/pig.scss";
 import "../styles/illustrator-animation/deal.scss";
 
+import "../styles/profit/money.scss";
+
 import CardAlbum from "../components/CardAlbum.astro";
+import FeatureProfit from "../components/FeatureProfit.astro";
 
 const ourClients = [
 	{
@@ -143,555 +150,247 @@ const albums = [
 
 ---
 <Layout>
+	<link href="/css/swiper.min.js" rel="stylesheet" />
 	<div class="content-grid">
-	<div class="container">
-		<div class="print-hero">
-			<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
-			<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
-			<div class="print-hero-buttons">
-				<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
-				<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--secondary print-button--medium">Посмотреть каталог</a>
-			</div>
-			<ul class="print-hero-features">
-				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1000"><span class="print-icon print-icon-price-tag"></span><span>Доступные цены</span></li>
-				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1500"><span class="print-icon print-icon-briefcase"></span><span>14 лет опыта печати</span></li>
-				<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="2000"><span class="print-icon print-icon-rocket"></span><span>Доставка по всей России</span></li>
-			</ul>
-		</div>
-	</div>
-	<div class="container print-statistic">
-		<div class="print-statistic-text">
-			<h3>Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
-			<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
-		</div>
-		<div class="print-statistic-grid">
-			<FeatureParameter
-				value="3-5"
-				sub="дней"
-				about="Срок печати выпуска"
-			/>
-			<FeatureParameter
-				value="20000+"
-				about="Постоянных пользователей"
-			/>
-			<FeatureParameter
-				value="1+"
-				about="Минимальный тираж"
-			/>
-			<FeatureParameter
-				value="5.0"
-				about="Наш рейтинг в Яндекс"
-			/>
-		</div>	
-		<img src="/img/1.jpg" />
-	</div>
-	<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
-		<FeatureAlbumBlock
-			title="Высокое качество печати"
-			description="Konica AccurioPress C14000 + автоматическая калибровка — идеально точный цвет в каждом тираже"
-		>
-			<TableIllustrator class:list={["print-illustration"]} />
-		</FeatureAlbumBlock>
-		<FeatureAlbumBlock
-			title="AI-коррекция под печать"
-			description="AI-коррекция повышает качество печати без вмешательства в стиль фотографа"
-		>
-			<StarIllustrator class:list={["print-illustration"]} />
-		</FeatureAlbumBlock>
-		<FeatureAlbumBlock
-			title="Партнерские цены"
-			description="Честная стоимость и условия, с которыми удобно расти + оплата Долями и кэшбэк до 20%"
-		>
-			<PigIllustrator class:list={["print-illustration"]} />
-		</FeatureAlbumBlock>
-		<FeatureAlbumBlock
-			title="Забота о клиентах"
-			description="Личный менеджер, поддержка в Telegram и репринт за наш счет при ошибке"
-		>
-			<DealIllustrator class:list={["print-illustration"]} />
-		</FeatureAlbumBlock>
-		<FeatureAlbumBlock
-			title="Надежная упаковка"
-			description="Каждый альбом упакован в термоусадочную пленку, а тираж доставляется с защитой углов"
-		>
-			<BoxIllustrator class:list={["print-illustration"]} />
-		</FeatureAlbumBlock>
-	</SectionBlock>
-	<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-our-clients"]}>
-		{
-			ourClients.map( client =>
-				<>
-					<div class="print-our-client">
-						<img src={client.src} alt="" />
-						<h3>{client.title}</h3>
-						<p set:html={client.description}></p>
-					</div>
-				</>
-			)
-		}
-	</SectionBlock>
-	<div class="print-better-conditions">
-		<div class="print-better-conditions-inner container">
-			<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
-			<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
-			<a href="#" class="print-button print-button--primary print-button--medium">Забрать бонус</a>
-			<img data-aos="fade-up-right" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/rocket.svg" alt="" srcset="" />
-			<img data-aos="fade-up-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
-		</div>
-	</div>
-	<div class="print-steps container">
-		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
-		<ol class="print-steps-inner container">
-			{
-				steps.map( step => 
-					<li class="print-card">
-						<h3>{step.title}</h3>
-						<p set:html={step.description}></p>
-						<img src={step.src} />
-					</li>
-				)
-			}
-		</ol>
-	</div>
-	<div class="print-quality container">
-		<div>
-			<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
-			<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
-			<a href="#" class="print-button print-button--primary print-button--medium">Сравнить качество печати</a>
-			<img src="/img/medal.svg" />
-			
-		</div>
-		<div class="print-quality-list-cards flex flex-column gap-4">
-			<div class="print-card">
-				<h3>Печать обложек на HP Indigo 12000</h3>
-				<ul>
-					<li>Глубокий цвет и фактура, как в премиум-изданиях</li>
-					<li>Точная передача авторских оттенков и тонов</li>
-					<li>Подходит под любую верстку - от минимализма до коллажей</li>
+
+		<!-- Hero -->
+		<!-- <div class="container">
+			<div class="print-hero">
+				<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
+				<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
+				<div class="print-hero-buttons">
+					<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
+					<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--secondary print-button--medium">Посмотреть каталог</a>
+				</div>
+				<ul class="print-hero-features">
+					<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1000"><span class="print-icon print-icon-price-tag"></span><span>Доступные цены</span></li>
+					<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1500"><span class="print-icon print-icon-briefcase"></span><span>14 лет опыта печати</span></li>
+					<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="2000"><span class="print-icon print-icon-rocket"></span><span>Доставка по всей России</span></li>
 				</ul>
 			</div>
-			<div class="print-card">
-				<h3>Konica AccurioPress C14000 с AI-корректировкой</h3>
-				<ul>
-					<li>400×3600 dpi: четкая детализация лиц и волос даже как в оригинале</li>
-					<li>8-битная глубина цвета: 16+ млн оттенков без искажений</li>
-					<li>Плавные градиенты без полос и пятен</li>
-					<li>AI-калибровка цвета: сглаживание цвета кожи и фона и эффект фотохимии</li>
-					<li>Стабильность цвета на всем тираже, включая репринты</li>
-				</ul>
+		</div> -->
+
+		<!-- Статистика -->
+		<!-- <div class="container print-statistic">
+			<div class="print-statistic-text">
+				<h3>Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
+				<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
 			</div>
-			<div class="print-card">
-				<h3>Дизайнерская бумага премиум-класса</h3>
-				<ul>
-					<li>Матовая и глянцевая, от 170 до 400 г/м²</li>
-					<li>Четкие детали, плотный черный, живой цвет</li>
-					<li>Приятно держать в руках - и родителям, и фотографам</li>
-				</ul>
-			</div>
+			<div class="print-statistic-grid">
+				<FeatureParameter
+					value="3-5"
+					sub="дней"
+					about="Срок печати выпуска"
+				/>
+				<FeatureParameter
+					value="20000+"
+					about="Постоянных пользователей"
+				/>
+				<FeatureParameter
+					value="1+"
+					about="Минимальный тираж"
+				/>
+				<FeatureParameter
+					value="5.0"
+					about="Наш рейтинг в Яндекс"
+				/>
+			</div>	
+			<img src="/img/1.jpg" />
 		</div>
-	</div>
-	<div class="print-about-delivery container">
-		<h2 class="h1"><span style="color: var(--pxp-action-main);">Быстрое</span> изготовление и&nbsp;<span style="color: var(--pxp-action-main);">удобная</span> доставка</h2>
-		<div class="print-about-delivery-companies">
-			<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
-			<div>
-				<img src="/img/delivery/1.svg" alt="CDEK" />
-				<img src="/img/delivery/2.svg" alt="BoxBerry" />
-				<img src="/img/delivery/3.svg" alt="Почта России" />
-				<img src="/img/delivery/4.svg" alt="5post" />
-			</div>
-		</div>
-		<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
+		 -->
+		<!-- Преимущества -->
+		<!-- <SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
+			<FeatureAlbumBlock
+				title="Высокое качество печати"
+				description="Konica AccurioPress C14000 + автоматическая калибровка — идеально точный цвет в каждом тираже"
+			>
+				<TableIllustrator class:list={["print-illustration"]} />
+			</FeatureAlbumBlock>
+			<FeatureAlbumBlock
+				title="AI-коррекция под печать"
+				description="AI-коррекция повышает качество печати без вмешательства в стиль фотографа"
+			>
+				<StarIllustrator class:list={["print-illustration"]} />
+			</FeatureAlbumBlock>
+			<FeatureAlbumBlock
+				title="Партнерские цены"
+				description="Честная стоимость и условия, с которыми удобно расти + оплата Долями и кэшбэк до 20%"
+			>
+				<PigIllustrator class:list={["print-illustration"]} />
+			</FeatureAlbumBlock>
+			<FeatureAlbumBlock
+				title="Забота о клиентах"
+				description="Личный менеджер, поддержка в Telegram и репринт за наш счет при ошибке"
+			>
+				<DealIllustrator class:list={["print-illustration"]} />
+			</FeatureAlbumBlock>
+			<FeatureAlbumBlock
+				title="Надежная упаковка"
+				description="Каждый альбом упакован в термоусадочную пленку, а тираж доставляется с защитой углов"
+			>
+				<BoxIllustrator class:list={["print-illustration"]} />
+			</FeatureAlbumBlock>
+		</SectionBlock> -->
+
+		<!-- Наши клиенты -->
+		<!-- <SectionBlock title="Кому мы печатаем" hasContainer={true} classList={["print-our-clients"]}>
 			{
-				delivery.map( step => 
-					<li class="print-card">
-						<h3>{step.title}</h3>
-						<p set:html={step.description}></p>
-					</li>
+				ourClients.map( client =>
+					<>
+						<div class="print-our-client">
+							<img src={client.src} alt="" />
+							<h3>{client.title}</h3>
+							<p set:html={client.description}></p>
+						</div>
+					</>
 				)
 			}
-		</div>
-		
-	</div>
-	<div class="print-catalog-albums container">
-		<h2 class="h1">Каталог альбомов</h2>
-		<div class="print-catalog-albums-grid">
-			{
-				albums.map((album, index) => <CardAlbum {...album} src={`/img/albums/${index + 1}.jpg`} />)
-			}
-		</div>
-	</div>
-	<div class="container">
-		<div class="print-open-full-catalog">
-			<h2>
-				<span style="color: rgba(255,255,255,.6)">Не нашли интересующий альбом?</span><br />
-				<span style="color: rgb(255,255,255)">Ознакомьтесь с полным каталогом</span>
-			</h2>
-			<a href="#" class="print-open-full-catalog__button print-button print-button--primary">Открыть полный каталог</a>
-			<FullCatalogImage class="print-full-catalog-image" />
-		</div>
-	</div>
-	<div class="print-steps container">
-		<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
-		<ol class="print-steps-inner container">
-			{
-				steps.map( step => 
-					<li class="print-card">
-						<h3>{step.title}</h3>
-						<p set:html={step.description}></p>
-						<img src={step.src} />
-					</li>
-				)
-			}
-		</ol>
-	</div>
-	
-</div>
-</Layout>
+		</SectionBlock> -->
 
-<style lang="scss">
-	@use "../styles/media.scss" as *;
-	.print-hero {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+		<!-- Заморозка цены + 1000 ₽ бонус -->
+		<!-- <div class="print-better-conditions">
+			<div class="print-better-conditions-inner container">
+				<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
+				<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
+				<a href="#" class="print-button print-button--primary print-button--medium">Забрать бонус</a>
+				<img data-aos="fade-up-right" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/rocket.svg" alt="" srcset="" />
+				<img data-aos="fade-up-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
+			</div>
+		</div> -->
 
-		max-width: 64rem;
-		margin: 4rem auto 0;
-		& p {
-			max-width: 20em;
-		}
-		@include respond(sm) {
-			text-align: center;
-			align-items: center;
-		}
-	}
-	.print-hero-buttons {
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
-		margin: 2.25rem 0 0;
-		@include respond(sm) {
-			flex-direction: row;
-			align-items: center;
-		}
-	}
-	.print-hero-features {
-		display: flex;
-		flex-direction: column;
-		
-		margin: 4rem 0 0;
-		gap: 1.25em;
-
-		@include respond(sm) {
-			flex-direction: row;
-			align-items: center;
-			gap: 8.25em;
-		}
-
-		& li {
-			display: inherit;
-			flex-direction: row;
-			align-items: inherit;
-			gap: 1em;
-			@include respond(sm) {
-				flex-direction: inherit;
-			}
-			& .print-icon {
-				font-size: 1.75em;
-				@include respond(sm) {
-					font-size: 2.25em;
+		<!-- Каталог альбомов -->
+		<!-- <div class="print-catalog-albums container">
+			<h2 class="h1">Каталог альбомов</h2>
+			<div class="print-catalog-albums-grid">
+				{
+					albums.map((album, index) => <CardAlbum {...album} src={`/img/albums/${index + 1}.jpg`} />)
 				}
-			}
-		}
-	}
-	.print-statistic {
-		display: grid;
+			</div>
+		</div> -->
 
-		grid-template-areas: "t" "g" "i";
-		gap: 2rem;
-		& img {
-			object-fit: cover;
-			border-radius: 1.5rem;
-			grid-area: i;
-			height: 100%;
-		}
+		<!-- Не нашли интересующий альбом? -->
+		<!-- <div class="container">
+			<div class="print-open-full-catalog">
+				<h2>
+					<span style="color: rgba(255,255,255,.6)">Не нашли интересующий альбом?</span><br />
+					<span style="color: rgb(255,255,255)">Ознакомьтесь с полным каталогом</span>
+				</h2>
+				<a href="#" class="print-open-full-catalog__button print-button print-button--primary">Открыть полный каталог</a>
+				<FullCatalogImage class="print-full-catalog-image" />
+			</div>
+		</div> -->
 
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-areas: "t i" "g i";
-		}
-	}
-	.print-statistic-text {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		grid-area: t;
-	}
-	.print-statistic-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
-		grid-area: g;
-		& p {
-			margin: 2em 0 4em;
-		}
+		<!-- Как мы работаем с заказами клиентов? -->
+		<!-- <div class="print-steps container">
+			<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
+			<ol class="print-steps-inner container">
+				{
+					steps.map( step => 
+						<li class="print-card">
+							<h3>{step.title}</h3>
+							<p set:html={step.description}></p>
+							<img src={step.src} />
+						</li>
+					)
+				}
+			</ol>
+		</div> -->
 
+		<!-- Качество печати, которым мы гордимся -->
+		<!-- <div class="print-quality container">
+			<div>
+				<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
+				<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
+				<a href="#" class="print-button print-button--primary print-button--medium">Сравнить качество печати</a>
+				<img src="/img/medal.svg" />
+				
+			</div>
+			<div class="print-quality-list-cards flex flex-column gap-4">
+				<div class="print-card">
+					<h3>Печать обложек на HP Indigo 12000</h3>
+					<ul>
+						<li>Глубокий цвет и фактура, как в премиум-изданиях</li>
+						<li>Точная передача авторских оттенков и тонов</li>
+						<li>Подходит под любую верстку - от минимализма до коллажей</li>
+					</ul>
+				</div>
+				<div class="print-card">
+					<h3>Konica AccurioPress C14000 с AI-корректировкой</h3>
+					<ul>
+						<li>400×3600 dpi: четкая детализация лиц и волос даже как в оригинале</li>
+						<li>8-битная глубина цвета: 16+ млн оттенков без искажений</li>
+						<li>Плавные градиенты без полос и пятен</li>
+						<li>AI-калибровка цвета: сглаживание цвета кожи и фона и эффект фотохимии</li>
+						<li>Стабильность цвета на всем тираже, включая репринты</li>
+					</ul>
+				</div>
+				<div class="print-card">
+					<h3>Дизайнерская бумага премиум-класса</h3>
+					<ul>
+						<li>Матовая и глянцевая, от 170 до 400 г/м²</li>
+						<li>Четкие детали, плотный черный, живой цвет</li>
+						<li>Приятно держать в руках - и родителям, и фотографам</li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
 
-	}
-	.print-catalog-albums {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
+		<!-- Быстрое изготовление и удобная доставка -->
+		<!-- <div class="print-about-delivery container">
+			<h2 class="h1"><span style="color: var(--pxp-action-main);">Быстрое</span> изготовление и&nbsp;<span style="color: var(--pxp-action-main);">удобная</span> доставка</h2>
+			<div class="print-about-delivery-companies">
+				<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
+				<div>
+					<img src="/img/delivery/1.svg" alt="CDEK" />
+					<img src="/img/delivery/2.svg" alt="BoxBerry" />
+					<img src="/img/delivery/3.svg" alt="Почта России" />
+					<img src="/img/delivery/4.svg" alt="5post" />
+				</div>
+			</div>
+			<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
+				{
+					delivery.map( step => 
+						<li class="print-card">
+							<h3>{step.title}</h3>
+							<p set:html={step.description}></p>
+						</li>
+					)
+				}
+			</div>
+		</div> -->
 
-		& h2 {
-			text-align: center;
-		}
-	}
-	.print-catalog-albums-grid {
-		display: grid;
-		
-		gap: 2rem;
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-		@include respond(md) {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.print-open-full-catalog {
-		overflow: hidden;
-		position: relative;
-		border-radius: 2rem;
-		background-color: var(--pxp-accent-background);
-		padding: 2em 2em 0;
-		min-height: 272px;
-
-		& h2 {
-			margin: 0 0 .75em 0;
-		}
-
-		& .print-open-full-catalog__button {
-			width: min(100%, 25em);
-		}
-
-		& .print-full-catalog-image {
-			transform: translateY(1em);
-			max-width: 356px;
-			@include respond(sm) {
-				position: absolute;
-				right: 0;
-				bottom: 0;
-			}
-		}
-
-		@include respond(sm) {
-			padding: 3em;
-		}
-	}
-</style>
-
-<style lang="scss" is:global>
-
-	@use "../styles/media.scss" as *;
-	.print-features-albums {
-
-		display: grid;
-		gap: 1rem;
-		
-		@include respond (sm) {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 1rem;
-		}
-	}
-	.print-our-clients {
-		display: grid;
-		
-		gap: var(--global-gap);
-		@include respond(sm) {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.print-our-client {
-		& h3 {
-			margin: .85em 0 .3em;
-		}
-
-		& img {
-			border-radius: 1.75rem;
-			width: 100%;
-		}
-	}
-	.print-better-conditions {
-		overflow: hidden;
-		background-color: var(--pxp-menu-bg-alternative);
-		color: #FFF;
-		min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		// padding: 13rem 0 10rem;
-	}
-	.print-better-conditions-inner {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		gap: 2rem;
-	}
-	.print-better-conditions__iluustration {
-		
-		&:nth-of-type(1) {
-			position: absolute;
-    		bottom: -20rem;
-			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
-		}
-		&:nth-of-type(2) {
-			position: absolute;
-			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
-			bottom: -17.5rem;
-		}
-		&:nth-of-type(1), &:nth-of-type(2) {
-			position: absolute;
-			transform: scale(.6);
-			@include respond(sm) {
-				transform: scale(1);
-			}
-		}
-	}
-	.print-steps {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
-		& .print-card {
-			&::after {
-				content: "0" counter(counter-steps);
-				margin-top: auto;
-				font-family: var(--font-title);
-				font-size: 4rem;
-				font-weight: 700;
-				background: linear-gradient(173.85deg, #343434 -55%, rgba(52, 52, 52, 0.2) 177.16%);
-				background-clip: text;
-				-webkit-background-clip: text;
-				opacity: 0.15;
-			}
-		}
-	}
-	.print-steps-inner {
-		display: grid;
-		gap: var(--global-gap);
-		counter-reset: counter-steps;
-		padding: 5rem 0;
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-	}
-	.print-card {
-		display: flex;
-		flex-direction: column;
-		gap: .5rem;
-		position: relative;
-		background: var(--pxp-menu-bg);
-		padding: 2rem;
-		border-radius: 2rem;
-		counter-increment: counter-steps;
-		width: 100%;
-		&:has( img) {
-			min-height: 15.3125rem;
-		}
-		& img {
-			position: absolute;
-			right: 1rem;
-			bottom: 1rem;
-			@include respond(mobile) {
-				height: 6rem;
-			}
-		}
-		& p {
-			max-width: 22em;
-		}
-
-		& :is(ul, li) {
-			&::marker {
-				content: inherit;
-			}
-			list-style: disc;
-		}
-
-		& ul {
-			padding: 1em 0 0 1em;
-		}
-	}
-	.print-quality {
-		display: grid;
-
-		gap: var(--global-gap);
-		& h2 {
-			margin: 0 0 .25em;
-		}
-		& a {
-			margin: 2em 0 0;
-		}
-		& p {
-			max-width: 22rem;
-		}
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-		& > div {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-
-			& img {
-				margin-top: auto;
-			}
-		}
-	}
-	.print-quality-list-cards {
-		display: flex;
-		flex-direction: column;
-		gap: var(--global-gap);
-		align-items: stretch;
-	}
-	.print-about-delivery {
-		display: grid;
-
-		gap: var(--global-gap);
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(2, auto);
-		}
-	}
-	.print-about-delivery-grid {
-		display: grid;
-		gap: var(--global-gap);
-		@include respond(sm) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-	.print-about-delivery-companies {
-		max-width: 28rem;
-    	margin-left: auto;
-		& > p {
-			margin-bottom: 1.75em;
-		}
-		& > div {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			place-items: center;
-			gap: .5rem;
-			@include respond(xxs) {
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-			}
-			& img {
-				flex: 1;
-			}
-		}
-	}
-</style>
+			<SectionBlock
+				title={`<span style="color: var(--pxp-action-main);">Максимальная</span> выгода`}
+				hasContainer={true}
+				classList={["print-features-profit"]}
+			>
+				<FeatureProfit
+					title="Индивидуальные  тарифы"
+					description="Персональные предложения, адаптированные к&nbsp;вашему объему и&nbsp;уровню"
+				>
+					<Money class:list={["print-illustration"]} />
+				</FeatureProfit>
+				<FeatureProfit
+					title="Оплата долями"
+					description="Спокойнее распоряжайтесь своими средствами и&nbsp;не&nbsp;замораживайте личные деньги, благодаря банковским партнерам"
+				>
+					<StarIllustrator class:list={["print-illustration"]} />
+				</FeatureProfit>
+				<FeatureProfit
+					title="Заморозка цены"
+					description="Забронируйте тираж до 1&nbsp;ноября и&nbsp;защитите цены от&nbsp;индексации"
+				>
+					<PigIllustrator class:list={["print-illustration"]} />
+				</FeatureProfit>
+				<FeatureProfit
+					title="Забота о клиентах"
+					description="Личный менеджер, поддержка в Telegram и репринт за&nbsp;наш счет при&nbsp;ошибке"
+				>
+					<DealIllustrator class:list={["print-illustration"]} />
+				</FeatureProfit>
+			</SectionBlock>
+	
+	</div>
+</Layout>
 
 <script src="/src/scripts/animation-vector.js"></script>

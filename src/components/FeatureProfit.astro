@@ -1,35 +1,10 @@
 ---
 const {title, description} = Astro.props
 ---
-<div class="print-feature-profit-item">
+<div class="print-features-profit-item">
     <div class="print-feature-profit-item-text">
        <h3>{title}</h3>
        <p>{description}</p> 
     </div>
     <slot />
 </div>
-
-<style lang="scss">
-    @use "../styles/media.scss" as *;
-    .print-feature-profit {
-        & svg {
-            height: var(--height-illustration);
-        }
-    }
-    .print-feature-profit-item {
-		background-color: var(--pxp-menu-bg);
-		padding: .5rem;
-        &:first-child {
-            grid-column: 1/-1;
-            & svg {
-                display: block;
-                margin-left: auto;
-            }
-        }
-	}
-    .print-feature-profit-item-text {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
-</style>

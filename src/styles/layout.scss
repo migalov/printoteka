@@ -10,6 +10,7 @@ html, body {
     font-family: var(--font-body);
     line-height: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
     color: var(--pxp-menu-bg-alternative);
+    background-color: var(--custom-background-page);
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

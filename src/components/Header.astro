@@ -22,7 +22,7 @@ import Empty from "../empty.astro";
                     <li class="category-item">
                         <a href="#">
                             <svg width="24" height="24">
-                                <use xlink:href="#user"></use>
+                                <use xlink:href="/img/sprites.svg#user"></use>
                             </svg>
                             <span>Войти</span>
                         </a>
@@ -30,7 +30,7 @@ import Empty from "../empty.astro";
                     <li class="category-item">
                         <a href="#">
                             <svg width="24" height="24">
-                                <use xlink:href="#cart"></use>
+                                <use xlink:href="/img/sprites.svg#cart"></use>
                             </svg>
                             <span>Корзина</span>
                         </a>
@@ -57,14 +57,14 @@ import Empty from "../empty.astro";
                                     <span class="path2"></span>
                                 </i> -->
                                 <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7">
-                                    <use xlink:href="#icon-vk"></use>
+                                    <use xlink:href="/img/sprites.svg#icon-vk"></use>
                                 </svg>
                             </a>
                         </li>
                         <li class="category-item ">
                             <a target="_blank" href="https://vk.com/printoteka" data-tr="">
                                 <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7">
-                                    <use xlink:href="#icon-tg"></use>
+                                    <use xlink:href="/img/sprites.svg#icon-tg"></use>
                                 </svg>
                             </a>
                         </li>
@@ -197,6 +197,12 @@ import Empty from "../empty.astro";
             display: inline-flex;
             align-items: center;
             gap: .5em;
+            &:hover {
+                & svg {
+                    filter: brightness(0) saturate(100%) invert(46%) sepia(98%) saturate(3022%) hue-rotate(1deg) brightness(105%) contrast(103%);
+                }
+            }
+            
         }
         @include respond(sm) {
             padding: 0;

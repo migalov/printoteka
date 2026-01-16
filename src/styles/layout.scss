@@ -59,9 +59,6 @@ i, a, .category-item > a {
     transition: .2s;
     &:hover {
         color: var(--pxp-action-main);
-        & svg {
-            filter: brightness(0) saturate(100%) invert(46%) sepia(98%) saturate(3022%) hue-rotate(1deg) brightness(105%) contrast(103%);
-        }
     }
 }
 

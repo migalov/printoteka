@@ -156,7 +156,7 @@ const albums = [
 ---
 <Layout>
 	<link href="/css/swiper.min.js" rel="stylesheet" />
-	<div class="content-grid print-layout--light">
+	<div class="content-grid print-layout--light" style="--padding: 0 0 clamp(5rem, 2.9282rem + 8.8398vw, 10rem)">
 
 		<!-- Hero -->
 		<section class="container">
@@ -266,7 +266,7 @@ const albums = [
 		</div>
 	</div>
 		
-	<div class="content-grid print-layout--light">
+	<div class="content-grid print-layout--light" style="--padding: clamp(5rem, 2.9282rem + 8.8398vw, 10rem) 0">
 		<!-- Каталог альбомов -->
 		<section class="print-catalog-albums container">
 			<h2 class="h1">Каталог альбомов</h2>
@@ -368,6 +368,7 @@ const albums = [
 			</div>
 		</section>
 
+		<!-- Максимальная выгода -->
 		<SectionBlock
 			title={`<span style="color: var(--pxp-action-main);">Максимальная</span> выгода`}
 			hasContainer={true}
@@ -402,7 +403,7 @@ const albums = [
 
 	</div>
 
-
+	<!-- Printoteka Plus -->
 	<div>
 		<div class="print-black-block" style="--min-height: clamp(37.1875rem, 33.769rem + 14.5856vw, 45.4375rem);">
             <div class="print-black-block-inner print-bounce-cashback container">
@@ -420,11 +421,12 @@ const albums = [
         <Reviews />
     </div>
 
+	<!-- Не ждите лучшего момента -->
 	<div class="content-grid">
         <div class="print-black-block" style="--min-height: 45rem;">
             <div class="print-black-block-inner print-cooperation container">
                 <h2 class="h1">Не ждите лучшего момента, начните сотрудничество уже&nbsp;сегодня</h2>
-                <p>Получайте больше привилегий <br />с каждым уровнем</p>
+                <p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
                 <a href="#" class="print-button print-button--primary print-button--medium">Смотреть условия</a>
                 <img data-aos="fade-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-black-block__iluustration print-black-block__iluustration--happy" src="/img/happy.svg" alt="" srcset="" />
             </div>

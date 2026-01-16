@@ -2,7 +2,7 @@
 import AccordeonBlock from "../components/AccordeonBlock.astro";
 import Logo from "../components/Logo.astro";
 ---
-    <div style="background-color: #232323">
+    <section class="print-seo-section">
         <AccordeonBlock
             title="Заголовок SEO-текста"
             html='<p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p><p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>'
@@ -10,7 +10,7 @@ import Logo from "../components/Logo.astro";
             id="4"
             haveSeo={true}
         >
-    </div>
+    </section>
 
    <footer class="print-footer">
         <div class="print-footer-inner container">
@@ -30,18 +30,16 @@ import Logo from "../components/Logo.astro";
                 <ul class="list">
                     <li class="category-item">
                         <a target="_blank" href="https://vk.com/printoteka">
-                            <i class="print-icon print-icon-vk">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
+                            <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7">
+                                <use xlink:href="#icon-tg"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="category-item ">
                         <a target="_blank" href="https://vk.com/printoteka">
-                            <i class="print-icon print-icon-tg">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
+                            <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7">
+                                <use xlink:href="#icon-vk"></use>
+                            </svg>
                         </a>
                     </li>
                 </ul>
@@ -69,6 +67,9 @@ import Logo from "../components/Logo.astro";
         }
 
     }
+    .print-seo-section {
+        margin: calc( -1 * var(--height-section-seo)) 0 0;
+    }
 </style>
 <style lang="scss">
     @use "../styles/media.scss" as *;
@@ -77,7 +78,7 @@ import Logo from "../components/Logo.astro";
         z-index: 1;
         background-color: var(--pxp-menu-bg);
         padding: 2rem 0;
-        border-radius: 1.75rem 1.75rem 0 0;
+        border-radius: var(--radius-corner-global) var(--radius-corner-global) 0 0;
 
         & .print-main-menu .list {
             display: flex;
@@ -111,6 +112,7 @@ import Logo from "../components/Logo.astro";
         @include respond(md) {
             display: grid;
             grid-template-areas: "lg mm mm" "dc ph prt" "c . ." "d d d";
+            grid-template-columns: repeat(2, 1fr) auto;
         }
 
     }
@@ -118,7 +120,6 @@ import Logo from "../components/Logo.astro";
         grid-area: mm;
         justify-self: flex-end;
     }
-
     .print-footer-phone {
         grid-area: ph;
         justify-self: flex-end;
@@ -157,3 +158,23 @@ import Logo from "../components/Logo.astro";
         }
     }
 </style>
+<script is:inline>
+    
+    var section = document.querySelector(".print-seo-section");
+    const setHeightSeoSection = () => {
+        // let section = document.querySelector(".print-seo-section");
+        document.documentElement.style.setProperty('--height-section-seo', `${section.clientHeight}px`);
+    }
+    document.addEventListener("DOMContentLoaded", setHeightSeoSection);
+    document.addEventListener("load", setHeightSeoSection);
+    document.addEventListener("resize", setHeightSeoSection);
+    
+    const resizeObserverSeoBlock = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            console.log(entry.contentRect.height);   
+            document.documentElement.style.setProperty('--height-section-seo', `${entry.contentRect.height}px`);         
+        }
+    });
+    resizeObserverSeoBlock.observe(section);
+    
+</script>

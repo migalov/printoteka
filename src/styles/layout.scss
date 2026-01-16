@@ -4,6 +4,8 @@
     --font-body: "Inter", sans-serif, Helvetica, Arial;
     --global-gap: 1rem;
     --radius-corner-global: clamp(1.75rem, 1.3356rem + 1.768vw, 2.75rem);
+
+    --height-section-seo: ;
 }
 
 html, body {
@@ -113,6 +115,7 @@ img, svg {
 .content-grid {
     display: grid;
     gap: clamp(5rem, 3.2394rem + 7.5117vw, 10rem);
+    padding: var(--padding);
 }
 
 .print-layout--dark {
@@ -122,13 +125,13 @@ img, svg {
 .print-layout--circle-corners {
     & > :is(div, section) {
 
-            border-radius: 44px;
+            border-radius: var(--radius-corner-global);
 
         &:first-of-type {
-            border-radius: 0 0 44px 44px;
+            border-radius: 0 0 var(--radius-corner-global) var(--radius-corner-global);
         }
         &:last-of-type {
-            border-radius: 44px 44px 0 0 ;
+            border-radius: var(--radius-corner-global) var(--radius-corner-global) 0 0 ;
         }
 
     }

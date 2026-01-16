@@ -5,7 +5,7 @@ const {title, html, name, id, haveSeo} = Astro.props;
 
 <div class:list={['print-accordeon-block', { "print-seo-block": haveSeo }]} >
     <div class:list={['print-accordeon-head', { "container": haveSeo }]}>
-        <h3>{title}</h3>
+        <h2 class="h3">{title}</h2>
         <CircleRadioButton
             name={name}
             id={id}
@@ -19,9 +19,9 @@ const {title, html, name, id, haveSeo} = Astro.props;
         display: grid;
         grid-template-rows: min-content 0fr;
         gap: 0rem;
-        background-color: rgba(247, 247, 247, 1);
+        background-color: rgba(247, 247, 247, .2);
         padding: 1rem;
-        border-radius: 1rem;
+        border-radius: var(--radius-corner-global);
         transition: .3s;
         height: min-content;
 
@@ -53,13 +53,14 @@ const {title, html, name, id, haveSeo} = Astro.props;
         --padding: 5rem;
         margin-top: auto;
         position: relative;
-        background: rgba(247, 247, 247, 0.35);
         backdrop-filter: blur(14.8px);
         margin-bottom: calc(-.8 * var(--padding));
         padding-bottom: var(--padding);
         color: #FFF;
+        font-size: .75rem;
         & .print-accordeoon-inner {
-            min-height: calc(4ex + 4em);
+            --rows: 3;
+            min-height: calc((1ex * var(--rows)) + (1em * var(--rows)));
             opacity: 1;
         }
     }

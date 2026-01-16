@@ -167,32 +167,29 @@
 			width: 100%;
 		}
 	}
-	.print-better-conditions {
+	.print-black-block {
 		position: relative;
 		overflow: hidden;
 		background-color: var(--pxp-accent-background);
 		color: #FFF;
-		min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem);
+		min-height: var(--min-height);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	.print-better-conditions-inner {
+	.print-black-block-inner {
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		text-align: center;
 		gap: 2rem;
 	}
-	.print-better-conditions__iluustration {
-		
+	.print-black-block__iluustration {
 		&--man {
 			position: absolute;
     		bottom: -20rem;
 			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
 		}
-		&--woman, &--safe {
+		&--woman {
 			position: absolute;
 			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
 			bottom: -17.5rem;
@@ -204,7 +201,60 @@
 				transform: scale(1);
 			}
 		}
+		&--safe {
+			@include respond(sm) {
+				position: absolute;
+				right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
+				bottom: -15.8rem;
+			}
+		}
+		&--happy {
+			@include respond(sm) {
+				position: absolute;
+				right: -8rem;
+				bottom: -20rem;
+			}
+		}
 	}
+
+	.print-freeze-cost {
+		align-items: center;
+	}
+
+	.print-bounce-cashback {
+		align-items: center;
+		text-align: center;
+		
+		& img {
+			width: clamp(14.9375rem, 8.5148rem + 27.4033vw, 30.4375rem);
+		}
+		@include respond(sm) {
+			align-items: start;
+			text-align: left;
+			margin: 0;
+		}
+	}
+	.print-cooperation {
+		align-items: center;
+		text-align: center;
+		& h2 {
+			max-width: 14em;
+		}
+		@include respond(sm) {
+			align-items: start;
+			text-align: left;
+			margin: 0;
+		}
+		& img {
+			width: clamp(18.5rem, 6.7424rem + 50.1657vw, 46.875rem);
+		}
+	}
+
+
+
+
+
+
 	.print-steps {
 		padding-top: 5rem;
 		padding-bottom: 5rem;

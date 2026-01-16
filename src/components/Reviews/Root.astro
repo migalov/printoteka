@@ -1,0 +1,83 @@
+---
+import Item from "./Item.astro";
+---
+
+<section class="reviews-section container">
+    <div class="header-row">
+      <h2>Нам доверяют фотографии</h2>
+      <div class="nav-btns">
+        <button class="prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
+        <button class="next-btn" onclick="scrollSlider(1)">&#10095;</button>
+      </div>
+    </div>
+  
+    <div class="slider-container" id="slider">
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </div>
+  </section>
+
+  <style lang="scss">
+    .reviews-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Контейнер слайдера */
+.slider-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 10px;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+
+
+.nav-btns button:hover { background: #e0e0e0; }
+
+
+/* Кнопки навигации */
+.nav-btns button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+  </style>
+
+  <script is:inline>
+    function scrollSlider(direction) {
+  const slider = document.getElementById('slider');
+  const cardWidth = slider.querySelector('.review-card').offsetWidth + 20; // ширина + gap
+  
+  // direction: -1 (назад), 1 (вперед)
+  slider.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}
+  </script>

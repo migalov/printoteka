@@ -7,12 +7,13 @@ const {title, description} = Astro.props
     <p>{description}</p>
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
     @use "../styles/media.scss" as *;
     .print-feature-album {
         & img {
             height: var(--height-illustration);
         }
+
     }
     .print-feature-album {
 		display: flex;

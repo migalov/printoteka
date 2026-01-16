@@ -1,0 +1,32 @@
+---
+const {direction} = Astro.props;
+---
+
+<div class="print-border-radius">
+    {
+        direction == "top" && <div class={`print-border-radius-top`}></div>
+    }
+    {
+        direction == "bottom" && <div class={`print-border-radius-bottom`}></div>
+    }
+    
+</div>
+
+<style>
+    .print-border-radius {
+        z-index: 1;
+        height: var(--radius-corner-global);
+    }
+    .print-border-radius-bottom, .print-border-radius-top {
+        width: 100%;
+        height: 100%;
+        background-color: var(--custom-background-page);
+        border-radius: 0 0 var(--radius-corner-global) var(--radius-corner-global);
+    }
+    .print-border-radius-bottom {
+        border-radius: 0 0 var(--radius-corner-global) var(--radius-corner-global);
+    }
+    .print-border-radius-top {
+        border-radius: var(--radius-corner-global) var(--radius-corner-global) 0 0;
+    }
+</style>

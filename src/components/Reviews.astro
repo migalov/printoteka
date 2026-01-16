@@ -1,0 +1,161 @@
+<section class="reviews-section">
+    <div class="header-row">
+      <h2>Нам доверяют фотографии</h2>
+      <div class="nav-btns">
+        <button class="prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
+        <button class="next-btn" onclick="scrollSlider(1)">&#10095;</button>
+      </div>
+    </div>
+  
+    <div class="slider-container" id="slider">
+      <div class="review-card">
+        <div class="user-info">
+          <img src="avatar.jpg" alt="Юля" class="avatar">
+          <div class="user-text">
+            <div class="user-name-row">
+              <strong>Юля</strong>
+              <a href="#" class="profile-link">Открыть профиль</a>
+            </div>
+            <p class="user-role">Профессиональный фотограф</p>
+          </div>
+        </div>
+        <p class="review-text">Я фотограф и по долгу своей службы часто делаю фото выпускников...</p>
+        <button class="read-more">Читать весь отзыв</button>
+      </div>
+      <div class="review-card">
+        <div class="user-info">
+          <img src="avatar.jpg" alt="Юля" class="avatar">
+          <div class="user-text">
+            <div class="user-name-row">
+              <strong>Юля</strong>
+              <a href="#" class="profile-link">Открыть профиль</a>
+            </div>
+            <p class="user-role">Профессиональный фотограф</p>
+          </div>
+        </div>
+        <p class="review-text">Я фотограф и по долгу своей службы часто делаю фото выпускников...</p>
+        <button class="read-more">Читать весь отзыв</button>
+      </div>
+      <div class="review-card">
+        <div class="user-info">
+          <img src="avatar.jpg" alt="Юля" class="avatar">
+          <div class="user-text">
+            <div class="user-name-row">
+              <strong>Юля</strong>
+              <a href="#" class="profile-link">Открыть профиль</a>
+            </div>
+            <p class="user-role">Профессиональный фотограф</p>
+          </div>
+        </div>
+        <p class="review-text">Я фотограф и по долгу своей службы часто делаю фото выпускников...</p>
+        <button class="read-more">Читать весь отзыв</button>
+      </div>
+      <div class="review-card">
+        <div class="user-info">
+          <img src="avatar.jpg" alt="Юля" class="avatar">
+          <div class="user-text">
+            <div class="user-name-row">
+              <strong>Юля</strong>
+              <a href="#" class="profile-link">Открыть профиль</a>
+            </div>
+            <p class="user-role">Профессиональный фотограф</p>
+          </div>
+        </div>
+        <p class="review-text">Я фотограф и по долгу своей службы часто делаю фото выпускников...</p>
+        <button class="read-more">Читать весь отзыв</button>
+      </div>
+    </div>
+  </section>
+
+  <style lang="scss">
+    .reviews-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Контейнер слайдера */
+.slider-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 10px;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Карточка */
+.review-card {
+  min-width: 350px; /* Ширина карточки */
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .review-card { min-width: 280px; }
+}
+
+.user-info { display: flex; gap: 15px; margin-bottom: 15px; }
+.avatar { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+.profile-link { font-size: 12px; color: #666; background: #eee; padding: 4px 8px; border-radius: 5px; text-decoration: none; }
+
+.review-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.read-more {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Кнопки навигации */
+.nav-btns button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.nav-btns button:hover { background: #e0e0e0; }
+  </style>
+
+  <script is:inline>
+    function scrollSlider(direction) {
+  const slider = document.getElementById('slider');
+  const cardWidth = slider.querySelector('.review-card').offsetWidth + 20; // ширина + gap
+  
+  // direction: -1 (назад), 1 (вперед)
+  slider.scrollBy({
+    left: direction * cardWidth,
+    behavior: 'smooth'
+  });
+}
+  </script>

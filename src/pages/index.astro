@@ -32,6 +32,8 @@ import "../styles/profit/money.scss";
 
 import CardAlbum from "../components/CardAlbum.astro";
 import FeatureProfit from "../components/FeatureProfit.astro";
+import CircleCorners from "../components/UIElements/CircleCorners.astro";
+import Reviews from "../components/Reviews.astro";
 
 const ourClients = [
 	{
@@ -154,10 +156,10 @@ const albums = [
 ---
 <Layout>
 	<link href="/css/swiper.min.js" rel="stylesheet" />
-	<div class="content-grid">
+	<div class="content-grid print-layout--light">
 
 		<!-- Hero -->
-		<div class="container">
+		<section class="container">
 			<div class="print-hero">
 				<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
 				<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
@@ -171,12 +173,12 @@ const albums = [
 					<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="2000"><span class="print-icon print-icon-rocket"></span><span>Доставка по всей России</span></li>
 				</ul>
 			</div>
-		</div>
+		</section>
 
 		<!-- Статистика -->
-		<div class="container print-statistic">
+		<section class="container print-statistic">
 			<div class="print-statistic-text">
-				<h3>Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
+				<h2 class="h3">Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
 				<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
 			</div>
 			<div class="print-statistic-grid">
@@ -199,7 +201,7 @@ const albums = [
 				/>
 			</div>	
 			<img src="/img/1.jpg" />
-		</div>
+		</section>
 		
 		<!-- Преимущества -->
 		<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
@@ -249,30 +251,34 @@ const albums = [
 				)
 			}
 		</SectionBlock>
+	</div>
 
-		<!-- Заморозка цены + 1000 ₽ бонус -->
+	<!-- Заморозка цены + 1000 ₽ бонус -->
+	<div>
 		<div class="print-better-conditions">
 			<div class="print-better-conditions-inner container">
 				<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
 				<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
 				<a href="#" class="print-button print-button--primary print-button--medium">Забрать бонус</a>
-				<img data-aos="fade-up-right" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/rocket.svg" alt="" srcset="" />
-				<img data-aos="fade-up-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
+				<img data-aos="fade-up-right" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration print-better-conditions__iluustration--man" src="/img/animation-illustration/rocket.svg" alt="" srcset="" />
+				<img data-aos="fade-up-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration  print-better-conditions__iluustration--woman" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
 			</div>
 		</div>
-
+	</div>
+		
+	<div class="content-grid print-layout--light">
 		<!-- Каталог альбомов -->
-		<div class="print-catalog-albums container">
+		<section class="print-catalog-albums container">
 			<h2 class="h1">Каталог альбомов</h2>
 			<div class="print-catalog-albums-grid">
 				{
 					albums.map((album, index) => <CardAlbum {...album} src={`/img/albums/${index + 1}.jpg`} />)
 				}
 			</div>
-		</div>
+		</section>
 
 		<!-- Не нашли интересующий альбом? -->
-		<div class="container">
+		<section class="container">
 			<div class="print-open-full-catalog">
 				<h2>
 					<span style="color: rgba(255,255,255,.6)">Не нашли интересующий альбом?</span><br />
@@ -281,10 +287,10 @@ const albums = [
 				<a href="#" class="print-open-full-catalog__button print-button print-button--primary">Открыть полный каталог</a>
 				<FullCatalogImage class="print-full-catalog-image" />
 			</div>
-		</div>
+		</section>
 
 		<!-- Как мы работаем с заказами клиентов? -->
-		<div class="print-steps container">
+		<section class="print-steps container">
 			<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
 			<ol class="print-steps-inner container">
 				{
@@ -297,10 +303,10 @@ const albums = [
 					)
 				}
 			</ol>
-		</div>
+		</section>
 
 		<!-- Качество печати, которым мы гордимся -->
-		<div class="print-quality container">
+		<section class="print-quality container">
 			<div>
 				<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
 				<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
@@ -336,10 +342,10 @@ const albums = [
 					</ul>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<!-- Быстрое изготовление и удобная доставка -->
-		<div class="print-about-delivery container">
+		<section class="print-about-delivery container">
 			<h2 class="h1"><span style="color: var(--pxp-action-main);">Быстрое</span> изготовление и&nbsp;<span style="color: var(--pxp-action-main);">удобная</span> доставка</h2>
 			<div class="print-about-delivery-companies">
 				<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
@@ -360,55 +366,59 @@ const albums = [
 					)
 				}
 			</div>
-		</div>
+		</section>
 
-			<SectionBlock
-				title={`<span style="color: var(--pxp-action-main);">Максимальная</span> выгода`}
-				hasContainer={true}
-				classList={["print-features-profit"]}
-				classTitle={["h1"]}
+		<SectionBlock
+			title={`<span style="color: var(--pxp-action-main);">Максимальная</span> выгода`}
+			hasContainer={true}
+			classList={["print-features-profit"]}
+			classTitle={["h1"]}
+		>
+			<FeatureProfit
+				title="Индивидуальные  тарифы"
+				description="Персональные предложения, адаптированные к&nbsp;вашему объему и&nbsp;уровню"
 			>
-				<FeatureProfit
-					title="Индивидуальные  тарифы"
-					description="Персональные предложения, адаптированные к&nbsp;вашему объему и&nbsp;уровню"
-				>
-					<Money class:list={["print-illustration"]} style={`width: clamp(10rem, 7.074rem + 12.486vw, 17.063rem)`}  />
-				</FeatureProfit>
-				<FeatureProfit
-					title="Оплата долями"
-					description="Спокойнее распоряжайтесь своими средствами и&nbsp;не&nbsp;замораживайте личные деньги, благодаря банковским партнерам"
-				>
-					<Check class:list={["print-illustration"]} style={`width: clamp(7.563rem, 5.776rem + 7.624vw, 11.875rem)`}  />
-				</FeatureProfit>
-				<FeatureProfit
-					title="Заморозка цены"
-					description="Забронируйте тираж до 1&nbsp;ноября и&nbsp;защитите цены от&nbsp;индексации"
-				>
-					<Clock class:list={["print-illustration"]} style={`width: clamp(6rem, 4.912rem + 4.641vw, 8.625rem)`}  />
-				</FeatureProfit>
-				<FeatureProfit
-					title="Забота о клиентах"
-					description="Личный менеджер, поддержка в Telegram и репринт за&nbsp;наш счет при&nbsp;ошибке"
-				>
-					<Law class:list={["print-illustration"]} style={`width: clamp(7.125rem, 5.752rem + 5.856vw, 10.438rem)`}  />
-				</FeatureProfit>
-			</SectionBlock>
-
-			<!-- Не нашли интересующий альбом? -->
-			<div class="container">
-				<div class="print-open-full-catalog">
-					<h2>
-						<span style="color: rgba(255,255,255,.6)">Не нашли интересующий альбом?</span><br />
-						<span style="color: rgb(255,255,255)">Ознакомьтесь с полным каталогом</span>
-					</h2>
-					<a href="#" class="print-open-full-catalog__button print-button print-button--primary">Открыть полный каталог</a>
-					<FullCatalogImage class="print-full-catalog-image" />
-				</div>
-			</div>
+				<Money class:list={["print-illustration"]} style={`width: clamp(10rem, 7.074rem + 12.486vw, 17.063rem)`}  />
+			</FeatureProfit>
+			<FeatureProfit
+				title="Оплата долями"
+				description="Спокойнее распоряжайтесь своими средствами и&nbsp;не&nbsp;замораживайте личные деньги, благодаря банковским партнерам"
+			>
+				<Check class:list={["print-illustration"]} style={`width: clamp(7.563rem, 5.776rem + 7.624vw, 11.875rem)`}  />
+			</FeatureProfit>
+			<FeatureProfit
+				title="Заморозка цены"
+				description="Забронируйте тираж до 1&nbsp;ноября и&nbsp;защитите цены от&nbsp;индексации"
+			>
+				<Clock class:list={["print-illustration"]} style={`width: clamp(6rem, 4.912rem + 4.641vw, 8.625rem)`}  />
+			</FeatureProfit>
+			<FeatureProfit
+				title="Забота о клиентах"
+				description="Личный менеджер, поддержка в Telegram и репринт за&nbsp;наш счет при&nbsp;ошибке"
+			>
+				<Law class:list={["print-illustration"]} style={`width: clamp(7.125rem, 5.752rem + 5.856vw, 10.438rem)`}  />
+			</FeatureProfit>
+		</SectionBlock>
 
 
 	
 	</div>
+
+	<!-- Заморозка цены + 1000 ₽ бонус -->
+	<div>
+		<div class="print-better-conditions">
+			<div class="print-better-conditions-inner container" style="align-items: start;">
+				<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
+				<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
+				<a href="#" class="print-button print-button--primary print-button--medium">Забрать бонус</a>
+				<!-- <img data-aos="fade-up-right" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration" src="/img/animation-illustration/rocket.svg" alt="" srcset="" /> -->
+				<img data-aos="fade-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-better-conditions__iluustration print-better-conditions__iluustration--safe" src="/img/safe.svg" alt="" srcset="" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Отзывы -->
+	 <Reviews />
 </Layout>
 
 <script src="/src/scripts/animation-vector.js"></script>

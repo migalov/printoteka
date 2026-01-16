@@ -10,15 +10,13 @@ import SVGAnimation from "../components/SVGAnimation.astro";
 import Layout from "../layout.astro";
 import TableIllustrator from "../../public/img/animation-illustration/1.svg";
 import "../styles/illustrator-animation/table.scss";
+import CircleCorners from "../components/UIElements/CircleCorners.astro";
 
 
 ---
 <Layout>
-	<div class="print-border-radius">
-		<div class="print-border-radius-bottom">
-
-		</div>
-	</div>
+	<CircleCorners direction="top" />
+	<CircleCorners direction="bottom" />
 
 
 
@@ -28,22 +26,22 @@ import "../styles/illustrator-animation/table.scss";
 			background-color: var(--pxp-accent-background);
 			height: 28px;
 		}
-		.print-border-radius-bottom-bottom {
+		.print-border-radius-bottom, .print-border-radius-top {
 			width: 100%;
 			height: 100%;
 			background-color: var(--custom-background-page);
 			border-radius: 0 0 28px 28px;
 		}
-		.print-border-radius-bottom-bottom {
-			width: 100%;
-			height: 100%;
-			background-color: var(--custom-background-page);
+		.print-border-radius-bottom {
 			border-radius: 0 0 28px 28px;
+		}
+		.print-border-radius-top {
+			border-radius: 28px 28px 0 0;
 		}
 	</style>
 	<div class="container" style="display: flex; flex-direction: column; gap: 1.5rem">
 		<TableIllustrator class:list={["print-illustration"]} />
-		<!-- <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+		<div style="display: grid; grid-template-columns: repeat(2, 1fr);">
 			<div>
 				<FeatureParameter
 					value="3-5"
@@ -111,7 +109,7 @@ import "../styles/illustrator-animation/table.scss";
 				id="5"
 			/>
 		</AccordeonSection>
-		</div> -->
+		</div>
 	</div>
 	<script src="/src/scripts/animation-vector.js"></script>
 </Layout>

@@ -3,6 +3,7 @@
     --font-title: "Manrope", sans-serif;
     --font-body: "Inter", sans-serif, Helvetica, Arial;
     --global-gap: 1rem;
+    --radius-corner-global: clamp(1.75rem, 1.3356rem + 1.768vw, 2.75rem);
 }
 
 html, body {
@@ -112,4 +113,27 @@ img {
 .content-grid {
     display: grid;
     gap: clamp(5rem, 3.2394rem + 7.5117vw, 10rem);
+}
+
+.print-layout--dark {
+    background-color: var(--pxp-accent-background);
+    
+}
+.print-layout--circle-corners {
+    & > :is(div, section) {
+
+            border-radius: 44px;
+
+        &:first-of-type {
+            border-radius: 0 0 44px 44px;
+        }
+        &:last-of-type {
+            border-radius: 44px 44px 0 0 ;
+        }
+
+    }
+}
+.print-layout--light {
+    background-color: var(--custom-background-page);
+    
 }

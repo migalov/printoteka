@@ -168,14 +168,14 @@
 		}
 	}
 	.print-better-conditions {
+		position: relative;
 		overflow: hidden;
-		background-color: var(--pxp-menu-bg-alternative);
+		background-color: var(--pxp-accent-background);
 		color: #FFF;
 		min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		// padding: 13rem 0 10rem;
 	}
 	.print-better-conditions-inner {
 		position: relative;
@@ -187,17 +187,17 @@
 	}
 	.print-better-conditions__iluustration {
 		
-		&:nth-of-type(1) {
+		&--man {
 			position: absolute;
     		bottom: -20rem;
 			left: clamp(-8.5rem, -9.028rem + 2.25vw, -7rem);
 		}
-		&:nth-of-type(2) {
+		&--woman, &--safe {
 			position: absolute;
 			right: clamp(-7rem, -8.761rem + 7.51vw, -2rem);
 			bottom: -17.5rem;
 		}
-		&:nth-of-type(1), &:nth-of-type(2) {
+		&--man, &--woman {
 			position: absolute;
 			transform: scale(.6);
 			@include respond(sm) {

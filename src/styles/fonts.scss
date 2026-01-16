@@ -67,11 +67,11 @@ $font-families: (
 
 @font-face {
   font-family: 'print-icomoon';
-  src:  url('./fonts/print-icomoon.eot?eczh8q');
-  src:  url('./fonts/print-icomoon.eot?eczh8q#iefix') format('embedded-opentype'),
-    url('./fonts/print-icomoon.ttf?eczh8q') format('truetype'),
-    url('./fonts/print-icomoon.woff?eczh8q') format('woff'),
-    url('./fonts/print-icomoon.svg?eczh8q#print-icomoon') format('svg');
+  src:  url('fonts/print-icomoon.eot?eczh8q');
+  src:  url('fonts/print-icomoon.eot?eczh8q#iefix') format('embedded-opentype'),
+    url('fonts/print-icomoon.ttf?eczh8q') format('truetype'),
+    url('fonts/print-icomoon.woff?eczh8q') format('woff'),
+    url('fonts/print-icomoon.svg?eczh8q#print-icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;

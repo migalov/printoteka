@@ -19,8 +19,22 @@ import Empty from "../empty.astro";
             </div>
             <div class="print-header-mobile-menu-block">
                 <ul class="print-header-user-action list">
-                    <li class="category-item"><a href="#"><i class="print-icon print-icon-person"></i>Войти</a></li>
-                    <li class="category-item"><a href="#"><i class="print-icon print-icon-cart"></i>Корзина</a></li>
+                    <li class="category-item">
+                        <a href="#">
+                            <svg width="24" height="24">
+                                <use xlink:href="#user"></use>
+                            </svg>
+                            <span>Войти</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#">
+                            <svg width="24" height="24">
+                                <use xlink:href="#cart"></use>
+                            </svg>
+                            <span>Корзина</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="navigation navigation-3983 print-main-menu">

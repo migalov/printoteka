@@ -45,10 +45,11 @@
 			@include respond(sm) {
 				flex-direction: inherit;
 			}
-			& .print-icon {
-				font-size: 1.75em;
+			& svg {
+				width: 1.75em;
+				aspect-ratio: 1/1;
 				@include respond(sm) {
-					font-size: 2.25em;
+					width: 2.25em;
 				}
 			}
 		}

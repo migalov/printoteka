@@ -142,5 +142,13 @@ img, svg {
 }
 .print-layout--light {
     background-color: var(--custom-background-page);
-    
+}
+
+.lazy[data-src] {
+    opacity: 0;
+}
+
+[data-src] {
+    transition: ease opacity .5s;
+    opacity: 1;
 }

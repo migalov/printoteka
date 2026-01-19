@@ -49,6 +49,20 @@ import Footer from "./components/Footer.astro";
 				<path d="M22.0838 5.4529C21.9045 5.19263 21.6356 5.01094 21.3218 4.95201C21.2471 4.93728 21.1674 4.92746 21.0877 4.92746H5.93206L5.62825 3.21853C5.5635 2.84531 5.22981 2.57031 4.84133 2.57031H1.65381C1.21553 2.57031 0.856934 2.92388 0.856934 3.35603C0.856934 3.78817 1.21553 4.14174 1.65381 4.14174H4.17394L6.45003 16.8507C6.51477 17.2239 6.84847 17.4989 7.23695 17.4989H19.987C20.4253 17.4989 20.7839 17.1453 20.7839 16.7132C20.7839 16.281 20.4253 15.9275 19.987 15.9275H7.89935L7.62044 14.356H19.6583C20.2261 14.356 20.7191 13.9583 20.8287 13.4083L22.2631 6.33683C22.3229 6.02746 22.2631 5.71317 22.0838 5.4529ZM19.3296 12.7846H7.33656L6.21096 6.49888H20.5996L19.3296 12.7846Z" fill="#343434" fill-opacity="0.9"/>
 			</symbol>
 		</svg>
+		<script>
+			const imgs = document.querySelectorAll('img.lazy');
+			const observer = new IntersectionObserver((entries, obs) => {
+			  entries.forEach(entry => {
+				if (entry.isIntersecting) {
+				  const img = entry.target; 
+				  img.src = img.dataset.src; 
+				  img.classList.remove('lazy');
+				obs.unobserve(img);
+				}
+			  });
+			}); 
+			imgs.forEach(img => observer.observe(img));
+		  </script>
 		<script is:inline src="/default/aos.js"></script>
 		<script is:inline>
 			AOS.init();

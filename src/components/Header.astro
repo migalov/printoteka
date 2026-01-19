@@ -12,20 +12,30 @@ import Empty from "../empty.astro";
                 <Logo />
                 <div class="print-header-buttons">
                     <a href="tel:+74952150013" class="print-button print-button--secondary print-button--small">
-                        <i class="print-icon print-icon-call"></i>
+                        <svg width="24" height="24">
+                            <use xlink:href="/img/sprites.svg#call"></use>
+                        </svg>
                     </a>
                     <BurgerButton />
                 </div>
             </div>
             <div class="print-header-mobile-menu-block">
                 <ul class="print-header-user-action list">
-                    <li class="category-item">
-                        <a href="#">
+                    <li class="print-header-user-action__login category-item">
+                        <label for="authorize-user">
                             <svg width="24" height="24">
                                 <use xlink:href="/img/sprites.svg#user"></use>
                             </svg>
-                            <span>Войти</span>
-                        </a>
+                            <span>Михаил</span>
+                        </label>
+                        <input class="print-header-user-action__checkbox" hidden type="checkbox" id="authorize-user" />
+                        <ul class="print-header-user-action__login-dropdown">
+                            <li><a href="#">Мои заказы</a></li>
+                            <li><a href="#">Мои дизайны</a></li>
+                            <li><a href="#">Скидки и купоны</a></li>
+                            <li><a href="#">Данные компании</a></li>
+                            <li><a href="#">Выйти</a></li>
+                        </ul>
                     </li>
                     <li class="category-item">
                         <a href="#">
@@ -50,12 +60,8 @@ import Empty from "../empty.astro";
                 <div class="navigation navigation-4002 print-header-mobile-contacts">
                     <a class="h3" target="_blank" href="tel:+74952150013">+7 (495) 215-00-13</a>
                     <ul class="list">
-                        <li class="category-item ">
+                        <li class="category-item">
                             <a target="_blank" href="https://vk.com/printoteka">
-                                <!-- <i class="print-icon print-icon-vk print-icon-vk">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i> -->
                                 <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7">
                                     <use xlink:href="/img/sprites.svg#icon-vk"></use>
                                 </svg>
@@ -193,11 +199,15 @@ import Empty from "../empty.astro";
         & i {
             font-size: 1.1em;
         }
-        & a {
+        & :is(a, label) {
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: .5em;
+            font-weight: inherit;
+            transition: ease .2s;
             &:hover {
+                color: var(--pxp-action-main);
                 & svg {
                     filter: brightness(0) saturate(100%) invert(46%) sepia(98%) saturate(3022%) hue-rotate(1deg) brightness(105%) contrast(103%);
                 }
@@ -208,6 +218,34 @@ import Empty from "../empty.astro";
             padding: 0;
             border-bottom: none;
             justify-content: flex-end;
+        }
+    }
+
+    .print-header-user-action__login {
+        position: relative;
+    }
+
+    .print-header-user-action__login-dropdown {
+        position: absolute;
+        top: calc(100% + 1em);
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: .75em;
+        width: max-content;
+        padding: 1.25em;
+        border-radius: 1.25em;
+        background-color: var(--custom-background-page);
+        box-shadow: 0px 0px 6.2px 3px rgba(43, 43, 43, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s;
+    }
+    
+    .print-header-user-action__checkbox {
+        &:checked + .print-header-user-action__login-dropdown {
+            opacity: 1;
+            pointer-events: inherit;
         }
     }
 

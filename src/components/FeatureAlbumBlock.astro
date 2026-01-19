@@ -3,28 +3,8 @@ const {title, description} = Astro.props
 ---
 <div class="print-feature-album">
     <slot />
-    <h3>{title}</h3>
-    <p>{description}</p>
+    <div class="print-feature-album-text">
+        <h3>{title}</h3>
+        <p>{description}</p>
+    </div>
 </div>
-
-<style lang="scss" is:global>
-    @use "../styles/media.scss" as *;
-    .print-feature-album {
-        & img {
-            height: var(--height-illustration);
-        }
-
-    }
-    .print-feature-album {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		background-color: var(--pxp-menu-bg);
-		padding: .5rem;
-        @include respond(sm) {
-            width: calc(33.3333% - 1rem);
-        }
-		
-	}
-</style>

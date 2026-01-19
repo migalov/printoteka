@@ -1,0 +1,215 @@
+---
+const albumCovers = [
+	"/img/albums/1.jpg",
+	"/img/albums/2.jpg",
+	"/img/albums/3.jpg",
+	"/img/albums/4.jpg",
+	"/img/albums/5.jpg",
+	"/img/albums/6.jpg"
+]
+
+---
+<section class="print-album-carousel">
+    <div class="album-carousel" aria-label="Выпускные альбомы">
+        <div class="album-carousel__track">
+			{
+				// три набора для плавного зацикливания в обе стороны
+				[...albumCovers, ...albumCovers, ...albumCovers].map((src, index) => (
+					<div class="album-carousel__item" data-duplicate={index >= albumCovers.length}>
+						<img data-src={src} alt={`Выпускной альбом ${index % albumCovers.length + 1}`} loading="lazy" class="lazy" />
+					</div>
+				))
+			}
+        </div>
+    </div>
+</section>
+<style lang="scss">
+    .print-album-carousel {
+        position: relative;
+    }
+
+    .album-carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        height: clamp(14.125rem, 10.9396rem + 13.5912vw, 21.8125rem);
+        touch-action: pan-y;
+    }
+
+    .album-carousel::after,
+    .album-carousel::before {
+
+    }
+
+
+
+    .album-carousel__track {
+        display: flex;
+        gap: clamp(0.75rem, 0.642rem + 0.455vw, 1.05rem);
+        height: 100%;
+        align-items: center;
+    }
+
+    .album-carousel__item {
+        flex: 0 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .album-carousel__item img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .album-carousel {
+        cursor: grab;
+    }
+
+    .album-carousel.is-dragging {
+        cursor: grabbing;
+    }
+
+    @media (max-width: 720px) {
+        .album-carousel {
+            height: clamp(8.75rem, 7.951rem + 3.407vw, 10.75rem);
+            padding: 0.75rem;
+        }
+
+        .album-carousel__item img {
+            border-radius: 0.65rem;
+        }
+    }
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const carousel = document.querySelector(".album-carousel");
+		const track = carousel?.querySelector(".album-carousel__track");
+
+		if (!carousel || !track) return;
+
+		const baseSpeed = 0.55; // px per frame — базовая автопрокрутка
+		let currentSpeed = baseSpeed;
+		let targetSpeed = baseSpeed;
+		let direction = 1;
+
+		const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+		let totalWidth = track.scrollWidth / 3; // ширина одного полного набора
+		const updateWidth = () => {
+			totalWidth = track.scrollWidth / 3;
+		};
+
+		const setMiddlePosition = () => {
+			carousel.scrollLeft = totalWidth;
+			wrapScroll();
+		};
+
+		window.addEventListener("resize", () => {
+			updateWidth();
+			setMiddlePosition();
+		});
+
+		let isDragging = false;
+		let startX = 0;
+		let lastClientX = 0;
+		let lastScrollLeft = 0;
+		let startScrollLeft = 0;
+		let rafId;
+
+		const wrapScroll = () => {
+			if (carousel.scrollLeft >= totalWidth * 2) {
+				carousel.scrollLeft -= totalWidth;
+			} else if (carousel.scrollLeft < totalWidth) {
+				carousel.scrollLeft += totalWidth;
+			}
+		};
+
+		const loop = () => {
+			if (!isDragging) {
+				// плавнее возвращаемся к базовой скорости в выбранном направлении
+				currentSpeed += (targetSpeed - currentSpeed) * 0.03;
+				carousel.scrollLeft += currentSpeed;
+				wrapScroll();
+			}
+			rafId = requestAnimationFrame(loop);
+		};
+
+		const startDrag = (clientX, pointerId) => {
+			isDragging = true;
+			startX = clientX;
+			lastClientX = clientX;
+			startScrollLeft = carousel.scrollLeft;
+			lastScrollLeft = carousel.scrollLeft;
+			carousel.classList.add("is-dragging");
+			carousel.setPointerCapture(pointerId);
+			cancelAnimationFrame(rafId);
+		};
+
+		const moveDrag = (clientX) => {
+			if (!isDragging) return;
+			const delta = clientX - startX;
+			carousel.scrollLeft = startScrollLeft - delta;
+			wrapScroll();
+
+			const scrollDelta = carousel.scrollLeft - lastScrollLeft;
+			if (scrollDelta !== 0) {
+				currentSpeed = clamp(scrollDelta, -12, 12);
+				direction = Math.sign(scrollDelta) || direction;
+				targetSpeed = baseSpeed * direction;
+			}
+
+			lastClientX = clientX;
+			lastScrollLeft = carousel.scrollLeft;
+		};
+
+		const endDrag = () => {
+			if (!isDragging) return;
+			isDragging = false;
+			carousel.classList.remove("is-dragging");
+			// после ручного скролла продолжаем в ту же сторону с базовой скоростью
+			targetSpeed = baseSpeed * (Math.sign(currentSpeed) || direction);
+			cancelAnimationFrame(rafId);
+			rafId = requestAnimationFrame(loop);
+		};
+
+		carousel.addEventListener("pointerdown", (event) => {
+			event.preventDefault();
+			startDrag(event.clientX, event.pointerId);
+		});
+
+		carousel.addEventListener("pointermove", (event) => moveDrag(event.clientX));
+		carousel.addEventListener("pointerup", endDrag);
+		carousel.addEventListener("pointerleave", endDrag);
+		carousel.addEventListener("pointercancel", endDrag);
+
+		// Поддержка колесика / трекпада: направление задаёт сторону автопрокрутки.
+		carousel.addEventListener(
+			"wheel",
+			(event) => {
+				const dominantDelta =
+					Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+				if (dominantDelta === 0) return;
+				const appliedDelta = clamp(dominantDelta, -40, 40);
+				carousel.scrollLeft += appliedDelta;
+				wrapScroll();
+
+				currentSpeed = clamp(appliedDelta * 0.3, -12, 12);
+				direction = Math.sign(appliedDelta) || direction;
+				targetSpeed = baseSpeed * direction;
+			},
+			{ passive: true }
+		);
+
+		updateWidth();
+		// ставим на средний блок, чтобы можно было крутить бесконечно в обе стороны
+		requestAnimationFrame(() => {
+			setMiddlePosition();
+			rafId = requestAnimationFrame(loop);
+		});
+	});
+</script>

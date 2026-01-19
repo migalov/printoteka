@@ -139,7 +139,6 @@
 		}
 	} 
 	.print-features-albums {
-
 		display: grid;
 		gap: 1rem;
 		
@@ -149,6 +148,24 @@
 			justify-content: center;
 			gap: 1rem;
 		}
+	}
+    .print-feature-album {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		text-align: center;
+		background-color: var(--pxp-menu-bg);
+		padding: .5rem;
+		min-height: clamp(18.9375rem, 16.6844rem + 9.6133vw, 24.375rem);
+		border-radius: clamp(1.25rem, 1.0428rem + 0.884vw, 1.75rem);
+        @include respond(sm) {
+            width: calc(33.3333% - 1rem);
+        }
+        & img {
+            height: var(--height-illustration);
+        }
+		
 	}
 	.print-our-clients {
 		display: grid;
@@ -177,6 +194,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		& .print-button {
+			position: relative;
+			z-index: 1;
+		}
 	}
 	.print-black-block-inner {
 		position: relative;

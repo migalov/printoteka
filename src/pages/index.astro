@@ -30,6 +30,7 @@ import "../styles/illustrator-animation/deal.scss";
 
 import "../styles/profit/money.scss";
 
+import CarouselImagesAuto from "../components/CarouselImagesAuto.astro";
 import CardAlbum from "../components/CardAlbum.astro";
 import FeatureProfit from "../components/FeatureProfit.astro";
 import Reviews from "../components/Reviews/Root.astro";
@@ -113,6 +114,7 @@ const dd = [
 	}
 ]
 
+
 const albums = [
 	{
 		src: "",
@@ -188,7 +190,8 @@ const albums = [
 				</ul>
 			</div>
 		</section>
-
+		<CarouselImagesAuto />
+		
 		<!-- Статистика -->
 		<section class="container print-statistic">
 			<div class="print-statistic-text">
@@ -254,10 +257,10 @@ const albums = [
 		<!-- Наши клиенты -->
 		<SectionBlock title="Кому мы печатаем" hasContainer={true} classList={["print-our-clients"]}>
 			{
-				ourClients.map( client =>
+				ourClients.map( (client, index) =>
 					<>
-						<div class="print-our-client">
-							<img src={client.src} alt="" />
+						<div class="print-our-client" data-aos="fade-down" data-aos-delay={`${500+500*index}`}>
+							<img class="lazy" data-src={client.src} alt="" />
 							<h3>{client.title}</h3>
 							<p set:html={client.description}></p>
 						</div>
@@ -286,7 +289,7 @@ const albums = [
 			<h2 class="h1">Каталог альбомов</h2>
 			<div class="print-catalog-albums-grid">
 				{
-					albums.map((album, index) => <CardAlbum {...album} src={`/img/albums/${index + 1}.jpg`} />)
+					albums.map((album, index) => <CardAlbum {...album} {index} src={`/img/albums/${index + 1}.jpg`} />)
 				}
 			</div>
 		</section>
@@ -308,8 +311,8 @@ const albums = [
 			<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
 			<ol class="print-steps-inner container">
 				{
-					steps.map( step => 
-						<li class="print-card">
+					steps.map( (step, index) => 
+						<li class="print-card" data-aos={`${index % 2 == 0 ? "fade-right" : "fade-left"}`} data-aos-delay={`${500+500*index}`}>
 							<h3>{step.title}</h3>
 							<p set:html={step.description}></p>
 							<img src={step.src} />
@@ -372,8 +375,8 @@ const albums = [
 			</div>
 			<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
 				{
-					delivery.map( step => 
-						<li class="print-card">
+					delivery.map( (step, index) => 
+						<li class="print-card" data-aos={`${index % 2 == 0 ? "fade-right" : "fade-left"}`} data-aos-delay={`${500+500*index}`}>
 							<h3 set:html={step.title}></h3>
 							<p set:html={step.description}></p>
 						</li>

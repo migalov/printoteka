@@ -1,0 +1,50 @@
+---
+import CardDefault from "../components/Cards/CardDefault.astro";
+import Layout from "../layout.astro";
+
+const steps = [
+	{
+		title: "Регистрируетесь на сайте",
+		description: "Пройдите простую регистрацию и получите бонус 1000 ₽",
+	},
+	{
+		title: "Выбираете альбом",
+		description: "Определяете тип и параметры будущего выпускного альбома"
+	},
+	{
+		title: "Указываете способ доставки",
+		description: "Отправляете нам готовый дизайн альбома в один клик — удобно и быстро"
+	}
+]
+---
+
+<Layout>
+    <div class="content-grid">
+        <div class="container">
+            <h1>Контакты</h1>
+            <p>
+                Свяжитесь с нами удобным способом — мы всегда на связи и
+                отвечаем быстро
+            </p>
+            <ol class="print-blocklist-contacts">
+                {
+                    steps.map( (step, index) => 
+                        <CardDefault {...step} {index} />
+                    )
+                }
+            </ol>
+        </div>
+    </div>
+    <iframe
+        src="https://yandex.ru/map-widget/v1/?um=constructor%3A27b072f7bfcee9b018468fec17330f70016869c88d396db6146f5e7833521223&source=constructor"
+        style="width: 100%; height: 50svh"
+        frameborder="0"></iframe>
+</Layout>
+
+<style lang="scss">
+    .print-blocklist-contacts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--global-gap);
+    }
+</style>

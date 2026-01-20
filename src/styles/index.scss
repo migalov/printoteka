@@ -101,6 +101,7 @@
 		display: grid;
 		
 		gap: 2rem;
+		
 		@include respond(sm) {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -279,8 +280,6 @@
 
 
 	.print-steps {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
 		& .print-card {
 			&::after {
 				content: "0" counter(counter-steps);
@@ -365,6 +364,9 @@
 
 			& img {
 				margin-top: auto;
+				// @include respond-reverse(sm) {
+				// 	display: none;
+				// }
 			}
 		}
 	}

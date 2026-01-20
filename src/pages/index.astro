@@ -190,7 +190,7 @@ const albums = [
 				</ul>
 			</div>
 		</section>
-		<CarouselImagesAuto />
+		<!-- <CarouselImagesAuto /> -->
 		
 		<!-- Статистика -->
 		<section class="container print-statistic">
@@ -217,7 +217,7 @@ const albums = [
 					about="Наш рейтинг в Яндекс"
 				/>
 			</div>	
-			<img src="/img/1.jpg" />
+			<img class="lazy" data-src="/img/1.jpg" />
 		</section>
 		
 		<!-- Преимущества -->
@@ -309,10 +309,10 @@ const albums = [
 		<!-- Как мы работаем с заказами клиентов? -->
 		<section class="print-steps container">
 			<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
-			<ol class="print-steps-inner container">
+			<ol class="print-steps-inner">
 				{
 					steps.map( (step, index) => 
-						<li class="print-card" data-aos={`${index % 2 == 0 ? "fade-right" : "fade-left"}`} data-aos-delay={`${500+500*index}`}>
+						<li class="print-card" >
 							<h3>{step.title}</h3>
 							<p set:html={step.description}></p>
 							<img src={step.src} />
@@ -367,16 +367,16 @@ const albums = [
 			<div class="print-about-delivery-companies">
 				<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
 				<div>
-					<img src="/img/delivery/1.svg" alt="CDEK" />
-					<img src="/img/delivery/2.svg" alt="BoxBerry" />
-					<img src="/img/delivery/3.svg" alt="Почта России" />
-					<img src="/img/delivery/4.svg" alt="5post" />
+					<img class="lazy" data-src="/img/delivery/1.svg" alt="CDEK" />
+					<img class="lazy" data-src="/img/delivery/2.svg" alt="BoxBerry" />
+					<img class="lazy" data-src="/img/delivery/3.svg" alt="Почта России" />
+					<img class="lazy" data-src="/img/delivery/4.svg" alt="5post" />
 				</div>
 			</div>
 			<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
 				{
 					delivery.map( (step, index) => 
-						<li class="print-card" data-aos={`${index % 2 == 0 ? "fade-right" : "fade-left"}`} data-aos-delay={`${500+500*index}`}>
+						<li class="print-card" data-aos-delay={`${500+500*index}`}>
 							<h3 set:html={step.title}></h3>
 							<p set:html={step.description}></p>
 						</li>

@@ -2,7 +2,7 @@
 const {src, title, description, price, size1, size2, index} = Astro.props
 ---
 
-<div class="print-album" data-aos="fade-down" data-aos-delay={`${500+500*index}`}>
+<div class="print-album" data-aos="fade-down" data-aos-delay={`${200+200*index}`}>
     <span class="print-album__size">210x300 / 200x200</span>
     <img src={src} alt="" />
     <div class="print-album__short-info">

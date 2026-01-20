@@ -65,7 +65,9 @@ import Footer from "./components/Footer.astro";
 		  </script>
 		<script is:inline src="/default/aos.js"></script>
 		<script is:inline>
-			AOS.init();
+			AOS.init({
+				disable: "mobile"
+			});
 		</script>
 	</body>
 </html>

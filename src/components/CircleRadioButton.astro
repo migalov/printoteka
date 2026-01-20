@@ -3,7 +3,7 @@ const {name, id} = Astro.props;
 ---
 
 <label class="print-circle-button" for={`${name}-${id}`}>
-    <input name="name" type="checkbox" id={`${name}-${id}`}>
+    <input name={`${name}`} type="checkbox" id={`${name}-${id}`}>
     <div class="print-circle-button__line"></div>
     <div class="print-circle-button__line"></div>
     
@@ -17,7 +17,7 @@ const {name, id} = Astro.props;
         display: inline-block;
         border-radius: 50%;
         background-color: rgba(255, 255, 255, 1);
-        width: var(--size-button);
+        min-width: var(--size-button);
         aspect-ratio: 1/1;
         & input {
             appearance: none;

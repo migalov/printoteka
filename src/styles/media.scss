@@ -28,3 +28,11 @@
         }
     }
 }
+
+@mixin respond-reverse($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: 767.99px) {
+            @content;
+        }
+    }
+}

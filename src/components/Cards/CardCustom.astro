@@ -1,0 +1,46 @@
+---
+const {title, description, src} = Astro.props
+---
+<li class="print-card">
+    <slot />
+</li>
+
+<style lang="scss">
+    @use "../styles/media.scss" as *;
+    .print-card {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		position: relative;
+		background: var(--pxp-menu-bg);
+		padding: clamp(1rem, 0.586rem + 1.768vw, 2rem);
+		border-radius: 2rem;
+		counter-increment: counter-steps;
+		width: 100%;
+		&:has( img) {
+			min-height: 15.3125rem;
+		}
+		& img {
+			position: absolute;
+			right: 1rem;
+			bottom: 1rem;
+			@include respond(mobile) {
+				height: 6rem;
+			}
+		}
+		& p {
+			max-width: 22em;
+		}
+
+		& :is(ul, li) {
+			&::marker {
+				content: inherit;
+			}
+			list-style: disc;
+		}
+
+		& ul {
+			padding: 1em 0 0 1em;
+		}
+	}
+</style>

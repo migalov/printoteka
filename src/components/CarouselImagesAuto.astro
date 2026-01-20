@@ -16,7 +16,7 @@ const albumCovers = [
 				// три набора для плавного зацикливания в обе стороны
 				[...albumCovers, ...albumCovers, ...albumCovers].map((src, index) => (
 					<div class="album-carousel__item" data-duplicate={index >= albumCovers.length}>
-						<img data-src={src} alt={`Выпускной альбом ${index % albumCovers.length + 1}`} loading="lazy" class="lazy" />
+						<img src={src} alt={`Выпускной альбом ${index % albumCovers.length + 1}`} />
 					</div>
 				))
 			}
@@ -26,6 +26,8 @@ const albumCovers = [
 <style lang="scss">
     .print-album-carousel {
         position: relative;
+		width: 100dvw;
+		overflow: hidden;
     }
 
     .album-carousel {

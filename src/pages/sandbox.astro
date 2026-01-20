@@ -1,0 +1,62 @@
+---
+import GridAccordeons from "../components/Accordeon/GridAccordeons.astro";
+import ItemAccordeon from "../components/Accordeon/ItemAccordeon.astro";
+import Layout from "../layout.astro";
+
+const defaultHTMLText = `<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolor modi nostrum sint rerum quis eligendi consequatur incidunt ipsam commodi repellendus, accusantium cumque culpa tempora. Totam autem aspernatur tempora rem.</p>`
+const FAQData = [
+    {
+        title: "Какие требования к&nbsp;макету?"
+    },
+    {
+        title: "Рекомендации по&nbsp;предпечатной подготовке"
+    },
+    {
+        title: "Как оформить заказ? "
+    },
+    {
+        title: "Сколько тиражей можно оформить в&nbsp;один заказ?"
+    },
+    {
+        title: "Оплата"
+    },
+    {
+        title: "Упаковка"
+    },
+    {
+        title: "Сроки печати"
+    },
+    {
+        title: "Можно ли&nbsp;печатать семейные, свадебные и&nbsp;другие книги?"
+    },
+    {
+        title: "Брак"
+    },
+    {
+        title: "Какие допуски погрешности цветопередачи в&nbsp;печати?"
+    },
+    {
+        title: "Что делать при&nbsp;обнаружении повреждений заказа доставкой?"
+    },
+    {
+        title: "Как рассчитать обложку?"
+    }
+]
+---
+<Layout>
+    <div class="print-layout--light">
+        <GridAccordeons title="FAQ">
+            {
+                FAQData.map( (item, index) => 
+                    <ItemAccordeon
+                        title={item.title}
+                        id={index}
+                        htmlText={defaultHTMLText}
+                    />
+                )
+            }
+        </AccordeonSection> 
+    </div>
+   
+</Layout>
+

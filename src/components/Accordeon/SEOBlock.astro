@@ -1,0 +1,55 @@
+---
+import CircleRadioButton from "../CircleRadioButton.astro";
+const {title, name, htmlText, id} = Astro.props;
+---
+<section class="print-seo-section">
+    <div class="print-seo-block">
+        <div class="print-seo-head container">
+            <h2 class="h3" set:html={title} />
+            <CircleRadioButton
+                name={name}
+                id={id}
+            />
+        </div>
+        <div class="print-seo-inner container" set:html={htmlText}></div>
+    </div>
+</section>
+<style>
+    .print-seo-section {
+        margin: calc(-1 * var(--height-section-seo)) 0 0;
+
+    }
+    .print-seo-block {
+        --padding: 5rem;
+        position: relative;
+        backdrop-filter: blur(14.8px);
+        margin-bottom: calc(-.8 * var(--padding));
+        padding: 1rem 1rem var(--padding);
+        color: #fff;
+        font-size: .75rem;
+        display: grid;
+        grid-template-rows: min-content 0fr;
+        gap: 0rem;
+        background-color: #f7f7f733;
+        border-radius: var(--radius-corner-global);
+        transition: .3s;
+        height: min-content;
+        &:has( input:checked) {
+            grid-template-rows: min-content 1fr;
+            gap: .625rem;
+        }
+    }
+
+    .print-seo-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .print-seo-inner {
+        overflow: hidden;
+        transition: .3s;
+        transition-delay: .3s;
+        --rows: 3;
+        min-height: calc(1ex * var(--rows) + 1em * var(--rows));
+    }
+</style>

@@ -3,7 +3,9 @@ const {title} = Astro.props;
 ---
 
 <section class="print-accordeon-section">
-    <h2>{title}</h2>
+    {
+        title && <h2 set:html={title} />
+    }
     <div class="print-accordeon-section-grid">
         <slot />
     </div>
@@ -14,7 +16,7 @@ const {title} = Astro.props;
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        & h2 {
+        & > h2 {
             text-align: center;
         }
     }

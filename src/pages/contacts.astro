@@ -1,26 +1,27 @@
 ---
+import CardCustom from "../components/Cards/CardCustom.astro";
 import CardDefault from "../components/Cards/CardDefault.astro";
 import Layout from "../layout.astro";
 
 const steps = [
 	{
 		title: "Регистрируетесь на сайте",
-		description: "Пройдите простую регистрацию и получите бонус 1000 ₽",
+		html: `<p class="h3"><a href="tel:+74952150013">+7(495) 215-00-13</a></p>`,
 	},
 	{
-		title: "Выбираете альбом",
-		description: "Определяете тип и параметры будущего выпускного альбома"
+		title: "E-mail",
+		html: `<p class="h3"><a href="tel:mailto:help@printoteka.ru">help@printoteka.ru</a></p>`
 	},
 	{
-		title: "Указываете способ доставки",
-		description: "Отправляете нам готовый дизайн альбома в один клик — удобно и быстро"
+		title: "Соц.сети и мессенджеры",
+		html: `<ul style="display:flex; gap: .5em"><li class="category-item"><a target="_blank" href="https://vk.com/printoteka"> <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7"> <use xlink:href="#icon-tg"></use> </svg> </a> </li> <li class="category-item "> <a target="_blank" href="https://vk.com/printoteka"> <svg class="icon" width="32" height="32" style="filter: invert(1); opacity: .7"> <use xlink:href="#icon-vk"></use> </svg> </a> </li> </ul>`
 	}
 ]
 ---
 
 <Layout>
     <div class="content-grid">
-        <div class="container">
+        <div class="container print-hero-contacts">
             <h1>Контакты</h1>
             <p>
                 Свяжитесь с нами удобным способом — мы всегда на связи и
@@ -29,7 +30,10 @@ const steps = [
             <ol class="print-blocklist-contacts">
                 {
                     steps.map( (step, index) => 
-                        <CardDefault {...step} {index} />
+                        <CardCustom {index}>
+                            <p>{step.title}</p>
+                            <div set:html={step.html}></div>
+                        </CardCustom>
                     )
                 }
             </ol>
@@ -37,14 +41,25 @@ const steps = [
     </div>
     <iframe
         src="https://yandex.ru/map-widget/v1/?um=constructor%3A27b072f7bfcee9b018468fec17330f70016869c88d396db6146f5e7833521223&source=constructor"
-        style="width: 100%; height: 50svh"
+        style="width: 100vw; height: 50svh"
         frameborder="0"></iframe>
 </Layout>
 
 <style lang="scss">
+     @use "../styles/media.scss" as *;
+
+    .print-hero-contacts {
+        & > p {
+            margin: 1em 0;
+        }
+    }
     .print-blocklist-contacts {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        
         gap: var(--global-gap);
+        margin: 4em 0;
+        @include respond(sm) {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 </style>

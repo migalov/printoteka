@@ -12,7 +12,7 @@ import SEOBlock from "./Accordeon/SEOBlock.astro";
                     <li class="category-item "><a href="#"><i class=""></i>Преимущества</a></li>
                     <li class="category-item "><a href="#"><i class=""></i>Каталог</a></li>
                     <li class="category-item "><a href="#"><i class=""></i>Отзывы</a></li>
-                    <li class="category-item "><a href="#"><i class=""></i>Контакты</a></li>
+                    <li class="category-item "><a href="/contacts"><i class=""></i>Контакты</a></li>
                     <li class="category-item "><a href="#"><i class=""></i>FAQ</a></li>
                 </ul>
             </div>
@@ -154,7 +154,6 @@ import SEOBlock from "./Accordeon/SEOBlock.astro";
     
     var section = document.querySelector(".print-seo-section");
     const setHeightSeoSection = () => {
-        // let section = document.querySelector(".print-seo-section");
         document.documentElement.style.setProperty('--height-section-seo', `${section.clientHeight}px`);
     }
     document.addEventListener("DOMContentLoaded", setHeightSeoSection);
@@ -163,7 +162,6 @@ import SEOBlock from "./Accordeon/SEOBlock.astro";
     
     const resizeObserverSeoBlock = new ResizeObserver(entries => {
         for (let entry of entries) {
-            console.log(entry.contentRect.height);   
             document.documentElement.style.setProperty('--height-section-seo', `${entry.contentRect.height}px`);         
         }
     });

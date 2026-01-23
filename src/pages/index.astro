@@ -471,17 +471,19 @@ const FAQData = [
 		<!-- Отзывы -->
 		<div class="content-grid print-layout--light">
 			<Reviews />
-			<GridAccordeons title="FAQ">
-				{
-					FAQData.map( (item, index) => 
-						<ItemAccordeon
-							title={item.title}
-							id={index}
-							htmlText={defaultHTMLText}
-						/>
-					)
-				}
-			</GridAccordeons> 
+			<div class="container">
+				<GridAccordeons title="FAQ">
+					{
+						FAQData.map( (item, index) => 
+							<ItemAccordeon
+								title={item.title}
+								id={index}
+								htmlText={defaultHTMLText}
+							/>
+						)
+					}
+				</GridAccordeons>
+			</div> 
 		</div>
 
 		<!-- Не ждите лучшего момента -->

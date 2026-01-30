@@ -34,6 +34,9 @@ import GridAccordeons from "../components/Accordeon/GridAccordeons.astro";
 import ItemAccordeon from "../components/Accordeon/ItemAccordeon.astro";
 import CardDefault from "../components/Cards/CardDefault.astro";
 import SEOBlock from "../components/Accordeon/SEOBlock.astro";
+import CardCustom from "../components/Cards/CardCustom.astro";
+import Button from "../components/Button.astro";
+import CatalogSection from "../components/CatalogSection.astro";
 
 const ourClients = [
 	{
@@ -196,7 +199,7 @@ const FAQData = [
 ---
 <Layout>
 	<link href="/css/swiper.min.js" rel="stylesheet" />
-	<div class="print-layout--dark">
+
 
 		<div class="content-grid print-layout--light" style="--padding: 0 0 clamp(5rem, 2.9282rem + 8.8398vw, 10rem)">
 
@@ -206,8 +209,8 @@ const FAQData = [
 					<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
 					<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
 					<div class="print-hero-buttons">
-						<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
-						<a data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" href="#" class="print-button print-button--secondary print-button--medium">Посмотреть каталог</a>
+						<Button type="primary" size="small" aos="fade-up" delay="500" duration="500">Запартнериться</Button>
+						<Button type="secondary" size="small" aos="fade-up" delay="500" duration="500">Посмотреть каталог</Button>
 					</div>
 					<ul class="print-hero-features">
 						<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1000">
@@ -231,7 +234,7 @@ const FAQData = [
 					</ul>
 				</div>
 			</section>
-			<CarouselImagesAuto />
+			<!-- <CarouselImagesAuto /> -->
 			
 			<!-- Статистика -->
 			<section class="container print-statistic">
@@ -326,14 +329,7 @@ const FAQData = [
 			
 		<div class="content-grid print-layout--light" style="--padding: clamp(5rem, 2.9282rem + 8.8398vw, 10rem) 0">
 			<!-- Каталог альбомов -->
-			<section class="print-catalog-albums container">
-				<h2 class="h1">Каталог альбомов</h2>
-				<div class="print-catalog-albums-grid">
-					{
-						albums.map((album, index) => <CardAlbum {...album} {index} src={`/img/albums/${index + 1}.jpg`} />)
-					}
-				</div>
-			</section>
+			<CatalogSection />
 
 			<!-- Не нашли интересующий альбом? -->
 			<section class="container">
@@ -369,15 +365,15 @@ const FAQData = [
 					
 				</div>
 				<div class="print-quality-list-cards flex flex-column gap-4">
-					<div class="print-card">
+					<CardCustom>
 						<h3>Печать обложек на HP Indigo 12000</h3>
 						<ul>
 							<li>Глубокий цвет и фактура, как в премиум-изданиях</li>
 							<li>Точная передача авторских оттенков и тонов</li>
 							<li>Подходит под любую верстку - от минимализма до коллажей</li>
 						</ul>
-					</div>
-					<div class="print-card">
+					</CardCustom>
+					<CardCustom>
 						<h3>Konica AccurioPress C14000 с AI-корректировкой</h3>
 						<ul>
 							<li>400×3600 dpi: четкая детализация лиц и волос даже как в оригинале</li>
@@ -386,15 +382,15 @@ const FAQData = [
 							<li>AI-калибровка цвета: сглаживание цвета кожи и фона и эффект фотохимии</li>
 							<li>Стабильность цвета на всем тираже, включая репринты</li>
 						</ul>
-					</div>
-					<div class="print-card">
+					</CardCustom>
+					<CardCustom>
 						<h3>Дизайнерская бумага премиум-класса</h3>
 						<ul>
 							<li>Матовая и глянцевая, от 170 до 400 г/м²</li>
 							<li>Четкие детали, плотный черный, живой цвет</li>
 							<li>Приятно держать в руках - и родителям, и фотографам</li>
 						</ul>
-					</div>
+					</CardCustom>
 				</div>
 			</section>
 
@@ -413,10 +409,10 @@ const FAQData = [
 				<div class="print-about-delivery-grid" style="grid-area: 2/1/3/-1">
 					{
 						delivery.map( (step, index) => 
-							<li class="print-card" data-aos-delay={`${500+500*index}`}>
-								<h3 set:html={step.title}></h3>
-								<p set:html={step.description}></p>
-							</li>
+						<CardCustom data-aos-delay={`${500+500*index}`}>
+							<h3 set:html={step.title}></h3>
+							<p set:html={step.description}></p>
+						</CardCustom>
 						)
 					}
 				</div>
@@ -488,11 +484,15 @@ const FAQData = [
 
 		<!-- Не ждите лучшего момента -->
 		<div class="content-grid">
-			<div class="print-black-block" style="--min-height: 45rem;">
+			<div class="print-black-block" style="--min-height: 45rem; padding-bottom: var(--height-section-seo)">
 				<div class="print-black-block-inner print-cooperation container">
 					<h2 class="h1">Не ждите лучшего момента, начните сотрудничество уже&nbsp;сегодня</h2>
 					<p>Оставьте заявку — мы закрепим <br />за вами лучшие условия</p>
-					<a href="#" class="print-button print-button--primary print-button--medium">Смотреть условия</a>
+					<div class="print-hero-buttons">
+						<a href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
+						<a href="#" class="print-button print-button--secondary print-button--medium">Рассчитать стоимость</a>
+					</div>
+					
 					<img data-aos="fade-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-black-block__iluustration print-black-block__iluustration--happy" src="/img/happy.svg" alt="" srcset="" />
 				</div>
 			</div>
@@ -502,10 +502,10 @@ const FAQData = [
 			name="seo"
 			id="seo"
 			title={"Заголовок SEO текста"}
-			htmlText={`<p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p><p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>`}
+			htmlText={`<p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p><p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p><p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p><p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>`}
 		/>
 
-    </div>
+
 </Layout>
 
 

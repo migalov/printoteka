@@ -1,6 +1,4 @@
 ---
-import AccordeonBlock from "../components/AccordeonBlock.astro";
-import AccordeonSection from "../components/AccordeonSection.astro";
 import CircleRadioButton from "../components/CircleRadioButton.astro";
 import FeatureParameter from "../components/FeatureParameter.astro";
 import Input from "../components/Input.astro";
@@ -10,6 +8,7 @@ import SVGAnimation from "../components/SVGAnimation.astro";
 import Layout from "../layout.astro";
 import TableIllustrator from "../../public/img/animation-illustration/1.svg";
 import "../styles/illustrator-animation/table.scss";
+import Button from "../components/Button.astro";
 
 
 ---
@@ -56,10 +55,10 @@ import "../styles/illustrator-animation/table.scss";
 		</div>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque ad assumenda quia deserunt saepe accusantium dolore quo ipsa labore mollitia, a aperiam nemo molestiae illum at minima dolorum! Dolores!</p>
 		<div style="display: flex; align-items: center; gap: 1rem">
-			<a href="#" class="print-button print-button--primary print-button--small">Запартнериться</a>
-			<a href="#" class="print-button print-button--primary print-button--medium">Запартнериться</a>
-			<a href="#" class="print-button print-button--secondary print-button--small">Запартнериться</a>
-			<a href="#" class="print-button print-button--secondary print-button--medium">Запартнериться</a>
+			<Button type="primary" size="small">Запартнериться</Button>
+			<Button type="primary" size="medium">Запартнериться</Button>
+			<Button type="secondary" size="small">Запартнериться</Button>
+			<Button type="secondary" size="medium">Запартнериться</Button>
 		</div>
 		<div style="display: flex; flex-direction: column; gap: 1rem">
 			<Input
@@ -74,38 +73,6 @@ import "../styles/illustrator-animation/table.scss";
 				<RadioItem name="almubs" id="2" value="50-200" />
 			</RadioBlock>
 		</div>
-		<AccordeonSection title="FAQ">
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="1"
-			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="2"
-			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="3"
-			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="4"
-			/>
-			<AccordeonBlock
-				title="О продукте"
-				html="<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>"
-				name="fr"
-				id="5"
-			/>
-		</AccordeonSection>
 		</div>
 	</div>
 	<script src="/src/scripts/animation-vector.js"></script>

@@ -4,7 +4,7 @@
     flex-direction: column;
     gap: .75rem;
 
-    & input:is([type="text"], [type="tel"]) {
+    & input:is([type="text"], [type="tel"], [type="email"]) {
         appearance: none;
         outline: none;
         border: none;
@@ -32,6 +32,7 @@
 
 .print-input__name {
     font-family: var(--font-body);
+    font-weight: 400;
 }
 
 .print-input-buttons {
@@ -39,6 +40,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
+
 }
 
 
@@ -50,6 +52,7 @@
     padding: 1.3em 1em;
     border-radius: 1em;
     font-family: "Inter", sans-serif, Helvetica, Arial;
+    font-weight: 400;
     & input[type="radio"] {
         appearance: none;
         width: 0;

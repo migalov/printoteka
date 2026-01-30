@@ -259,10 +259,12 @@
 		}
 	}
 	.print-cooperation {
-		align-items: center;
+		// align-items: center;
 		text-align: center;
 		& h2 {
-			max-width: 14em;
+			@include respond(sm) {
+				max-width: 14em;
+			}
 		}
 		@include respond(sm) {
 			align-items: start;
@@ -329,11 +331,15 @@
 
 			& img {
 				margin-top: auto;
-				// @include respond-reverse(sm) {
-				// 	display: none;
-				// }
+				@include respond-reverse(sm) {
+					display: none;
+				}
 			}
 		}
+		// & img {
+		// 	display: block;
+		// 	margin-top: clamp(2rem, -1.1854rem + 13.5912vw, 9.6875rem);
+		// }
 	}
 	.print-quality-list-cards {
 		display: flex;
@@ -358,8 +364,7 @@
 		}
 	}
 	.print-about-delivery-companies {
-		max-width: 28rem;
-    	margin-left: auto;
+
 		& > p {
 			margin-bottom: 1.75em;
 		}
@@ -374,6 +379,10 @@
 			& img {
 				flex: 1;
 			}
+		}
+		@include respond(sm) {
+			max-width: 28rem;
+			margin-left: auto;
 		}
 	}
 

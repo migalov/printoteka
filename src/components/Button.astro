@@ -1,0 +1,17 @@
+---
+const {type, size, href = "#", aos, delay, duration} = Astro.props
+---
+<a
+    href={href}
+    data-aos={aos}
+    data-aos-delay={delay}
+    data-aos-duration={duration}
+    class:list={[
+        `print-button`,
+        `${type == "primary" ? `print-button--primary` : ""}`,
+        `${type == "secondary" ? `print-button--secondary` : ""}`,
+        `${size == "small" ? `print-button--small` : ""}`,
+        `${size == "medium" ? `print-button--medium` : ""}`
+    ]}>
+    <slot />
+</a>

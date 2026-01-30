@@ -1,29 +1,32 @@
+---
+const {name, account, position, htmlText} = Astro.props;
+---
+
 <div class="review-card">
     <div class="user-info">
-      <img src="./img/avatar.jpg" alt="Юля" class="avatar">
+      <img src="./img/avatar.jpg" alt={name} class="avatar">
       <div class="user-text">
         <div class="user-name-row">
-          <strong>Юля</strong>
-          <a href="#" class="profile-link">Открыть профиль</a>
+          <strong>{name}</strong>
+          <!-- <a href="#" class="profile-link">Открыть профиль</a> -->
         </div>
-        <p class="user-role">Профессиональный фотограф</p>
+        <p class="user-role">{position}</p>
       </div>
     </div>
-    <p class="review-text">Я фотограф и до долгу своей службы часто делаю фото выпускников и лишь одна из своих услуг – печать, но она всё же есть в списке. С недавних пор работаю с Printoteka, и хочу сказать, что это огромная находка. Теперь мне не нужно искать подрядчиков для печати, контролировать процесс и тратить на это время, когда...</p>
+    <div class="review-text" set:html={htmlText}></div>
     <button class="read-more">Читать весь отзыв</button>
   </div>
 
   <style lang="scss">
     /* Карточка */
-.review-card {
-  min-width: 350px; /* Ширина карточки */
-  background: #f8f8f8;
-  border-radius: 20px;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .review-card {
+      min-width: 350px; /* Ширина карточки */
+      background: #f8f8f8;
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+    }
 
 @media (max-width: 480px) {
   .review-card { min-width: 280px; }
@@ -38,6 +41,8 @@
   line-height: 1.5;
   color: #333;
   margin-bottom: 20px;
+  max-height: calc(3ex + 3em);
+  overflow-y: hidden;
 }
 
 .read-more {
@@ -48,6 +53,7 @@
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: auto;
 }
 
 

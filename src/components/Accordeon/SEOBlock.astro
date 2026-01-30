@@ -15,10 +15,9 @@ const {title, name, htmlText, id} = Astro.props;
     </div>
 </section>
 <style>
-    .print-seo-section {
+    /* .print-seo-section {
         margin: calc(-1 * var(--height-section-seo)) 0 0;
-
-    }
+    } */
     .print-seo-block {
         --padding: 5rem;
         position: relative;
@@ -49,7 +48,7 @@ const {title, name, htmlText, id} = Astro.props;
         overflow: hidden;
         transition: .3s;
         transition-delay: .3s;
-        --rows: 3;
+        --rows: 1;
         min-height: calc(1ex * var(--rows) + 1em * var(--rows));
     }
 </style>

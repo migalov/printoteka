@@ -1,0 +1,73 @@
+---
+import CardAlbum from "../components/CardAlbum.astro";
+const albums = [
+	{
+		src: "",
+		title: "Layflat",
+		description: "Похож на классическую фотокнигу, отпечатанную по мокрому фотопроцессу: твердая фотообложка, глянцевая ламинированная поверхность, плотные листы",
+		price: 540
+	},
+	{
+		src: "",
+		title: "PUR",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 360
+	},
+	{
+		src: "",
+		title: "Планшет",
+		description: "Надёжная печать с доставкой по всей России. Гарантия качества и соблюдения сроков",
+		price: 360
+	},
+	{
+		src: "",
+		title: "Трюмо",
+		description: "Простой и практичный вариант выпускного фотоальбома, представляет собой папку, оформленную со всех сторон и раскладывающуюся на три равные части.",
+		price: 490
+	},
+	{
+		src: "",
+		title: "Журнал",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 560
+	},
+	{
+		src: "",
+		title: "КШС",
+		description: "Печать крупных тиражей под ключ. Договор, индивидуальные условия и nologo упаковка",
+		price: 1860
+	}
+]
+---
+<section class="print-catalog-albums container">
+    <h2 class="h1">Каталог альбомов</h2>
+    <div class="print-catalog-albums-grid">
+        {
+            albums.map((album, index) => <CardAlbum {...album} {index} src={`/img/albums/${index + 1}.jpg`} />)
+        }
+    </div>
+</section>
+<style lang="scss">
+	@use "../styles/media.scss" as *;
+    .print-catalog-albums {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		& h2 {
+			text-align: center;
+		}
+	}
+	.print-catalog-albums-grid {
+		display: grid;
+		
+		gap: 2rem;
+		
+		@include respond(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@include respond(md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

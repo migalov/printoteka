@@ -1,8 +1,0 @@
----
-const {type = "text", label, placeholder, name, id, pattern, required = false} = Astro.props;
----
-
-<div class="print-input">
-    <label class="print-input__name" for={id}>{label}&nbsp;{required && "*"}</label>
-    <input type={type} id={id} placeholder={placeholder} pattern={pattern} name={name} required={required} />
-</div>

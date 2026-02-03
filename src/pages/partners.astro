@@ -1,5 +1,6 @@
 ---
-import Input from "../components/Input.astro";
+import Input from "../components/Form/Input.astro";
+import Textarea from "../components/Form/Textarea.astro";
 import RadioBlock from "../components/RadioBlock.astro";
 import RadioItem from "../components/RadioItem.astro";
 import Layout from "../layout.astro";
@@ -7,29 +8,35 @@ import Layout from "../layout.astro";
 
 <Layout>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
-        <div><script is:inline data-b24-form="inline/100/04jhsf" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b13109976/crm/form/loader_100.js');</script></div>
+        <div class="bitrix-form">
+            <link rel="stylesheet" href="https://fineart-print.bitrix24.ru/bitrix/js/crm/site/form/dist/app.bundle.min.css?20483">
+            <script defer is:inline data-b24-form="inline/100/04jhsf" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b13109976/crm/form/loader_100.js');</script>
+        </div>
         <div>
-            <form action="" style="display: flex; flex-direction: column; gap: 2rem">
+            <form x-data="{ phone: '' }" class="print-form" action="" style="display: flex; flex-direction: column; gap: 2rem">
                 <Input
-                    name="first-name"
+                    name="first_name"
                     placeholder={`Имя`}
                     label={"Имя"}
-                    id="first-name"
+                    id="first_name"
                     required={true}
                 />
                 <Input
-                    name="last-name"
+                    name="last_name"
                     placeholder={`Фамилия`}
                     label={"Фамилия"}
-                    id="last-name"
+                    id="last_name"
                     required={true}
                 />
                 <Input
                     name="phone"
-                    placeholder={`+7`}
+                    placeholder={`+7 () ___ --`}
                     label={"Телефон "}
                     id="phone"
+                    type="tel"
                     required={false}
+                    model="phone"
+                    mask="+7 (999) 999-99-99"
                 />
                 <Input
                     name="email"
@@ -44,20 +51,104 @@ import Layout from "../layout.astro";
                     <RadioItem name="contact" id="2" value="E-mail" />
                     <RadioItem name="contact" id="3" value="Звонок" />
                 </RadioBlock>
-                <Input
-                    name="telegram"
-                    placeholder={`@`}
-                    label={"Юзернейм в Телеграм"}
-                    id="telegram"
-                    required={false}
-                />
+                <div x-data="{ 
+                    prefix: 'https://t.me/',
+                    value: '',
+                    update(e) {
+                        let input = e.target.value;
+                        console.log(input.startsWith('https://t.me/'));
+                        input.startsWith('https://t.me/') ? this.value = this.value : e.target.value = this.prefix
+                    } 
+                }" x-init="value = prefix">
+                    
+                    <Input
+                        name="telegram"
+                        placeholder={``}
+                        label={"Ссылка на Telegram"}
+                        id="telegram"
+                        required={false}
+                        prefix={`https://t.me/`}
+                        keydownDelete={"if ($el.selectionStart <= prefix.length && $el.selectionEnd <= prefix.length) $event.preventDefault()"}
+                        value="value" 
+                        input="update"
+                    
+                    />
+                </div>
+                
                 <RadioBlock label="Планируемый объем альбомов в сезон">
                     <RadioItem name="albums" id="1" checked={true} value="До 50" />
                     <RadioItem name="albums" id="2" value="50-200" />
                     <RadioItem name="albums" id="3" value="200+" />
                 </RadioBlock>
+                <Textarea placeholder="Дополнительно (необязательно)" rows="6"/>
+                <button type="submit" class="print-button print-button--primary print-button--medium">Отправить</button>
             </form>
         </div>
+        <script defer is:inline>
+            // Select the node that will be observed for mutations
+            const targetNode1 = document.querySelector(".bitrix-form");
+
+            // Options for the observer (which mutations to observe)
+            const config1 = { attributes: true, childList: true, subtree: true };
+
+            // Callback function to execute when mutations are observed
+            const callback = (mutationList, observer) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                console.log("A child node has been added or removed.");
+                if (document.querySelectorAll(".b24-form-field").length > 0) {
+                    transtitionDataForm();
+                }
+                
+                } else if (mutation.type === "attributes") {
+                console.log(`The ${mutation.attributeName} attribute was modified.`);
+                }
+            }
+            };
+
+            // Create an observer instance linked to the callback function
+            const observer1 = new MutationObserver(callback);
+
+            // Start observing the target node for configured mutations
+            observer1.observe(targetNode1, config1);
+
+            const transtitionDataForm = () => {
+
+                const transitionInputText = (name_bitrix, name_custom = name_bitrix) => {
+                    document.querySelector(`.print-form [name="${name_custom}"]`).addEventListener("input", (e) => {
+                        document.querySelector(`.bitrix-form [name="${name_bitrix}"]`).value = e.target.value;
+                    })
+                }
+
+                transitionInputText("name", "first_name");
+                transitionInputText("lastname", "last_name");
+                transitionInputText("phone");
+                transitionInputText("email");
+
+            }
+        </script>
+        <script defer is:inline>
+            document.querySelectorAll(`[name=albums]`).forEach(el => {
+                el.addEventListener("click", (_el) => {
+                    // console.log(_el.target);
+                    
+                    document.querySelectorAll("input:has(+ .b24-form-control-label)").forEach(__el => {
+                        
+                        if(__el.nextElementSibling?.textContent.includes("Планируемый объем в сезон")) {
+
+                            console.log(_el.target.value);
+                            console.log(_el.target.value);
+                            _el?.target?.value = __el?.target?.value;
+                            
+                            
+                            
+                        }
+                    })
+                })
+            })
+        </script>
     </div>
+    <script is:inline defer src="/js/alpine/mask.min.js"></script>
+    <script is:inline defer src="/js/alpine/core.min.js"></script>
     
 </Layout>

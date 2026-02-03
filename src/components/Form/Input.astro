@@ -1,0 +1,21 @@
+---
+const {type = "text", label, placeholder, name, id, pattern, required = false, model, mask, keydownDelete, input, update, value, prefix} = Astro.props;
+---
+
+<div class="print-input">
+    <label class="print-input__name" for={id}>{label}&nbsp;{required && "*"}</label>
+    <input
+        x-mask={mask}
+        x-model={model}
+        type={type}
+        id={id}
+        placeholder={placeholder}
+        name={name}
+        required={required}
+        prefix={prefix}
+        @keydown.delete={keydownDelete}
+        @input={input}
+        @update={update}
+        :value={value}
+        />
+</div>

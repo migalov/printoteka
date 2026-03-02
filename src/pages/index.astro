@@ -37,7 +37,7 @@ import SEOBlock from "../components/Accordeon/SEOBlock.astro";
 import CardCustom from "../components/Cards/CardCustom.astro";
 import Button from "../components/Button.astro";
 import CatalogSection from "../components/CatalogSection.astro";
-
+import FAQData from "../../public/data/faq.json"
 const ourClients = [
 	{
 		title: "Фотографам и студиям",
@@ -69,7 +69,7 @@ const steps = [
 	},
 	{
 		title: "Указываете способ доставки",
-		description: "Отправляете нам готовый дизайн альбома в один клик — удобно и быстро",
+		description: `Отправляете нам готовый дизайн альбома в один клик —<br />удобно&nbsp;и&nbsp;быстро`,
 		src: "/img/animation-illustration/delivery-car.svg"
 	},
 	{
@@ -157,44 +157,6 @@ const albums = [
 	}
 ]
 
-const FAQData = [
-    {
-        title: "Какие требования к&nbsp;макету?"
-    },
-    {
-        title: "Рекомендации по&nbsp;предпечатной подготовке"
-    },
-    {
-        title: "Как оформить заказ? "
-    },
-    {
-        title: "Сколько тиражей можно оформить в&nbsp;один заказ?"
-    },
-    {
-        title: "Оплата"
-    },
-    {
-        title: "Упаковка"
-    },
-    {
-        title: "Сроки печати"
-    },
-    {
-        title: "Можно ли&nbsp;печатать семейные, свадебные и&nbsp;другие книги?"
-    },
-    {
-        title: "Брак"
-    },
-    {
-        title: "Какие допуски погрешности цветопередачи в&nbsp;печати?"
-    },
-    {
-        title: "Что делать при&nbsp;обнаружении повреждений заказа доставкой?"
-    },
-    {
-        title: "Как рассчитать обложку?"
-    }
-]
 
 ---
 <Layout>
@@ -474,7 +436,7 @@ const FAQData = [
 							<ItemAccordeon
 								title={item.title}
 								id={index}
-								htmlText={defaultHTMLText}
+								htmlText={item.answer}
 							/>
 						)
 					}

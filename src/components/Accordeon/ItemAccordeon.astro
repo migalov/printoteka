@@ -54,6 +54,25 @@ const {title, htmlText, name, id} = Astro.props;
         opacity: 0;
         transition: .3s;
         transition-delay: .3s;
+        & :is(ul, ol) {
+            list-style-position: outside;
+            padding-left: 1.5rem;   /* отступ под маркеры/цифры */
+            margin: 0 0 0 0;        /* можно подстроить под дизайн */
+        }
+
+        & ul {
+            list-style-type: disc;   /* маркеры для ul */
+        }
+
+        & ol {
+            list-style-type: decimal; /* цифры для ol */
+        }
+
+        & li {
+            margin: 0 0 0.25rem 0;   /* вертикальные отступы между пунктами */
+        }
+
+        & li::marker{content: normal}
     }
 
 </style>

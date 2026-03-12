@@ -1,25 +1,28 @@
 ---
-const {name, account, position, htmlText} = Astro.props;
+const {name, account, position, htmlText, id} = Astro.props;
 ---
 
-<div class="review-card">
-    <div class="user-info">
+<div class="print-review-card">
+    <div class="print-review-user-info">
       <img src="./img/avatar.jpg" alt={name} class="avatar">
       <div class="user-text">
         <div class="user-name-row">
           <strong>{name}</strong>
           <!-- <a href="#" class="profile-link">Открыть профиль</a> -->
         </div>
-        <p class="user-role">{position}</p>
+        <p class="print-review-user-role">{position}</p>
       </div>
     </div>
+    <input id={`${id}`} type="checkbox" class="read-more-toggle">
     <div class="review-text" set:html={htmlText}></div>
-    <button class="read-more">Читать весь отзыв</button>
+    <label for={`${id}`} class="read-more">
+      <span>Читать весь отзыв</span>
+    </label>
   </div>
 
-  <style lang="scss">
+  <style lang="scss" is:global>
     /* Карточка */
-    .review-card {
+    .print-review-card {
       min-width: 350px; /* Ширина карточки */
       background: #f8f8f8;
       border-radius: 20px;
@@ -28,11 +31,16 @@ const {name, account, position, htmlText} = Astro.props;
       flex-direction: column;
     }
 
-@media (max-width: 480px) {
-  .review-card { min-width: 280px; }
-}
+    @media (max-width: 480px) {
+      .print-review-card {
+        min-width: 280px;
+      }
+    }
 
-.user-info { display: flex; gap: 15px; margin-bottom: 15px; }
+.print-review-user-info { display: flex; gap: 15px; margin-bottom: 15px; }
+.print-review-user-role {
+    min-height: calc(3ex + 3em);
+}
 .avatar { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
 .profile-link { font-size: 12px; color: #666; background: #eee; padding: 4px 8px; border-radius: 5px; text-decoration: none; }
 
@@ -43,6 +51,17 @@ const {name, account, position, htmlText} = Astro.props;
   margin-bottom: 20px;
   max-height: calc(3ex + 3em);
   overflow-y: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.read-more-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.read-more-toggle:checked + .review-text {
+  max-height: 1000px;
 }
 
 .read-more {
@@ -54,6 +73,7 @@ const {name, account, position, htmlText} = Astro.props;
   cursor: pointer;
   font-weight: bold;
   margin-top: auto;
+  text-align: center;
 }
 
 

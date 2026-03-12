@@ -24,12 +24,14 @@ import Footer from "./components/Footer.astro";
 		<link href="/default/aos.css" rel="stylesheet" />
 		<title>Astro</title>
 	</head>
-	<body>
-		<Header />
-		<div class="print-layout--circle-corners">
-			<slot />
-		</div>
-		<Footer />
+	<body class="home">
+		<form method="post" action="./" id="aspnetForm">
+			<Header />
+			<div class="print-layout--circle-corners">
+				<slot />
+			</div>
+			<Footer />
+		</form>
 		<svg width="0" height="0" class="hidden">
 			<symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-vk">
 			  <rect width="24" height="24" rx="12" fill="white"></rect>

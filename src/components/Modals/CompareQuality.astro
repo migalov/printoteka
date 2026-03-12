@@ -1,0 +1,161 @@
+<div class="print-quality-modal" data-print-quality-modal aria-hidden="true">
+    <div class="print-quality-modal__inner" role="dialog" aria-modal="true" aria-labelledby="print-quality-modal-title">
+        <button type="button" class="print-quality-modal__close" data-close-print-quality-modal aria-label="Закрыть окно">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <h3 id="print-quality-modal-title" class="print-quality-modal__title">Сравнение качества печати</h3>
+        <div class="print-quality-modal__image-wrapper">
+            <div class="print-quality-modal-variant">
+                <h3>Оригинал</h3>
+                <img
+                    src="/img/albums/4.jpg"
+                    alt=""
+                    class="print-quality-modal__image"
+                    loading="lazy"
+                />
+            </div>
+            <div class="print-quality-modal-variant">
+                <h3>Xerox iridesse</h3>
+                <img
+                    src="/img/albums/5.jpg"
+                    alt=""
+                    class="print-quality-modal__image"
+                    loading="lazy"
+                />
+            </div>
+            <div class="print-quality-modal-variant">
+                <h3>Konica 14000</h3>
+                <img
+                    src="/img/albums/6.jpg"
+                    alt=""
+                    class="print-quality-modal__image"
+                    loading="lazy"
+                />
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    @use "../../styles/media.scss" as *;
+	.print-quality-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(4px);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.2s ease-out;
+        text-align: center;
+
+		&.is-open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+
+	.print-quality-modal__inner {
+		position: relative;
+		max-width: 56rem;
+		width: 100%;
+		background: #fff;
+		border-radius: 1.75rem;
+		padding: clamp(1.75rem, 1.296rem + 1.917vw, 2.75rem);
+		box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+        height: 100vh;
+
+		@include respond(sm) {
+			padding: clamp(2.25rem, 1.616rem + 2.657vw, 3.75rem);
+            height: auto;
+		}
+	}
+	.print-quality-modal-variant {
+		display: flex;
+		flex-direction: column;
+		// gap: 1.25rem;
+        background: #f5f5f7;
+        border-radius: 1rem;
+        transition: outline 0.2s ease-out;
+        outline: 2px solid transparent;
+        margin: 2px;
+        & h3 {
+            margin: .5em 0;
+        }
+        &:hover {
+            outline: 2px solid var(--pxp-action-main);
+        }
+        @include respond(sm) {
+            margin: 0;
+        }
+	}
+	.print-quality-modal__title {
+		font-size: clamp(1.5rem, 1.296rem + 0.884vw, 2rem);
+		margin: 0;
+	}
+
+
+	.print-quality-modal__image-wrapper {
+        display: flex;
+        gap: var(--global-gap);
+		margin-top: 0.75rem;
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 0 var(--global-gap) 0 0;
+
+        &::-webkit-scrollbar {width: 2px;height: 6px;}
+        &::-webkit-scrollbar-track {background: #BDBDBD; border-radius: 5px;cursor: pointer;}
+        &::-webkit-scrollbar-thumb {background-color: var(--pxp-action-main); border-radius: 5px;cursor:pointer;}
+        @include respond(sm) {
+            flex-direction: row;
+            overflow-y: visible;
+            padding: 0;
+            
+        }
+	}
+
+	.print-quality-modal__image {
+		display: block;
+		// width: 100%;
+		height: auto;
+        margin: 1rem;
+        border-radius: 1.5rem;
+	}
+
+	.print-quality-modal__close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 999px;
+		border: none;
+		background: rgba(0, 0, 0, 0.04);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(0, 0, 0, 0.6);
+		cursor: pointer;
+		transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.1s ease-out;
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.08);
+			color: rgba(0, 0, 0, 0.8);
+			transform: translateY(-1px);
+		}
+
+		&:active {
+			transform: translateY(0);
+		}
+	}
+</style>

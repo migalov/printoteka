@@ -11,10 +11,10 @@ const albumCovers = [
 ---
 <section class="print-album-carousel">
     <div class="album-carousel" aria-label="Выпускные альбомы">
-        <div class="album-carousel__track">
+        <div class="album-carousel__track" direction="left" scrollamount="10">
 			{
 				// три набора для плавного зацикливания в обе стороны
-				[...albumCovers, ...albumCovers, ...albumCovers].map((src, index) => (
+				[...albumCovers].map((src, index) => (
 					<div class="album-carousel__item" data-duplicate={index >= albumCovers.length}>
 						<img src={src} alt={`Выпускной альбом ${index % albumCovers.length + 1}`} />
 					</div>
@@ -87,7 +87,7 @@ const albumCovers = [
         }
     }
 </style>
-<script>
+<!-- <script>
 	document.addEventListener("DOMContentLoaded", () => {
 		const carousel = document.querySelector(".album-carousel");
 		const track = carousel?.querySelector(".album-carousel__track");
@@ -214,4 +214,4 @@ const albumCovers = [
 			rafId = requestAnimationFrame(loop);
 		});
 	});
-</script>
+</script> -->

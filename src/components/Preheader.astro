@@ -1,5 +1,12 @@
+---
+import GeoLocation from "./GeoLocation.astro";
+---
+
 <div class="print-preheader">
     <div class="container">
+        <div class="header__city flex">
+            Geo
+        </div>
         <div class="navigation navigation-4002">
             <ul class="list">
                 <li class="category-item"><a target="_blank" href="tel:+74952150013"><i class=""></i>+7 (495) 215-00-13</a></li>
@@ -17,6 +24,14 @@
                         </svg>
                     </a>
                 </li>
+                <li class="category-item ">
+                    <a target="_blank" href="https://vk.com/printoteka">
+                        <svg class="icon" width="24" height="24">
+                            <use xlink:href="/img/sprites.svg#icon-max"></use>
+                        </svg>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -58,6 +73,15 @@
         }
         @include respond(sm) {
             display: block;
+        }
+        & > .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: auto;
+        }
+        .header__city {
+            margin-right: auto;
         }
     }
 </style>

@@ -38,6 +38,7 @@ import CardCustom from "../components/Cards/CardCustom.astro";
 import Button from "../components/Button.astro";
 import CatalogSection from "../components/CatalogSection.astro";
 import FAQData from "../../public/data/faq.json"
+import ModalCompareQuality from "../components/Modals/CompareQuality.astro";
 const ourClients = [
 	{
 		title: "Фотографам и студиям",
@@ -166,7 +167,7 @@ const albums = [
 		<div class="content-grid print-layout--light" style="--padding: 0 0 clamp(5rem, 2.9282rem + 8.8398vw, 10rem)">
 
 			<!-- Hero -->
-			<section class="container">
+			<!-- <section class="container">
 				<div class="print-hero">
 					<h1 data-aos="fade-up" data-aos-duration="500">Надёжная печать выпускных альбомов для фотографов и агентств</h1>
 					<p data-aos="fade-up" data-aos-duration="500">Печать выпускных альбомов без&nbsp;риска и&nbsp;задержек. Konica + AI-калибровка, готовность 3–5 дней, производство в&nbsp;Москве</p>
@@ -176,7 +177,6 @@ const albums = [
 					</div>
 					<ul class="print-hero-features">
 						<li data-aos="flip-up"  data-aos-duration="500"  data-aos-delay="1000">
-							<!-- <span class="print-icon print-icon-price-tag"></span> -->
 								<svg>
 									<use xlink:href="/img/sprites.svg#price"></use>
 								</svg>
@@ -195,11 +195,11 @@ const albums = [
 						</li>
 					</ul>
 				</div>
-			</section>
-			<!-- <CarouselImagesAuto /> -->
+			</section> -->
+			<CarouselImagesAuto />
 			
 			<!-- Статистика -->
-			<section class="container print-statistic">
+			<!-- <section class="container print-statistic">
 				<div class="print-statistic-text">
 					<h2 class="h3">Принтотека - бренд, созданный специально для выпускных фотографов и агентств</h3>
 					<p>Наша миссия - снять с фотографов все заботы и вопросы, связанные с печатью, производством, сроками и доставкой, чтобы вы занимались только фотографией</p>
@@ -224,10 +224,10 @@ const albums = [
 					/>
 				</div>	
 				<img class="lazy" data-src="/img/1.jpg" />
-			</section>
+			</section> -->
 			
 			<!-- Преимущества -->
-			<SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
+			<!-- <SectionBlock title="Почему нам доверяют свои альбомы" hasContainer={true} classList={["print-features-albums"]}>
 				<FeatureAlbumBlock
 					title="Высокое качество печати"
 					description="Konica AccurioPress C14000 + автоматическая калибровка — идеально точный цвет в каждом тираже"
@@ -258,9 +258,10 @@ const albums = [
 				>
 					<BoxIllustrator class:list={["print-illustration"]} />
 				</FeatureAlbumBlock>
-			</SectionBlock>
+			</SectionBlock> -->
 
 			<!-- Наши клиенты -->
+			<!--
 			<SectionBlock title="Кому мы печатаем" hasContainer={true} classList={["print-our-clients"]}>
 				{
 					ourClients.map( (client, index) =>
@@ -273,11 +274,11 @@ const albums = [
 						</>
 					)
 				}
-			</SectionBlock>
+			</SectionBlock> -->
 		</div>
 
 		<!-- Заморозка цены + 1000 ₽ бонус -->
-		<div>
+		<!-- <div>
 			<div class="print-black-block" style="--min-height: clamp(28rem, 24.4789rem + 15.0235vw, 38rem)">
 				<div class="print-black-block-inner print-freeze-cost container">
 					<h2 class="h1">Заморозка цены +&nbsp;1000&nbsp;₽&nbsp;бонус</h2>
@@ -287,7 +288,7 @@ const albums = [
 					<img data-aos="fade-up-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-black-block__iluustration  print-black-block__iluustration--woman" src="/img/animation-illustration/girl.svg" alt="" srcset="" />
 				</div>
 			</div>
-		</div>
+		</div> -->
 			
 		<div class="content-grid print-layout--light" style="--padding: clamp(5rem, 2.9282rem + 8.8398vw, 10rem) 0">
 			<!-- Каталог альбомов -->
@@ -306,7 +307,7 @@ const albums = [
 			</section>
 
 			<!-- Как мы работаем с заказами клиентов? -->
-			<section class="print-steps container">
+			<!-- <section class="print-steps container">
 				<h2 class="h1"><span style="color: var(--pxp-action-main);">Как мы работаем с&nbsp;заказами клиентов?</span> Процесс&nbsp;заказа мы&nbsp;сделали максимально простым — до&nbsp;готового альбома всего несколько&nbsp;шагов</h2>
 				<ol class="print-steps-inner">
 					{
@@ -315,14 +316,14 @@ const albums = [
 						)
 					}
 				</ol>
-			</section>
+			</section> -->
 
 			<!-- Качество печати, которым мы гордимся -->
 			<section class="print-quality container">
 				<div>
 					<h2 class="h1"><span style="color: var(--pxp-action-main);">Качество печати,</span> которым мы гордимся</h2>
 					<p>Мы объединили несколько технологий, чтобы каждая страница и обложка выглядели безупречно при любом тираже, и при этом оставались доступные по цене</p>
-					<a href="#" class="print-button print-button--primary print-button--medium">Сравнить качество печати</a>
+					<a href="#" class="print-button print-button--primary print-button--medium" data-open-print-quality-modal>Сравнить качество печати</a>
 					<img src="/img/medal.svg" />
 					
 				</div>
@@ -356,8 +357,11 @@ const albums = [
 				</div>
 			</section>
 
+			<!-- Модалка сравнения качества печати -->
+			<ModalCompareQuality />
+
 			<!-- Быстрое изготовление и удобная доставка -->
-			<section class="print-about-delivery container">
+			<!-- <section class="print-about-delivery container">
 				<h2 class="h1"><span style="color: var(--pxp-action-main);">Быстрое</span> изготовление и&nbsp;<span style="color: var(--pxp-action-main);">удобная</span> доставка</h2>
 				<div class="print-about-delivery-companies">
 					<p>Сотрудничаем с лучшими службами доставки — всегда с трекингом и аккуратной упаковкой</p>
@@ -378,10 +382,10 @@ const albums = [
 						)
 					}
 				</div>
-			</section>
+			</section> -->
 
 			<!-- Максимальная выгода -->
-			<SectionBlock
+			<!-- <SectionBlock
 				title={`<span style="color: var(--pxp-action-main);">Максимальная</span> выгода`}
 				hasContainer={true}
 				classList={["print-features-profit"]}
@@ -411,23 +415,23 @@ const albums = [
 				>
 					<Law class:list={["print-illustration"]} style={`width: clamp(7.125rem, 5.752rem + 5.856vw, 10.438rem)`}  />
 				</FeatureProfit>
-			</SectionBlock>
+			</SectionBlock> -->
 
 		</div>
 
 		<!-- Printoteka Plus -->
 
-		<div class="print-black-block" style="--min-height: clamp(37.1875rem, 33.769rem + 14.5856vw, 45.4375rem);">
+		<!-- <div class="print-black-block" style="--min-height: clamp(37.1875rem, 33.769rem + 14.5856vw, 45.4375rem);">
 			<div class="print-black-block-inner print-bounce-cashback container">
 				<h2 class="h1">Printoteka&nbsp;Plus: <br />бонусы и&nbsp;кэшбэк до&nbsp;15%</h2>
 				<p>Получайте больше привилегий <br />с каждым уровнем</p>
 				<a href="#" class="print-button print-button--primary print-button--medium">Смотреть условия</a>
 				<img data-aos="fade-left" data-aos-delay="700" data-aos-easing="ease-in-out" class="print-black-block__iluustration print-black-block__iluustration--safe" src="/img/safe.svg" alt="" srcset="" />
 			</div>
-		</div>
+		</div> -->
 
 		<!-- Отзывы -->
-		<div class="content-grid print-layout--light">
+		<!-- <div class="content-grid print-layout--light">
 			<Reviews />
 			<div class="container">
 				<GridAccordeons title="FAQ">
@@ -442,7 +446,7 @@ const albums = [
 					}
 				</GridAccordeons>
 			</div> 
-		</div>
+		</div> -->
 
 		<!-- Не ждите лучшего момента -->
 		<div class="content-grid">
@@ -472,3 +476,49 @@ const albums = [
 
 
 <script src="/src/scripts/animation-vector.js"></script>
+<script>
+	if (typeof window !== "undefined") {
+		window.addEventListener("DOMContentLoaded", () => {
+			const openBtn = document.querySelector("[data-open-print-quality-modal]");
+			const modal = document.querySelector("[data-print-quality-modal]");
+			if (!openBtn || !modal) return;
+
+			const closeButtons = modal.querySelectorAll("[data-close-print-quality-modal]");
+
+			const openModal = () => {
+				modal.classList.add("is-open");
+				modal.setAttribute("aria-hidden", "false");
+				document.body.style.overflow = "hidden";
+			};
+
+			const closeModal = () => {
+				modal.classList.remove("is-open");
+				modal.setAttribute("aria-hidden", "true");
+				document.body.style.overflow = "";
+			};
+
+			openBtn.addEventListener("click", (event) => {
+				event.preventDefault();
+				openModal();
+			});
+
+			closeButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					closeModal();
+				});
+			});
+
+			modal.addEventListener("click", (event) => {
+				if (event.target === modal) {
+					closeModal();
+				}
+			});
+
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") {
+					closeModal();
+				}
+			});
+		});
+	}
+</script>

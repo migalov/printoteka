@@ -1,0 +1,36 @@
+---
+import Layout from "../layout.astro";
+---
+
+<Layout>
+    <div class="content-grid">
+        <div class="container">
+            <ol>
+                <li>
+                    <span>ASD</span>
+                    <ul>
+                        <li>q</li>
+                        <li>s</li>
+                        <li>d</li>
+                    </ul>
+                </li>
+            </ol>            
+        </div>
+
+    </div>
+</Layout>
+
+
+<style lang="scss" is:global>
+    .container {
+        & ul {
+            list-style: circle;
+        }
+        & ol {
+            list-style: decimal;
+        }
+        & li::marker{content: normal}
+    }
+   
+  
+</style>
